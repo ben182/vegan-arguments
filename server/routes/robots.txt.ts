@@ -1,0 +1,6 @@
+// robots.txt with the absolute sitemap address (prerendered at build time)
+export default defineEventHandler((event) => {
+  const { siteUrl } = useRuntimeConfig(event).public;
+  setHeader(event, "content-type", "text/plain; charset=utf-8");
+  return `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`;
+});
