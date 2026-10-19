@@ -3,7 +3,12 @@
   const SPEICHER = "vk-anki-v1";
   const NEU_PRO_TAG = 10;
   const VORLERNEN = 20 * FSRS.MIN; // wie Anki: Lernkarten bis 20 Min. vorziehen
-  const SCHIEF = [-1.1, .7, -.4, 1.2, -.8, .3, .9, -1.3];
+  // Farbton je Kategorie (OKLCH). Unbekannte Kategorien bekommen einen festen Ton aus ihrem Namen.
+  const TOENE = { gesundheit: 20, natur: 135, umwelt: 200, ethik: 300, tierprodukte: 75, alltag: 250 };
+  const ton = (kat) => TOENE[kat] ?? [...String(kat)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
+  const katName = (kat) => KATEGORIEN[kat] || kat;
+  const alleKats = () => [...new Set([...Object.keys(KATEGORIEN), ...KARTEN.map((k) => k.kategorie)])];
+  const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } };
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const ohneZeichen = (s) => s.replace(/^[„"]|[“"]$/g, "");
@@ -39,9 +44,11 @@
   let filterKat = null;
 
   function reiter(container, istAn, onClick, mitAlle) {
-    const eintraege = mitAlle ? [["", "Alle"], ...Object.entries(KATEGORIEN)] : Object.entries(KATEGORIEN);
+    const anzahl = (key) => KARTEN.filter((k) => !key || k.kategorie === key).length;
+    const kats = alleKats().filter((key) => anzahl(key) > 0);
+    const eintraege = mitAlle ? ["", ...kats] : kats;
     container.innerHTML = eintraege
-      .map(([key, name]) => `<button class="reiter-knopf" data-kat="${key}" aria-pressed="${istAn(key)}">${esc(name)}</button>`)
+      .map((key) => `<button class="reiter-knopf" data-kat="${key}" aria-pressed="${istAn(key)}"${key ? ` style="--h:${ton(key)}"` : ""}>${key ? '<span class="punkt" aria-hidden="true"></span>' : ""}${esc(key ? katName(key) : "Alle")}<span class="anzahl">${anzahl(key)}</span></button>`)
       .join("");
     container.onclick = (e) => {
       const b = e.target.closest(".reiter-knopf");
@@ -58,45 +65,61 @@
       (!filterKat || k.kategorie === filterKat) &&
       (!q || normal([k.argument, k.kurz, ...(k.punkte || [])].join(" ")).includes(q))
     );
-    $("#raster").innerHTML = liste
-      .map((k, i) => `
-        <button class="kk" data-id="${k.id}" data-kat="${k.kategorie}" style="--schief:${SCHIEF[i % SCHIEF.length]}deg">
-          <span class="kartenkopf"><span>${esc(KATEGORIEN[k.kategorie])}</span><span class="status">${statusText(k.id)}</span></span>
-          <span class="liniert"><span class="handschrift">${esc(ohneZeichen(k.argument))}</span></span>
-        </button>`)
+    const gruppen = alleKats()
+      .map((kat) => [kat, liste.filter((k) => k.kategorie === kat)])
+      .filter(([, karten]) => karten.length);
+    $("#raster").innerHTML = gruppen
+      .map(([kat, karten], gi) => `
+        <section class="gruppe" style="--h:${ton(kat)}" aria-labelledby="g-${esc(kat)}">
+          <h2 class="gruppe-titel" id="g-${esc(kat)}"><span class="punkt" aria-hidden="true"></span>${esc(katName(kat))}<span class="anzahl">${karten.length} ${karten.length === 1 ? "Argument" : "Argumente"}</span></h2>
+          ${gi === 0 ? '<div class="spaltenkopf" aria-hidden="true"><span>Sie sagen</span><span>Du antwortest</span></div>' : ""}
+          <ul class="zeilen">${karten.map((k) => {
+            const st = statusText(k.id);
+            const n = k.quellen?.length || 0;
+            return `
+            <li><a class="zeile" href="#karte/${esc(k.id)}" data-id="${esc(k.id)}">
+              <span class="z-argument">${esc(ohneZeichen(k.argument))}</span>
+              <span class="z-antwort">${esc(k.kurz)}</span>
+              <span class="z-meta">${n ? `<span class="belege">${n} ${n === 1 ? "Quelle" : "Quellen"}</span>` : ""}${st ? `<span class="status">${esc(st)}</span>` : ""}</span>
+            </a></li>`;
+          }).join("")}</ul>
+        </section>`)
       .join("");
     $("#leer").hidden = liste.length > 0;
+    const nQuellen = new Set(KARTEN.flatMap((k) => (k.quellen || []).map((q) => q.url))).size;
+    $("#bestand").textContent = `${KARTEN.length} Argumente, ${nQuellen} verschiedene Quellen`;
   }
 
-  $("#raster").addEventListener("click", (e) => {
-    const b = e.target.closest(".kk");
-    if (b) location.hash = `karte/${b.dataset.id}`;
-  });
   $("#suche").addEventListener("input", rasterZeichnen);
 
   // ---------- Detail ----------
   function zahlHtml(k) {
-    return k.zahl ? `<div class="zahl"><strong>${esc(k.zahl.wert)}</strong><span>${esc(k.zahl.text)}</span></div>` : "";
+    return k.zahl ? `<p class="zahl"><strong>${esc(k.zahl.wert)}</strong><span>${esc(k.zahl.text)}</span></p>` : "";
   }
 
   function detailHtml(k) {
+    const st = statusText(k.id);
     const teile = [
-      `<div class="kartenkopf" data-kat="${k.kategorie}"><span>${esc(KATEGORIEN[k.kategorie])}</span></div>`,
-      `<div class="detail-koerper" data-kat="${k.kategorie}">`,
-      `<h2 id="detail-argument">„${esc(ohneZeichen(k.argument))}“</h2>`,
-      `<p class="kurz">${esc(k.kurz)}</p>`,
-      zahlHtml(k),
+      `<div class="detail-koerper" style="--h:${ton(k.kategorie)}">`,
+      `<header class="d-kopf">`,
+      `<p class="d-thema"><span class="punkt" aria-hidden="true"></span>${esc(katName(k.kategorie))}${st ? `<span class="status">${esc(st)}</span>` : ""}</p>`,
+      `<p class="d-sagt">Jemand sagt:</p>`,
+      `<h2 id="detail-argument" class="d-argument">${esc(ohneZeichen(k.argument))}</h2>`,
+      `</header>`,
+      `<section class="d-antwort"><h3>Deine Antwort fürs Gespräch</h3><p class="kurz">${esc(k.kurz)}</p>${zahlHtml(k)}</section>`,
     ];
-    if (k.punkte?.length) teile.push(`<h3>Wenn jemand nachhakt</h3><ul class="punkte">${k.punkte.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>`);
-    if (k.konter) teile.push(`<div class="notiz konter"><h3>Gegenfrage</h3><p>${esc(k.konter)}</p></div>`);
-    if (k.fehlschluss) teile.push(`<div class="notiz fehlschluss"><h3>Der Denkfehler dahinter: ${esc(k.fehlschluss.name)}</h3><p>${esc(k.fehlschluss.erklaerung)}</p></div>`);
-    if (k.ehrlich) teile.push(`<div class="notiz ehrlich"><h3>Was du fairerweise zugeben solltest</h3><p>${esc(k.ehrlich)}</p></div>`);
+    if (k.punkte?.length) teile.push(`<section class="d-abschnitt"><h3>Wenn jemand nachhakt</h3><ul class="punkte">${k.punkte.map((p) => `<li>${esc(p)}</li>`).join("")}</ul></section>`);
+    const notizen = [];
+    if (k.konter) notizen.push(`<div class="notiz konter"><h3>Gegenfrage</h3><p>${esc(k.konter)}</p></div>`);
+    if (k.fehlschluss) notizen.push(`<div class="notiz fehlschluss"><h3>Denkfehler: ${esc(k.fehlschluss.name)}</h3><p>${esc(k.fehlschluss.erklaerung)}</p></div>`);
+    if (k.ehrlich) notizen.push(`<div class="notiz ehrlich"><h3>Was du fairerweise zugeben solltest</h3><p>${esc(k.ehrlich)}</p></div>`);
+    if (notizen.length) teile.push(`<div class="notizen">${notizen.join("")}</div>`);
     if (k.quellen?.length) {
-      teile.push(`<h3>Quellen</h3><ol class="quellen">${k.quellen
-        .map((q) => `<li><a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.titel)}</a>${q.jahr && !q.titel.includes(q.jahr) ? `, ${q.jahr}` : ""}</li>`)
-        .join("")}</ol>`);
+      teile.push(`<section class="d-abschnitt"><h3>Quellen</h3><ol class="quellen">${k.quellen
+        .map((q) => `<li><a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.titel)}</a><span class="q-meta">${esc(host(q.url))}${q.jahr && !q.titel.includes(q.jahr) ? `, ${q.jahr}` : ""}</span></li>`)
+        .join("")}</ol></section>`);
     }
-    teile.push(`<div class="detail-fuss"><span class="status">${statusText(k.id)}</span><button class="knopf" id="teilen">Link kopieren</button></div></div>`);
+    teile.push(`<div class="detail-fuss"><button class="knopf" id="teilen">Link kopieren</button></div></div>`);
     return teile.join("");
   }
 
@@ -121,7 +144,7 @@
   dialog.addEventListener("cancel", (e) => { e.preventDefault(); detailZu(); });
 
   // ---------- Üben (Anki-Warteschlange) ----------
-  let uebenKats = new Set(Object.keys(KATEGORIEN));
+  let uebenKats = new Set(alleKats());
   let aktuell = null;
 
   function stapel(jetzt) {
@@ -188,8 +211,8 @@
     const karte = $("#lernkarte");
     const warOffen = karte.classList.contains("offen");
     karte.classList.remove("offen");
-    karte.querySelectorAll(".kartenkopf").forEach((el) => (el.dataset.kat = k.kategorie));
-    $("#lern-kategorie").textContent = KATEGORIEN[k.kategorie];
+    karte.style.setProperty("--h", ton(k.kategorie));
+    $("#lern-kategorie").textContent = katName(k.kategorie);
     $("#lern-argument").textContent = ohneZeichen(k.argument);
     // Rückseite erst tauschen, wenn sie weggedreht ist, sonst blitzt die neue Antwort auf
     setTimeout(() => {

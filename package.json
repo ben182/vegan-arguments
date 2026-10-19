@@ -1,0 +1,15 @@
+{
+  "name": "vegan-arguments",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test",
+    "check-sources": "node scripts/check-sources.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}
