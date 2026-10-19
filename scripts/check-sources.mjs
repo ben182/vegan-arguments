@@ -1,11 +1,12 @@
-// Checks every source link in karten.js and karten.en.js. Usage: node scripts/check-sources.mjs
+// Checks every source link in shared/data/cards.de.ts and cards.en.ts. Usage: node scripts/check-sources.mjs
+// (Node 22.18+ runs the TypeScript data modules directly.)
 // Exits with code 1 if a link is definitely broken (404, 410, DNS error, ...).
-import { KARTEN as DE } from "../karten.js";
-import { KARTEN as EN } from "../karten.en.js";
+import { cards as DE } from "../shared/data/cards.de.ts";
+import { cards as EN } from "../shared/data/cards.en.ts";
 
 const links = new Map(); // url -> [card ids]
 for (const [lang, cards] of [["de", DE], ["en", EN]]) {
-  for (const card of cards) for (const s of card.quellen || []) links.set(s.url, [...new Set([...(links.get(s.url) || []), lang === "de" ? card.id : `${card.id} (en)`])]);
+  for (const card of cards) for (const s of card.sources || []) links.set(s.url, [...new Set([...(links.get(s.url) || []), lang === "de" ? card.id : `${card.id} (en)`])]);
 }
 
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
