@@ -66,6 +66,8 @@ export default defineNuxtConfig({
   compatibilityDate: "2026-10-19",
 
   nitro: {
+    // Static files only (Cloudflare Pages); also makes `nuxt preview` serve .output/public
+    preset: "static",
     prerender: {
       routes: [...pages, "/robots.txt", "/manifest.en.webmanifest"],
       crawlLinks: true,
@@ -111,6 +113,8 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
+    // Fully prerendered: no sitemap code in the (unused) server bundle
+    zeroRuntime: true,
     autoI18n: false,
     excludeAppSources: true,
     xsl: false,
