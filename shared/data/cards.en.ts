@@ -929,8 +929,11 @@ export const cards: Card[] = [
     counterQuestion: "Do you feel like I’m judging you?",
     concession: "Minson and Monin’s study was small, used only students, and hasn’t been directly replicated so far. But other studies also show that vegans run into prejudice.",
     sources: [
-      { title: "Minson & Monin: Do-Gooder Derogation – Disparaging Morally Motivated Minorities to Defuse Anticipated Reproach (Soc Psychol Personal Sci)", url: "https://doi.org/10.1177/1948550611415695", year: 2012 },
-      { title: "MacInnis & Hodson: It ain’t easy eating greens – Evidence of bias toward vegetarians and vegans (Group Process Intergroup Relat)", url: "https://doi.org/10.1177/1368430215618253", year: 2017 },
+      { title: "Minson & Monin: Do-Gooder Derogation: Disparaging Morally Motivated Minorities to Defuse Anticipated Reproach (Soc Psychol Personal Sci)", url: "https://doi.org/10.1177/1948550611415695", year: 2012, kind: "study" },
+      { title: "MacInnis & Hodson: It ain’t easy eating greens: Evidence of bias toward vegetarians and vegans from both source and target (Group Process Intergroup Relat)", url: "https://doi.org/10.1177/1368430215618253", year: 2017, kind: "study" },
+      { title: "Aloni et al.: The structure and correlates of vegan stereotypes (Group Process Intergroup Relat)", url: "https://doi.org/10.1177/13684302241230001", year: 2024, kind: "study" },
+      { title: "Leach & Dhont: Non-speciesist language conveys moral commitments to animals and evokes do-gooder derogation (Psychol Hum Anim Intergr Relat)", url: "https://doi.org/10.5964/phair.9869", year: 2023, kind: "study" },
+      { title: "Rothgerber: Meat-related cognitive dissonance: A conceptual framework for understanding how meat eaters reduce negative arousal from eating animals (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/31707073/", year: 2020, kind: "review" },
     ],
   },
   {
@@ -946,7 +949,9 @@ export const cards: Card[] = [
     ],
     concession: "Reactance is well studied, but the effects tend to be small and vary a lot. Mostly written messages were tested, not conversations at the dinner table.",
     sources: [
-      { title: "Li & Shi: Message effects on psychological reactance – meta-analyses (Human Communication Research)", url: "https://doi.org/10.1093/hcr/hqaf016", year: 2026 },
+      { title: "Li & Shi: Message effects on psychological reactance: meta-analyses (Hum Commun Res)", url: "https://doi.org/10.1093/hcr/hqaf016", year: 2026, kind: "review" },
+      { title: "Rains: The Nature of Psychological Reactance Revisited: A Meta-Analytic Review (Hum Commun Res)", url: "https://doi.org/10.1111/j.1468-2958.2012.01443.x", year: 2013, kind: "review" },
+      { title: "Steindl et al.: Understanding Psychological Reactance: New Developments and Findings (Z Psychol)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4675534/", year: 2015, kind: "review" },
     ],
   },
   {
@@ -963,8 +968,10 @@ export const cards: Card[] = [
     counterQuestion: "What would a study have to say to make you stop and think?",
     concession: "Backfire effects have occasionally turned up in small subgroups, but not reliably. And weak studies circulate on the vegan side too – being upfront about where the data is thin makes you harder to attack.",
     sources: [
-      { title: "Swire-Thompson, DeGutis & Lazer: Searching for the backfire effect – measurement and design considerations (J Appl Res Mem Cogn)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7462781/", year: 2020 },
-      { title: "DGE: Neubewertung der Position zu veganer Ernährung (Klug et al., Ernährungs Umschau 7/2024) [German Nutrition Society: re-evaluation of its position on vegan diets]", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024 },
+      { title: "Swire-Thompson, DeGutis & Lazer: Searching for the Backfire Effect: Measurement and Design Considerations (J Appl Res Mem Cogn)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7462781/", year: 2020, kind: "review" },
+      { title: "DGE: Update of the DGE position on vegan diet (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024, kind: "review" },
+      { title: "Wood & Porter: The Elusive Backfire Effect: Mass Attitudes’ Steadfast Factual Adherence (Polit Behav)", url: "https://doi.org/10.1007/s11109-018-9443-y", year: 2019, kind: "study" },
+      { title: "Prike et al.: Examining the replicability of backfire effects after standalone corrections (Cogn Res Princ Implic)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10317933/", year: 2023, kind: "study" },
     ],
   },
   {
@@ -975,13 +982,15 @@ export const cards: Card[] = [
     answer: "No, I’m not trying to blame you. It’s about the animals for me – and about what we can do better.",
     points: [
       "Guilt is only a weak motivator: a 2023 meta-analysis of 26 studies found a small effect on average.",
-      "Appeals that shifted responsibility onto the other person tended to work less well. They worked better when they offered a concrete way to make amends.",
+      "Appeals that shifted responsibility onto the other person tended to work less well. Appeals that offered a concrete way to make amends did somewhat better – but that result wasn’t clear-cut.",
       "So: talk about the animals, not about the other person’s guilt – and offer an easy next step.",
     ],
     counterQuestion: "What just gave you that impression?",
     concession: "The studies on guilt appeals vary a lot, and the effect wore off after a week. There’s hardly any direct research on conversations about food.",
     sources: [
-      { title: "Peng et al.: When guilt works – a comprehensive meta-analysis of guilt appeals (Front Psychol)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10568480/", year: 2023 },
+      { title: "Peng et al.: When guilt works: a comprehensive meta-analysis of guilt appeals (Front Psychol)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10568480/", year: 2023, kind: "review" },
+      { title: "O’Keefe: Guilt and Social Influence (Ann Int Commun Assoc)", url: "https://doi.org/10.1080/23808985.2000.11678970", year: 2000, kind: "review" },
+      { title: "Turner & Rains: Guilt Appeals in Persuasive Communication: A Meta-Analytic Review (Commun Stud)", url: "https://doi.org/10.1080/10510974.2021.1953094", year: 2021, kind: "review" },
     ],
   },
   {
@@ -1000,9 +1009,11 @@ export const cards: Card[] = [
     counterQuestion: "Would you give it another try with a bit of support?",
     concession: "Symptoms can have real causes – that’s for a doctor to check, not something to talk away in conversation. The survey comes from the animal advocacy research group Faunalytics and isn’t peer-reviewed.",
     sources: [
-      { title: "Faunalytics: A Summary of Faunalytics’ Study of Current and Former Vegetarians and Vegans", url: "https://faunalytics.org/a-summary-of-faunalytics-study-of-current-and-former-vegetarians-and-vegans/", year: 2016 },
-      { title: "Winham & Hutchins: Perceptions of flatulence from bean consumption among adults in 3 feeding studies (Nutr J)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3228670/", year: 2011 },
-      { title: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF) [German Nutrition Society position paper on vegan diets, full version]", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", year: 2024 },
+      { title: "Faunalytics: A Summary of Faunalytics’ Study of Current and Former Vegetarians and Vegans", url: "https://faunalytics.org/a-summary-of-faunalytics-study-of-current-and-former-vegetarians-and-vegans/", year: 2016, kind: "other" },
+      { title: "Winham & Hutchins: Perceptions of flatulence from bean consumption among adults in 3 feeding studies (Nutr J)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3228670/", year: 2011, kind: "study" },
+      { title: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF) [German Nutrition Society position paper on vegan diets, full version]", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", year: 2024, kind: "review" },
+      { title: "Melina, Craig & Levin: Position of the Academy of Nutrition and Dietetics: Vegetarian Diets (J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/27886704/", year: 2016, kind: "review" },
+      { title: "Faunalytics: Bringing Back Former Vegans and Vegetarians – An Obstacle Analysis", url: "https://faunalytics.org/veg-obstacle-analysis/", year: 2023, kind: "other" },
     ],
   },
   {
@@ -1020,8 +1031,9 @@ export const cards: Card[] = [
     counterQuestion: "What got you to eat less meat?",
     concession: "“Hardly any” is a stretchy term – flexitarians eat meat too. The figures are based on self-reports from around 1,000 respondents. And motivational interviewing was researched in health counseling, not in conversations about animals.",
     sources: [
-      { title: "BMLEH: Deutschland, wie es isst – Der BMLEH-Ernährungsreport 2025 (PDF) [German Federal Ministry of Agriculture: “Germany, how it eats” – Nutrition Report 2025]", url: "https://www.bmleh.de/SharedDocs/Downloads/DE/Broschueren/ernaehrungsreport-2025.pdf?__blob=publicationFile&v=4", year: 2025 },
-      { title: "Frost et al.: Effectiveness of Motivational Interviewing on adult behaviour change – systematic review of reviews (PLoS One)", url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204890", year: 2018 },
+      { title: "BMLEH: Deutschland, wie es isst – Der BMLEH-Ernährungsreport 2025 (PDF) [German Federal Ministry of Agriculture: “Germany, how it eats” – Nutrition Report 2025]", url: "https://www.bmleh.de/SharedDocs/Downloads/DE/Broschueren/ernaehrungsreport-2025.pdf?__blob=publicationFile&v=4", year: 2025, kind: "official" },
+      { title: "Frost et al.: Effectiveness of Motivational Interviewing on adult behaviour change in health and social care settings: A systematic review of reviews (PLoS One)", url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204890", year: 2018, kind: "review" },
+      { title: "Lundahl et al.: A Meta-Analysis of Motivational Interviewing: Twenty-Five Years of Empirical Studies (Res Soc Work Pract)", url: "https://doi.org/10.1177/1049731509347850", year: 2010, kind: "review" },
     ],
   },
   {
@@ -1038,9 +1050,11 @@ export const cards: Card[] = [
     counterQuestion: "Which cheese dish would be hardest for you to replace?",
     concession: "To many people, vegan cheese doesn’t taste like the real thing. It’s not certain you get used to it over time – a study on meat substitutes found that only for some people.",
     sources: [
-      { title: "Li & Shi: Message effects on psychological reactance – meta-analyses (Human Communication Research)", url: "https://doi.org/10.1093/hcr/hqaf016", year: 2026 },
-      { title: "BMLEH: Deutschland, wie es isst – Der BMLEH-Ernährungsreport 2025 (PDF) [German Federal Ministry of Agriculture: “Germany, how it eats” – Nutrition Report 2025]", url: "https://www.bmleh.de/SharedDocs/Downloads/DE/Broschueren/ernaehrungsreport-2025.pdf?__blob=publicationFile&v=4", year: 2025 },
-      { title: "Hoek et al.: Are meat substitutes liked better over time? (Food Quality and Preference)", url: "https://research.wur.nl/en/publications/are-meat-substitutes-liked-better-over-time-a-repeated-in-home-us/", year: 2013 },
+      { title: "Li & Shi: Message effects on psychological reactance: meta-analyses (Hum Commun Res)", url: "https://doi.org/10.1093/hcr/hqaf016", year: 2026, kind: "review" },
+      { title: "BMLEH: Deutschland, wie es isst – Der BMLEH-Ernährungsreport 2025 (PDF) [German Federal Ministry of Agriculture: “Germany, how it eats” – Nutrition Report 2025]", url: "https://www.bmleh.de/SharedDocs/Downloads/DE/Broschueren/ernaehrungsreport-2025.pdf?__blob=publicationFile&v=4", year: 2025, kind: "official" },
+      { title: "Hoek et al.: Are meat substitutes liked better over time? A repeated in-home use test with meat substitutes or meat in meals (Food Qual Prefer)", url: "https://research.wur.nl/en/publications/are-meat-substitutes-liked-better-over-time-a-repeated-in-home-us/", year: 2013, kind: "study" },
+      { title: "Guggenbühl et al.: Sensory characterisation and consumer acceptance of plant-based cheese alternatives – A Swiss perspective (Food Qual Prefer)", url: "https://doi.org/10.1016/j.foodqual.2025.105713", year: 2026, kind: "study" },
+      { title: "Appiani, Cattaneo & Laureati: Sensory properties and consumer acceptance of plant-based meat, dairy, fish and eggs analogs: a systematic review (Front Sustain Food Syst)", url: "https://doi.org/10.3389/fsufs.2023.1268068", year: 2023, kind: "review" },
     ],
   },
   {
@@ -1058,9 +1072,12 @@ export const cards: Card[] = [
     counterQuestion: "What do you mean by “just”?",
     concession: "The mind-denial study was successfully replicated in 2024 with almost 1,000 people, but the effect was somewhat smaller. The 4N studies show correlations, not causes.",
     sources: [
-      { title: "Bastian et al.: Don’t mind meat? The denial of mind to animals used for human consumption (Pers Soc Psychol Bull)", url: "https://doi.org/10.1177/0146167211424291", year: 2012 },
-      { title: "Jacobs et al.: Revisiting the motivated denial of mind to animals used for food – Replication Registered Report (Int Rev Soc Psychol)", url: "https://doi.org/10.5334/irsp.932", year: 2024 },
-      { title: "Piazza et al.: Rationalizing meat consumption – the 4Ns (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/25865663/", year: 2015 },
+      { title: "Bastian et al.: Don’t Mind Meat? The Denial of Mind to Animals Used for Human Consumption (Pers Soc Psychol Bull)", url: "https://doi.org/10.1177/0146167211424291", year: 2012, kind: "study" },
+      { title: "Jacobs et al.: Revisiting the Motivated Denial of Mind to Animals Used for Food: Replication Registered Report of Bastian et al. (2012) (Int Rev Soc Psychol)", url: "https://doi.org/10.5334/irsp.932", year: 2024, kind: "study" },
+      { title: "Piazza et al.: Rationalizing meat consumption. The 4Ns (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/25865663/", year: 2015, kind: "study" },
+      { title: "Bastian & Loughnan: Resolving the Meat-Paradox: A Motivational Account of Morally Troublesome Behavior and Its Maintenance (Pers Soc Psychol Rev)", url: "https://pubmed.ncbi.nlm.nih.gov/27207840/", year: 2017, kind: "review" },
+      { title: "Loughnan, Haslam & Bastian: The role of meat consumption in the denial of moral status and mind to meat animals (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/20488214/", year: 2010, kind: "study" },
+      { title: "Rothgerber: Meat-related cognitive dissonance: A conceptual framework for understanding how meat eaters reduce negative arousal from eating animals (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/31707073/", year: 2020, kind: "review" },
     ],
   },
   {
@@ -1076,11 +1093,12 @@ export const cards: Card[] = [
     ],
     counterQuestion: "If I do better with my phone – will you think about what you eat?",
     fallacy: { name: "Tu quoque (“You too!”)", explanation: "An argument doesn’t become wrong just because the person making it doesn’t live up to it perfectly." },
-    concession: "The hypocrisy study is based on online experiments with made-up scenarios; we don’t know of a direct replication. And some criticism of your own consumption is fair.",
+    concession: "The hypocrisy study is based on online experiments with made-up scenarios. A replication in Japan (2025) broadly supported it but also found cultural differences. And some criticism of your own consumption is fair.",
     sources: [
-      { title: "Jordan et al.: Why do we hate hypocrites? Evidence for a theory of false signaling (Psychol Sci)", url: "https://doi.org/10.1177/0956797616685771", year: 2017 },
-      { title: "APS: We dislike hypocrites because they deceive us (press release on Jordan et al.)", url: "https://www.psychologicalscience.org/news/releases/we-dislike-hypocrites-because-they-deceive-us.html", year: 2017 },
-      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026 },
+      { title: "Jordan et al.: Why Do We Hate Hypocrites? Evidence for a Theory of False Signaling (Psychol Sci)", url: "https://doi.org/10.1177/0956797616685771", year: 2017, kind: "study" },
+      { title: "APS: We Dislike Hypocrites Because They Deceive Us", url: "https://www.psychologicalscience.org/news/releases/we-dislike-hypocrites-because-they-deceive-us.html", year: 2017, kind: "other" },
+      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
+      { title: "Zhao & Watamura: Cultural Generalizability of the False Signaling Theory: A Replication Study Using a Japanese Sample (Jpn Psychol Res)", url: "https://doi.org/10.1111/jpr.12581", year: 2025, kind: "study" },
     ],
   },
   {
@@ -1097,9 +1115,10 @@ export const cards: Card[] = [
     counterQuestion: "What holds you back the most?",
     concession: "The effects in the conversation studies were small, and they were about prejudice against immigrants and trans people, not food. A similar 2014 study was faked – only later, genuine studies backed up the approach.",
     sources: [
-      { title: "Green, Smith & Mathur: Meaningfully reducing consumption of meat and animal products is an unsolved problem – a meta-analysis (Appetite)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12376840/", year: 2025 },
-      { title: "Kalla & Broockman: Reducing exclusionary attitudes through interpersonal conversation – three field experiments (Am Polit Sci Rev)", url: "https://doi.org/10.1017/S0003055419000923", year: 2020 },
-      { title: "Retraction Watch: 10 years after the downfall of a same-sex marriage canvassing study", url: "https://retractionwatch.com/2025/06/06/same-sex-marriage-retraction-political-science-study-lacour-green-broockman-kalla/", year: 2025 },
+      { title: "Green, Smith & Mathur: Meaningfully reducing consumption of meat and animal products is an unsolved problem: A meta-analysis (Appetite)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12376840/", year: 2025, kind: "review" },
+      { title: "Kalla & Broockman: Reducing Exclusionary Attitudes through Interpersonal Conversation: Evidence from Three Field Experiments (Am Polit Sci Rev)", url: "https://doi.org/10.1017/S0003055419000923", year: 2020, kind: "study" },
+      { title: "Retraction Watch: 10 years after the downfall of a same-sex marriage canvassing study, tenure, some better practices — and an engagement", url: "https://retractionwatch.com/2025/06/06/same-sex-marriage-retraction-political-science-study-lacour-green-broockman-kalla/", year: 2025, kind: "other" },
+      { title: "Broockman & Kalla: Durably reducing transphobia: A field experiment on door-to-door canvassing (Science)", url: "https://doi.org/10.1126/science.aad9713", year: 2016, kind: "study" },
     ],
   },
   {
@@ -1133,7 +1152,9 @@ export const cards: Card[] = [
     counterQuestion: "Shall we talk about it calmly some other time?",
     concession: "The meta-analysis shows correlations, mainly for written messages. There’s hardly any direct research on heated conversations at the table.",
     sources: [
-      { title: "Li & Shi: Message effects on psychological reactance – meta-analyses (Human Communication Research)", url: "https://doi.org/10.1093/hcr/hqaf016", year: 2026 },
+      { title: "Li & Shi: Message effects on psychological reactance: meta-analyses (Hum Commun Res)", url: "https://doi.org/10.1093/hcr/hqaf016", year: 2026, kind: "review" },
+      { title: "Rains: The Nature of Psychological Reactance Revisited: A Meta-Analytic Review (Hum Commun Res)", url: "https://doi.org/10.1111/j.1468-2958.2012.01443.x", year: 2013, kind: "review" },
+      { title: "Steindl et al.: Understanding Psychological Reactance: New Developments and Findings (Z Psychol)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4675534/", year: 2015, kind: "review" },
     ],
   },
   {
@@ -1141,7 +1162,7 @@ export const cards: Card[] = [
     category: "gespraech",
     checked: "2026-10-19",
     argument: "Hardly anyone is vegan.",
-    answer: "Not many yet, true. But the number is growing: in Germany, one in five 14- to 29-year-olds already eats vegetarian or vegan.",
+    answer: "Not many yet, true. But it’s already common among younger people: in Germany, one in five 14- to 29-year-olds eats vegetarian or vegan.",
     figure: { value: "34% → 24%", text: "of people in Germany ate meat or sausage every day in 2015 vs. 2025" },
     points: [
       "According to Germany’s 2025 Nutrition Report, 2% eat vegan, 7% vegetarian and 37% flexitarian – meaning they eat meat only occasionally.",
@@ -1150,12 +1171,14 @@ export const cards: Card[] = [
     ],
     counterQuestion: "Didn’t almost every change start with a minority?",
     fallacy: { name: "Appeal to popularity", explanation: "Something isn’t wrong just because few people do it – and it isn’t right just because many do." },
-    concession: "Whether such “trend messages” work is uncertain: replications in the UK in 2021 and 2024 found no effect. And in Germany, vegans remain a small minority.",
+    concession: "Whether such “trend messages” work is uncertain: replications in the UK in 2021 and 2024 found no clear effect, and a 2026 meta-analysis on pro-environmental behavior found only very small effects on average. In Germany, vegans remain a small minority – and per-capita meat consumption rose slightly again in 2025.",
     sources: [
-      { title: "BMLEH: Deutschland, wie es isst – Der BMLEH-Ernährungsreport 2025 (PDF) [German Federal Ministry of Agriculture: “Germany, how it eats” – Nutrition Report 2025]", url: "https://www.bmleh.de/SharedDocs/Downloads/DE/Broschueren/ernaehrungsreport-2025.pdf?__blob=publicationFile&v=4", year: 2025 },
-      { title: "Sparkman & Walton: Dynamic norms promote sustainable behavior, even if it is counternormative (Psychol Sci)", url: "https://doi.org/10.1177/0956797617719950", year: 2017 },
-      { title: "Aldoh, Sparks & Harris: Dynamic norms and food choice – a failure of minority norm information to influence motivation to reduce meat consumption (Sustainability)", url: "https://doi.org/10.3390/su13158315", year: 2021 },
-      { title: "Aldoh, Sparks & Harris: Shifting norms, static behaviour – effects of dynamic norms on meat consumption (R Soc Open Sci)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11296159/", year: 2024 },
+      { title: "BMLEH: Deutschland, wie es isst – Der BMLEH-Ernährungsreport 2025 (PDF) [German Federal Ministry of Agriculture: “Germany, how it eats” – Nutrition Report 2025]", url: "https://www.bmleh.de/SharedDocs/Downloads/DE/Broschueren/ernaehrungsreport-2025.pdf?__blob=publicationFile&v=4", year: 2025, kind: "official" },
+      { title: "Sparkman & Walton: Dynamic Norms Promote Sustainable Behavior, Even if It Is Counternormative (Psychol Sci)", url: "https://doi.org/10.1177/0956797617719950", year: 2017, kind: "study" },
+      { title: "Aldoh, Sparks & Harris: Dynamic Norms and Food Choice: Reflections on a Failure of Minority Norm Information to Influence Motivation to Reduce Meat Consumption (Sustainability)", url: "https://doi.org/10.3390/su13158315", year: 2021, kind: "study" },
+      { title: "Aldoh, Sparks & Harris: Shifting norms, static behaviour: effects of dynamic norms on meat consumption (R Soc Open Sci)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11296159/", year: 2024, kind: "study" },
+      { title: "Reintgen Kamphuisen, Bouman & van der Werff: Unpacking dynamic norms: Identifying key elements of dynamic norms and a meta-analysis of their effects on pro-environmental behaviour (J Environ Psychol)", url: "https://doi.org/10.1016/j.jenvp.2026.103060", year: 2026, kind: "review" },
+      { title: "BLE: Bericht zur Markt- und Versorgungslage mit Fleisch 2026 (PDF) [Federal Office for Agriculture and Food: report on the meat market and supply situation 2026]", url: "https://www.bmel-statistik.de/fileadmin/daten/0611090-2026.pdf", year: 2026, kind: "official" },
     ],
   },
 ];
