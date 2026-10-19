@@ -510,3 +510,6 @@ kbd {
   #aufdecken { width: 100%; }
   .bewerten-frage { margin-bottom: .45rem; padding-top: .5rem; }
 }
+
+.geprueft { margin: .9rem 0 0; font-size: .85rem; color: var(--leise); }
+a.textknopf { font-size: inherit; }

@@ -1,18 +1,20 @@
 // Inhalte der Karteikarten. Quellen geprüft im Oktober 2026.
 // Reines JS ohne Modul-Export, damit die Seite auch per file:// läuft.
 
-const KATEGORIEN = {
+export const KATEGORIEN = {
   gesundheit: "Gesundheit",
   natur: "Natur & Evolution",
   umwelt: "Umwelt & Klima",
   ethik: "Ethik",
+  tierprodukte: "Eier, Honig & Co.",
   alltag: "Alltag",
 };
 
-const KARTEN = [
+export const KARTEN = [
   {
     id: "protein",
     kategorie: "gesundheit",
+    geprueft: "2026-10-19",
     argument: "Woher bekommst du dein Protein?",
     kurz: "Aus Hülsenfrüchten, Tofu, Getreide und Nüssen. Erwachsene brauchen etwa 0,8 Gramm pro Kilo Körpergewicht – das schafft eine abwechslungsreiche vegane Ernährung in aller Regel.",
     zahl: { wert: "0,8 g", text: "Protein pro Kilo Körpergewicht und Tag empfiehlt die DGE für Erwachsene unter 65" },
@@ -33,6 +35,7 @@ const KARTEN = [
   {
     id: "b12",
     kategorie: "gesundheit",
+    geprueft: "2026-10-19",
     argument: "Wenn man Vitamin B12 schlucken muss, kann vegan nicht natürlich sein.",
     kurz: "B12 stellen weder Tiere noch Pflanzen her, sondern Bakterien. Auch Tierfutter wird B12 zugesetzt. Veganer nehmen es eben direkt – als Tablette.",
     zahl: { wert: "4 µg", text: "Vitamin B12 pro Tag brauchen Erwachsene laut DGE" },
@@ -55,6 +58,7 @@ const KARTEN = [
   {
     id: "kinder-schwangerschaft",
     kategorie: "gesundheit",
+    geprueft: "2026-10-19",
     argument: "Vegan ist für Kinder gefährlich.",
     kurz: "Es kann gut gehen – aber nur gut geplant. Die Datenlage ist noch dünn. B12 muss immer ergänzt werden, und Fachleute raten dringend zu Beratung und Kontrollen beim Kinderarzt.",
     punkte: [
@@ -74,6 +78,7 @@ const KARTEN = [
   {
     id: "mangelernaehrung",
     kategorie: "gesundheit",
+    geprueft: "2026-10-19",
     argument: "Veganer sind doch alle mangelernährt.",
     kurz: "Nicht, wenn man es gut plant. Die DGE sagt seit 2024: Für gesunde Erwachsene kann vegan gesundheitsfördernd sein – mit B12-Präparat und bewusster Lebensmittelauswahl.",
     punkte: [
@@ -93,6 +98,7 @@ const KARTEN = [
   {
     id: "soja-hormone",
     kategorie: "gesundheit",
+    geprueft: "2026-10-19",
     argument: "Soja ist voller Östrogen – das ist schlecht für Männer.",
     kurz: "Soja enthält Pflanzenstoffe, die Östrogen ähneln. Eine Auswertung von 41 Studien fand aber: Soja verändert bei Männern weder Testosteron noch Östrogen.",
     zahl: { wert: "41", text: "Studien: kein Effekt von Soja auf männliche Hormone" },
@@ -110,6 +116,7 @@ const KARTEN = [
   {
     id: "seit-jahrtausenden",
     kategorie: "natur",
+    geprueft: "2026-10-19",
     argument: "Menschen essen seit Jahrtausenden Fleisch.",
     kurz: "Stimmt. Aber dass etwas lange so war, macht es nicht richtig. Früher hatten viele keine Wahl – wir heute schon.",
     punkte: [
@@ -127,6 +134,7 @@ const KARTEN = [
   {
     id: "loewen",
     kategorie: "natur",
+    geprueft: "2026-10-19",
     argument: "Löwen essen auch Fleisch.",
     kurz: "Löwen haben keine Wahl – wir schon. Und als Vorbild taugen sie nicht: Übernehmen neue Männchen ein Rudel, töten sie die Jungen.",
     punkte: [
@@ -144,6 +152,7 @@ const KARTEN = [
   {
     id: "eckzaehne-gehirn",
     kategorie: "natur",
+    geprueft: "2026-10-19",
     argument: "Wir haben Eckzähne – und Fleisch hat unser Gehirn wachsen lassen.",
     kurz: "Unsere Eckzähne sind auffällig klein. Und selbst wenn Fleisch unseren Vorfahren geholfen hat: Heute können wir gesund ohne leben.",
     punkte: [
@@ -164,6 +173,7 @@ const KARTEN = [
   {
     id: "pflanzen-gefuehle",
     kategorie: "natur",
+    geprueft: "2026-10-19",
     argument: "Pflanzen haben auch Gefühle.",
     kurz: "Pflanzen reagieren auf ihre Umwelt, aber für Gefühle gibt es keine Belege. Und selbst wenn: Für Fleisch werden viel mehr Pflanzen verfüttert, als wir direkt essen würden.",
     zahl: { wert: "−75 %", text: "Agrarfläche weltweit, wenn alle vegan äßen (4,1 auf 1 Mrd. Hektar)" },
@@ -182,6 +192,7 @@ const KARTEN = [
   {
     id: "soja-regenwald",
     kategorie: "umwelt",
+    geprueft: "2026-10-19",
     argument: "Für Tofu und Soja wird der Regenwald abgeholzt.",
     kurz: "Rund drei Viertel der Sojaernte landen im Tierfutter, nur ein kleiner Teil wird zu Tofu. Und der größte Treiber der Abholzung sind Rinderweiden, nicht Soja.",
     zahl: { wert: "77 %", text: "der weltweiten Sojaernte werden an Tiere verfüttert" },
@@ -200,6 +211,7 @@ const KARTEN = [
   {
     id: "regional-bio",
     kategorie: "umwelt",
+    geprueft: "2026-10-19",
     argument: "Ich kaufe nur regional und bio vom Bauern.",
     kurz: "Fürs Klima zählt vor allem, was man isst – nicht, woher es kommt. Der Transport macht bei den meisten Lebensmitteln weniger als 10 % der Emissionen aus.",
     zahl: { wert: "0,5 %", text: "der Treibhausgase von Rindfleisch entfallen auf den Transport" },
@@ -220,6 +232,7 @@ const KARTEN = [
   {
     id: "weidehaltung",
     kategorie: "umwelt",
+    geprueft: "2026-10-19",
     argument: "Weidehaltung ist gut fürs Klima – Kühe pflegen das Grasland.",
     kurz: "Weiden können etwas CO₂ im Boden speichern – aber weniger, als die Rinder ausstoßen. Selbst optimistisch gerechnet gleicht das nur 20–60 % ihrer Emissionen aus.",
     zahl: { wert: "20–60 %", text: "der Emissionen von Weiderindern lassen sich höchstens durch Bodenkohlenstoff ausgleichen" },
@@ -240,6 +253,7 @@ const KARTEN = [
   {
     id: "wasser-avocado-mandeln",
     kategorie: "umwelt",
+    geprueft: "2026-10-19",
     argument: "Avocados und Mandeln verbrauchen doch so viel Wasser.",
     kurz: "Bei Nüssen stimmt das. Aber Kuhmilch braucht fast doppelt so viel Wasser wie Mandeldrink – und Käse pro Kilo mehr als Nüsse.",
     zahl: { wert: "628 l", text: "Wasser pro Liter Kuhmilch – Mandeldrink 371 l, Haferdrink 48 l, Sojadrink 28 l" },
@@ -259,6 +273,7 @@ const KARTEN = [
   {
     id: "fische-schmerz",
     kategorie: "ethik",
+    geprueft: "2026-10-19",
     argument: "Fische spüren keinen Schmerz.",
     kurz: "Die Belege sprechen dagegen. Fische haben Schmerzrezeptoren, und nach Verletzungen verhalten sie sich auffällig – Schmerzmittel verhindern das.",
     zahl: { wert: "1,1–2,2 Billionen", text: "wild gefangene Fische pro Jahr (Schnitt 2000–2019)" },
@@ -281,6 +296,7 @@ const KARTEN = [
   {
     id: "kuehe-melken",
     kategorie: "ethik",
+    geprueft: "2026-10-19",
     argument: "Kühe müssen doch gemolken werden.",
     kurz: "Eine Kuh gibt nur Milch, wenn sie ein Kalb geboren hat. Damit die Milch weiterfließt, wird sie etwa einmal im Jahr wieder trächtig gemacht – und das Kalb kommt meist kurz nach der Geburt weg.",
     zahl: { wert: "9.445 kg", text: "Milch gab eine Kuh in Deutschland 2024 im Schnitt – fast viermal so viel wie 1950" },
@@ -300,6 +316,7 @@ const KARTEN = [
   {
     id: "einsame-insel",
     kategorie: "ethik",
+    geprueft: "2026-10-19",
     argument: "Und was würdest du auf einer einsamen Insel essen?",
     kurz: "Wahrscheinlich das, was ich zum Überleben finde. Aber ich lebe nicht auf einer Insel, sondern neben einem Supermarkt. Ein Notfall sagt nichts über den Alltag.",
     punkte: [
@@ -316,6 +333,7 @@ const KARTEN = [
   {
     id: "persoenliche-entscheidung",
     kategorie: "ethik",
+    geprueft: "2026-10-19",
     argument: "Das ist meine persönliche Entscheidung.",
     kurz: "Bei vielem stimmt das. Aber eine Entscheidung ist nicht mehr nur persönlich, wenn andere davon betroffen sind – hier die Tiere.",
     punkte: [
@@ -329,6 +347,7 @@ const KARTEN = [
   {
     id: "kuehe-aussterben",
     kategorie: "ethik",
+    geprueft: "2026-10-19",
     argument: "Wenn alle vegan wären, würden Kühe aussterben.",
     kurz: "Niemand wird über Nacht vegan – es würden nach und nach weniger Tiere gezüchtet. So viele Rinder gibt es nur, weil wir sie für Fleisch und Milch vermehren.",
     zahl: { wert: "1,58 Mrd.", text: "Rinder lebten 2024 weltweit" },
@@ -348,6 +367,7 @@ const KARTEN = [
   {
     id: "ich-allein",
     kategorie: "alltag",
+    geprueft: "2026-10-19",
     argument: "Ich allein ändere doch nichts.",
     kurz: "Doch – messbar. Eine vegane Ernährung verursacht nur etwa ein Viertel der Treibhausgase von Menschen, die viel Fleisch essen. Und was weniger gekauft wird, wird auf Dauer weniger produziert.",
     zahl: { wert: "−75 %", text: "Treibhausgase bei Veganern im Vergleich zu Menschen, die täglich 100 g Fleisch oder mehr essen" },
@@ -364,6 +384,7 @@ const KARTEN = [
   {
     id: "zu-teuer",
     kategorie: "alltag",
+    geprueft: "2026-10-19",
     argument: "Vegan ist mir zu teuer.",
     kurz: "Muss es nicht sein. Eine Modellrechnung für das Umweltbundesamt fand: Eine ausgewogene vegane Ernährung kann 15–28 % weniger kosten als die übliche deutsche Ernährung.",
     zahl: { wert: "15–28 %", text: "günstiger als die durchschnittliche Ernährung in Deutschland (Modellrechnung, Preise 2017)" },
@@ -377,6 +398,431 @@ const KARTEN = [
     quellen: [
       { titel: "Springmann für das Umweltbundesamt: Towards healthy and sustainable diets in Germany (TEXTE 67/2023)", url: "https://www.umweltbundesamt.de/publikationen/towards-healthy-sustainable-diets-in-germany", jahr: 2023 },
       { titel: "Springmann et al.: Kosten gesunder und nachhaltiger Ernährung weltweit (Lancet Planetary Health)", url: "https://doi.org/10.1016/S2542-5196(21)00251-5", jahr: 2021 },
+    ],
+  },
+
+  // ===== Ergänzung Oktober 2026 =====
+
+  {
+    id: "eigene-huehner",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Meine Hühner im Garten legen die Eier doch sowieso.",
+    kurz: "Stimmt – weil Legehennen auf fast ein Ei pro Tag gezüchtet wurden. Das belastet ihren Körper stark. Wer ausgediente Hennen bis zum Lebensende pflegt, tut ihnen viel Gutes.",
+    zahl: { wert: "304", text: "Eier legte eine Henne in deutschen Legebetrieben 2025 im Schnitt" },
+    punkte: [
+      "Brustbeinbrüche sind bei Legehennen sehr häufig: In einer dänischen Studie hatten am Ende der Legezeit je nach Herde 50 bis 100 % der Hennen Brüche.",
+      "Die meisten Hennen stammen aus Brütereien. Ihre Brüder werden in Deutschland im Ei aussortiert oder gemästet – im Ausland dürfen Küken weiter getötet werden.",
+      "Hühner werden drei bis fünf Jahre alt, manche sieben. In Betrieben werden Legehennen schon mit etwa 16 Monaten geschlachtet.",
+    ],
+    konter: "Was passiert mit deinen Hühnern, wenn sie keine Eier mehr legen?",
+    ehrlich: "Ausgediente Hennen aus Betrieben aufzunehmen und bis zum natürlichen Tod zu versorgen, ist gelebter Tierschutz. Ob man ihre Eier dann isst, sehen auch Veganer unterschiedlich.",
+    quellen: [
+      { titel: "Destatis: Eierproduktion 2025 leicht gestiegen (Pressemitteilung Nr. 086)", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/03/PD26_086_413.html", jahr: 2026 },
+      { titel: "Thøfner, Dahl & Christensen: Brustbeinbrüche bei dänischen Legehennen (PLoS One)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8362975/", jahr: 2021 },
+      { titel: "Verbraucherzentrale: Tötung von Eintagsküken vorbei – aber nur in Brütereien in Deutschland", url: "https://www.verbraucherzentrale.de/toetung-von-eintagskueken", jahr: 2026 },
+      { titel: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", jahr: 2025 },
+    ],
+  },
+  {
+    id: "freiland-bio-eier",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Ich kaufe nur Bio- oder Freilandeier – das ist doch tierfreundlich.",
+    kurz: "Besser als Käfig, ja. Aber auch Bio-Hennen werden meist nach etwa einem Jahr geschlachtet, wenn sie weniger legen. Und zu jeder Henne gehört ein Bruder, der keine Eier legt.",
+    zahl: { wert: "40 Mio.", text: "männliche Küken wurden in Deutschland bis Ende 2021 jedes Jahr getötet" },
+    punkte: [
+      "Seit 2022 ist das Kükentöten in Deutschland verboten. Seitdem wird das Geschlecht im Ei bestimmt, oder die Bruderhähne werden gemästet und geschlachtet.",
+      "Das Verbot gilt nur für deutsche Brütereien. Hennen aus dem Ausland, deren Brüder getötet wurden, dürfen trotzdem „deutsche Eier“ legen.",
+      "Setzt nach gut einem Jahr die Mauser ein, sinkt die Legeleistung. Dann werden die Hennen geschlachtet und als Suppenhühner verkauft.",
+      "Freiland- und Bio-Eier machten 2025 zusammen knapp 40 % der deutschen Produktion aus. Der Großteil kam aus Bodenhaltung.",
+    ],
+    konter: "Was passiert mit der Henne, wenn sie nicht mehr genug legt?",
+    ehrlich: "Freiland und Bio bedeuten mehr Platz und Auslauf – für die Hennen ein echter Unterschied. Am Kreislauf aus Brüterei, Hochleistung und Schlachtung ändert das aber wenig.",
+    quellen: [
+      { titel: "Bundesregierung: Verbot des Kükentötens reformiert", url: "https://www.bundesregierung.de/breg-de/service/gesetzesvorhaben/toetung-von-huehnerembryonen-2187950", jahr: 2023 },
+      { titel: "BZL / landwirtschaft.de: Hühnereier", url: "https://www.landwirtschaft.de/landwirtschaftliche-produkte/wie-werden-unsere-lebensmittel-erzeugt/tierische-produkte/huehnereier", jahr: 2026 },
+      { titel: "Verbraucherzentrale: Tötung von Eintagsküken vorbei – aber nur in Brütereien in Deutschland", url: "https://www.verbraucherzentrale.de/toetung-von-eintagskueken", jahr: 2026 },
+      { titel: "FiBL-Merkblatt: Mauser auslösen bei Biohennen (Nutzungsdauer meist ein Jahr)", url: "https://www.fibl.org/fileadmin/documents/shop/1434-mauser.pdf", jahr: 2020 },
+      { titel: "Destatis: Eierproduktion 2025 leicht gestiegen (Pressemitteilung Nr. 086)", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/03/PD26_086_413.html", jahr: 2026 },
+    ],
+  },
+  {
+    id: "honig-bienen",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Honig schadet den Bienen doch nicht – und Bienen brauchen Imker.",
+    kurz: "Die Honigbiene ist ein Nutztier und nicht bedroht. Bedroht sind Wildbienen – und die konkurrieren mit Honigbienen um Blüten. Bienen schützen heißt also eher: Blumen pflanzen statt Honig kaufen.",
+    zahl: { wert: "270 von 604", text: "Wildbienenarten in Deutschland stehen auf der Roten Liste" },
+    punkte: [
+      "Honigbienen leben in Deutschland seit spätestens 1700 nicht mehr wild. Sie werden gezüchtet und sind naturschutzrechtlich nicht geschützt.",
+      "Wo man es untersucht hat, nutzten Honig- und Wildbienen immer dieselben Blüten. Ob das Wildbienen messbar schadet, wurde aber nur selten direkt geprüft.",
+      "Honigbienen können Krankheiten auf Wildbienen übertragen. In einer Übersichtsarbeit fanden 70 % der Studien dazu mögliche negative Folgen.",
+      "Imker ernten den Honig im Sommer und füttern dann Zuckerlösung zu. Ein Volk braucht für den Winter etwa 15 bis 22 Kilo Futter.",
+    ],
+    konter: "Weißt du, wie viele Wildbienenarten es bei uns gibt?",
+    ehrlich: "Gute Imker kümmern sich sorgfältig um ihre Völker, und Honigbienen bestäuben auch Nutzpflanzen. Wie stark die Konkurrenz Wildbienen schadet, hängt vom Ort ab und ist noch wenig erforscht.",
+    quellen: [
+      { titel: "Schwenninger, Silló & Scheuchl: Konkurrenz oder Koexistenz? Wildbienenschutz und Honigbienenhaltung (ANLiegen Natur 47/1)", url: "https://anl.bayern.de/publikationen/anliegen/doc/an47114schwenninger_et_al_2025_wildbienen_honigbienen.pdf", jahr: 2025 },
+      { titel: "Gratzer, Becker & Brodschneider: Systematic review finds resource overlap but few direct effects of honey bees on wild bees (J Apic Res)", url: "https://doi.org/10.1080/00218839.2026.2662040", jahr: 2026 },
+      { titel: "Mallinger, Gaines-Day & Gratton: Do managed bees have negative effects on wild bees? (PLoS One)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5722319/", jahr: 2017 },
+      { titel: "Bienen@Imkerei 21/2020: Füttern (Infobrief der Bieneninstitute)", url: "https://www.bienenkunde.rlp.de/Internet/global/themen.nsf/ALL/AE7AE2513C472D41C12585AF002BA1DA/$FILE/Infobrief%202020_21%20F%C3%BCttern_R%C3%A4uberei.pdf", jahr: 2020 },
+    ],
+  },
+  {
+    id: "leder-nebenprodukt",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Leder ist doch nur ein Nebenprodukt der Fleischindustrie.",
+    kurz: "Teilweise stimmt das: Die Haut bringt nur wenige Prozent des Erlöses. Aber auch das macht die Schlachtung ein Stück rentabler. Und fürs Klima ist Leder alles andere als harmlos.",
+    zahl: { wert: "2,7 %", text: "des Werts eines Rinds entfielen 2023 in Italien auf die Haut" },
+    punkte: [
+      "Wer Leder kauft, bezahlt einen kleinen Teil von Haltung und Schlachtung mit. Darum rechnen Fachleute der Haut auch einen Teil der Emissionen zu.",
+      "Eine Auswertung von 2026 kommt auf rund 187 kg CO₂e pro Kilo Rindsleder – mehr als zwölfmal so viel wie bei veganem Leder.",
+      "Gegerbt wird oft mit Chromsalzen. Chromhaltige Lederabfälle können Boden und Wasser belasten.",
+    ],
+    konter: "Wenn die Haut nichts wert wäre – warum wird sie dann verkauft?",
+    ehrlich: "Die Klimazahl hängt stark von der Rechenmethode ab. Wird der Haut nur ihr kleiner Marktwert angerechnet, fällt sie deutlich niedriger aus. Und Leder aus zweiter Hand erzeugt keine neue Nachfrage.",
+    quellen: [
+      { titel: "Lunesu et al.: Attributing Farm-to-Slaughter Emissions to Hides (Animals)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12729734/", jahr: 2025 },
+      { titel: "Roncevich, Hayek & Hinestroza: The Carbon Footprint of Leather – A Comprehensive Reassessment (ACS Sustainable Chem Eng)", url: "https://doi.org/10.1021/acssuschemeng.5c12631", jahr: 2026 },
+      { titel: "Codreanu Manea et al.: Chromextraktion aus gegerbten Lederabfällen (Polymers)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11175144/", jahr: 2024 },
+    ],
+  },
+  {
+    id: "kunstleder-plastik",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Kunstleder ist doch auch nur Plastik.",
+    kurz: "Oft stimmt das – meist steckt Polyurethan drin. Fürs Klima schneidet es laut einer großen Auswertung trotzdem weit besser ab als Rindsleder. Und es gibt auch Stoff, Kork oder Second-Hand.",
+    zahl: { wert: "15 vs. 187", text: "kg CO₂e pro Kilo: veganes Leder im Vergleich zu Rindsleder (Meta-Analyse 2026)" },
+    punkte: [
+      "Kunstleder ist meist ein Textil mit Polyurethan-Schicht, also fossiler Kunststoff. Das ist ein echter Nachteil.",
+      "Auch viele „Pflanzenleder“, etwa aus Apfel oder Kaktus, bestehen laut einem Test von 2021 großteils aus Polyurethan.",
+      "Im selben Test erreichte keine Alternative die Gesamtleistung von Leder, etwa bei Festigkeit und Atmungsaktivität. Der Test stammt von einem Forschungsinstitut für Leder und Kunststoffe.",
+    ],
+    konter: "Weißt du, wie die Klimabilanz von Rindsleder aussieht?",
+    ehrlich: "Leder ist sehr strapazierfähig. Wer ein Teil viele Jahre trägt, gleicht einiges aus. Und Kunstleder landet am Ende als Plastikmüll.",
+    quellen: [
+      { titel: "Roncevich, Hayek & Hinestroza: The Carbon Footprint of Leather – A Comprehensive Reassessment (ACS Sustainable Chem Eng)", url: "https://doi.org/10.1021/acssuschemeng.5c12631", jahr: 2026 },
+      { titel: "Meyer et al.: Comparison of the Technical Performance of Leather, Artificial Leather, and Trendy Alternatives (Coatings)", url: "https://doi.org/10.3390/coatings11020226", jahr: 2021 },
+    ],
+  },
+  {
+    id: "wolle-schur",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Schafe müssen doch geschoren werden.",
+    kurz: "Heutige Wollschafe ja – weil wir sie so gezüchtet haben. Wildschafe werfen ihr Fell jedes Jahr von selbst ab. Das Problem ist nicht die Schur, sondern was Zucht und Wollindustrie mit sich bringen.",
+    punkte: [
+      "Wildschafe haben zwei Fellschichten und verlieren beide jährlich. Seit der Bronzezeit wurden Schafe auf dichte, ständig wachsende Wolle gezüchtet – am stärksten beim Merino.",
+      "Manche Merinos haben Hautfalten am Hinterteil, in denen sich Fliegenmaden einnisten. Beim „Mulesing“ schneidet man Lämmern dort Hautlappen ab – ohne Betäubung.",
+      "In Australien wurden 2025 nur 18,6 % der Wolle ausdrücklich als „nicht gemulest“ gemeldet.",
+      "Auch Wollschafe werden geschlachtet: Mutterschafe meist mit etwa fünf Jahren, obwohl Schafe bis zu zwölf werden können.",
+    ],
+    konter: "Warum muss ein Schaf überhaupt geschoren werden – wer hat es so gemacht?",
+    ehrlich: "Die Schur selbst ist für heutige Schafe nötig und keine Tierquälerei. Viele Wollpartien werden gar nicht gemeldet – der echte Anteil nicht gemulester Wolle dürfte also höher liegen als 18,6 %.",
+    quellen: [
+      { titel: "Jackson et al.: Evolution of the sheep coat – the impact of domestication (Genetics Research)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7306482/", jahr: 2020 },
+      { titel: "RSPCA Australia: What is the RSPCA’s view on mulesing and flystrike prevention in sheep?", url: "https://kb.rspca.org.au/knowledge-base/what-is-the-rspcas-view-on-mulesing-and-flystrike-prevention-in-sheep/", jahr: 2025 },
+      { titel: "Farm Online: 2025 Sheep Sustainability Report reveals key insights", url: "https://www.farmonline.com.au/story/9120315/2025-sheep-sustainability-report-reveals-key-insights/", jahr: 2025 },
+      { titel: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", jahr: 2025 },
+    ],
+  },
+  {
+    id: "daunen",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Daunen fallen doch sowieso an.",
+    kurz: "Ein Teil stammt von geschlachteten Enten und Gänsen – dann gilt dasselbe wie bei Leder. Ein anderer Teil wird lebenden Tieren ausgerissen. Woher eine Daune stammt, kann man kaum prüfen.",
+    punkte: [
+      "Federn lebenden Gänsen auszureißen, verursacht laut EFSA Schmerzen. Schmerzfrei ist nur das Sammeln reifer Federn in der Mauser – kommerziell hält die EFSA Rupfen trotzdem für unvermeidbar.",
+      "Lebendrupf ist in Deutschland verboten, wird laut Verbraucherzentrale aber in China und Teilen der EU praktiziert.",
+      "Die Rückverfolgung endet oft beim verarbeitenden Betrieb, nicht beim Tier. Auch Siegeln gegenüber rät die Verbraucherzentrale zu Vorsicht.",
+    ],
+    konter: "Weißt du, von welchem Tier und welchem Hof deine Jacke stammt?",
+    ehrlich: "Daunen vom Schlachthof sind – wie Leder – ein Nebenprodukt. Kunstfaserfüllungen sind dagegen Kunststoff. Wer gebraucht kauft, umgeht beides.",
+    quellen: [
+      { titel: "EFSA: Feather harvesting from live geese – plucking causes pain (Pressemitteilung zum Gutachten)", url: "https://www.efsa.europa.eu/en/press/news/ahaw101125", jahr: 2010 },
+      { titel: "Verbraucherzentrale Hamburg: Decken, Jacken, Daunen – raus aus den Federn?", url: "https://www.vzhh.de/themen/umwelt-nachhaltigkeit/kleidung-textilien/decken-jacken-daunen-raus-aus-den-federn", jahr: 2024 },
+    ],
+  },
+  {
+    id: "milch-knochen",
+    kategorie: "tierprodukte",
+    geprueft: "2026-10-19",
+    argument: "Milch braucht man für starke Knochen.",
+    kurz: "Kalzium ist wichtig, Milch nicht. Große Studien finden keinen klaren Schutz vor Hüftbrüchen durch mehr Milch. Kalzium steckt auch in Grünkohl, Brokkoli, Nüssen und kalziumreichem Mineralwasser.",
+    zahl: { wert: "1.000 mg", text: "Kalzium pro Tag empfiehlt die DGE für Erwachsene" },
+    punkte: [
+      "Eine Meta-Analyse mit fast 200.000 Frauen fand keinen Zusammenhang zwischen Milchmenge und Hüftbrüchen. Für Männer reichten die Daten nicht.",
+      "Eine neuere Auswertung mit 487.000 Erwachsenen fand bei mehr Milch sogar etwas mehr Hüftbrüche, bei Joghurt und Käse weniger. Das sind Beobachtungsdaten, keine Beweise.",
+      "Die DGE nennt als Kalziumquellen auch Brokkoli, Grünkohl, Rucola, Samen, Nüsse und Mineralwasser mit über 150 mg pro Liter.",
+      "Wer vegan isst, soll Kalzium laut DGE gezielt aufnehmen – bei Bedarf auch über angereicherte Lebensmittel.",
+    ],
+    konter: "Woher haben Kühe eigentlich ihr Kalzium?",
+    ehrlich: "Veganer haben im Schnitt mehr Hüftbrüche – in der britischen EPIC-Oxford-Studie mehr als doppelt so viele. Woran das genau liegt, ist offen. Genug Kalzium, Vitamin D und Protein sind auf jeden Fall wichtig.",
+    quellen: [
+      { titel: "DGE: Referenzwerte für Calcium", url: "https://www.dge.de/wissenschaft/referenzwerte/calcium/", jahr: 2013 },
+      { titel: "Bischoff-Ferrari et al.: Milch und Hüftfrakturen – Meta-Analyse (J Bone Miner Res)", url: "https://pubmed.ncbi.nlm.nih.gov/20949604/", jahr: 2011 },
+      { titel: "Mishra et al.: Milchprodukte und Hüftfrakturen bei 486.950 Erwachsenen (J Nutr Sci)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10495826/", jahr: 2023 },
+      { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
+      { titel: "Tong et al.: Vegetarische und vegane Ernährung und Frakturrisiko – EPIC-Oxford (BMC Medicine)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7682057/", jahr: 2020 },
+    ],
+  },
+  {
+    id: "muskeln-sport",
+    kategorie: "gesundheit",
+    geprueft: "2026-10-19",
+    argument: "Für Sport und Muskeln braucht man Fleisch.",
+    kurz: "Nein. In Studien bleiben Kraft und Schnellkraft bei pflanzlicher Ernährung gleich, die Ausdauer wird teils sogar besser. Wichtig ist, insgesamt genug Protein und Kalorien zu essen.",
+    punkte: [
+      "Eine Meta-Analyse von 2024 fand: Pflanzliche Ernährung verschlechtert Kraft und Schnellkraft nicht und verbessert die Ausdauerleistung mäßig.",
+      "Eine Auswertung von 16 Studien fand bei Muskelmasse und Kraft in absoluten Zahlen keinen Unterschied zwischen tierischem und pflanzlichem Protein.",
+      "Gute pflanzliche Proteinquellen sind Hülsenfrüchte, Tofu und Seitan – bei Bedarf auch Proteinpulver aus Erbse oder Soja.",
+    ],
+    konter: "Woran machst du fest, dass es ohne Fleisch nicht geht?",
+    ehrlich: "Die Meta-Analyse von 2024 beruht auf nur wenigen Studien. Bei Erwachsenen unter 50 fand die Protein-Analyse einen kleinen Vorteil für tierisches Protein beim Muskelzuwachs – etwa 0,4 kg.",
+    quellen: [
+      { titel: "Damasceno et al.: Plant-based diets benefit aerobic performance and do not compromise strength/power performance (Br J Nutr)", url: "https://doi.org/10.1017/S0007114523002258", jahr: 2024 },
+      { titel: "Lim et al.: Animal Protein versus Plant Protein in Supporting Lean Mass and Muscle Strength – Meta-Analyse (Nutrients)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7926405/", jahr: 2021 },
+    ],
+  },
+  {
+    id: "ersatzprodukte-ungesund",
+    kategorie: "gesundheit",
+    geprueft: "2026-10-19",
+    argument: "Vegane Ersatzprodukte sind hochverarbeitet und ungesund.",
+    kurz: "Manche sind salzig und stark verarbeitet – das stimmt. Aber Wurst ist das auch, und sie gilt als krebserregend. Außerdem geht vegan ganz ohne Ersatz: mit Bohnen, Linsen, Tofu und Vollkorn.",
+    punkte: [
+      "Verarbeitetes Fleisch wie Wurst stuft die Krebsagentur der WHO als krebserregend ein. Je 50 Gramm am Tag steigt das Darmkrebsrisiko um etwa 18 %.",
+      "In einer Studie aßen Erwachsene acht Wochen lang Fleischersatz statt Fleisch. Ihr LDL-Cholesterin und ihr Gewicht sanken.",
+      "Am besten ist pflanzlich und wenig verarbeitet: In einer französischen Studie hatte, wer am meisten so aß, ein um 32 % niedrigeres Herz-Kreislauf-Risiko.",
+      "Die DGE zieht zu Fleisch- und Milchersatz noch kein abschließendes Fazit. Sie rät, Zutatenliste und Nährwerte zu prüfen.",
+    ],
+    konter: "Ist deine Salami weniger verarbeitet als ein Tofu-Würstchen?",
+    ehrlich: "Stark verarbeitete pflanzliche Lebensmittel sind nicht automatisch gesund: In britischen Daten gingen sie mit mehr Gewichtszunahme einher. Ersatzprodukte sind praktisch, aber kein Gesundheitsessen.",
+    quellen: [
+      { titel: "IARC (WHO): Q&A zur Krebsgefahr von rotem und verarbeitetem Fleisch (PDF)", url: "https://www.iarc.who.int/wp-content/uploads/2018/07/Monographs-QA_Vol114.pdf", jahr: 2015 },
+      { titel: "Crimarco et al.: SWAP-MEAT – pflanzlicher Fleischersatz vs. Fleisch, randomisierte Studie (Am J Clin Nutr)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7657338/", jahr: 2020 },
+      { titel: "Prioux et al.: Herz-Kreislauf-Risiko, pflanzliche Ernährung und Verarbeitungsgrad – NutriNet-Santé (Lancet Reg Health Eur)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12744729/", jahr: 2025 },
+      { titel: "de Fragas Hinnig et al.: Herkunft und Verarbeitungsgrad von Lebensmitteln und Gewichtszunahme – UK Biobank (eClinicalMedicine)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13351747/", jahr: 2026 },
+      { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
+    ],
+  },
+  {
+    id: "fleisch-gesund",
+    kategorie: "gesundheit",
+    geprueft: "2026-10-19",
+    argument: "Fleisch gehört zu einer ausgewogenen Ernährung.",
+    kurz: "Die DGE empfiehlt höchstens 300 Gramm Fleisch und Wurst pro Woche – und zwar „wenn“ man es isst. Wir essen im Schnitt mehr als das Dreifache. Nötig ist Fleisch für gesunde Erwachsene nicht.",
+    zahl: { wert: "54,9 kg", text: "Fleisch aß 2025 jeder Mensch in Deutschland rechnerisch – die DGE-Empfehlung entspricht rund 15 kg" },
+    punkte: [
+      "54,9 kg im Jahr sind gut 1.000 Gramm pro Woche – mehr als dreimal so viel, wie die DGE als Obergrenze nennt.",
+      "Wurst und Schinken stuft die Krebsagentur der WHO als krebserregend ein, rotes Fleisch als wahrscheinlich krebserregend.",
+      "Die DGE rät allgemein: mehr Pflanzliches, weniger Tierisches. Und vegan kann laut DGE für gesunde Erwachsene gesundheitsfördernd sein.",
+    ],
+    konter: "Wie viel Fleisch isst du ungefähr pro Woche?",
+    ehrlich: "Fleisch liefert Nährstoffe wie Eisen, Zink und Vitamin B12. Wer es weglässt, muss sie gezielt anders abdecken – B12 immer als Präparat.",
+    quellen: [
+      { titel: "DGE: Gut essen und trinken – die DGE-Empfehlungen", url: "https://www.dge.de/gesunde-ernaehrung/gut-essen-und-trinken/dge-empfehlungen/", jahr: 2024 },
+      { titel: "Umweltbundesamt: Marktdaten Ernährung (Fleischverzehr pro Kopf, nach BLE)", url: "https://www.umweltbundesamt.de/daten/umweltzustand-trends/private-haushalte-konsum/konsum-produkte/gruene-produkte-marktzahlen/marktdaten-ernaehrung", jahr: 2026 },
+      { titel: "Destatis: Fleischersatz-Produktion sinkt 2025 um 1,2 % (mit Fleischverzehr 2025)", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_N033_42.html", jahr: 2026 },
+      { titel: "IARC (WHO): Q&A zur Krebsgefahr von rotem und verarbeitetem Fleisch (PDF)", url: "https://www.iarc.who.int/wp-content/uploads/2018/07/Monographs-QA_Vol114.pdf", jahr: 2015 },
+      { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
+    ],
+  },
+  {
+    id: "kokos-palmoel-quinoa",
+    kategorie: "umwelt",
+    geprueft: "2026-10-19",
+    argument: "Kokos, Palmöl und Quinoa schaden doch auch.",
+    kurz: "Keine Ernährung ist ganz ohne Schaden. Aber Palmöl und Kokos essen alle, nicht nur Veganer. Und wer Palmöl einfach ersetzt, braucht oft mehr Fläche statt weniger.",
+    punkte: [
+      "Palmöl lieferte 2017 rund 36 % des Pflanzenöls weltweit – auf nur 8,6 % der Fläche für Ölpflanzen. Kokos bringt pro Hektar 10- bis 15-mal weniger Öl.",
+      "Über zwei Drittel des Palmöls stecken in Lebensmitteln wie Margarine, Schokolade und Speiseöl. Das essen auch Fleischesser.",
+      "Dass der Quinoa-Boom Familien in Peru schadet, bestätigte eine Studie nicht: Quinoa machte unter 1 % ihrer Ausgaben aus, die höheren Preise schadeten insgesamt nicht.",
+    ],
+    konter: "Isst du selbst gar kein Palmöl oder Kokos?",
+    ehrlich: "Palmöl hat vor allem in Indonesien viel Regenwald gekostet: 2001–2016 ging dort knapp ein Viertel der Abholzung auf Ölpalmen zurück. Sparsam damit umzugehen ist sinnvoll – egal, wie man sich ernährt.",
+    quellen: [
+      { titel: "Our World in Data: Palm Oil (Ritchie)", url: "https://ourworldindata.org/palm-oil", jahr: 2021 },
+      { titel: "Bellemare, Fajardo-Gonzalez & Gitter: Foods and fads – The welfare impacts of rising quinoa prices in Peru (World Development)", url: "https://doi.org/10.1016/j.worlddev.2018.07.012", jahr: 2018 },
+    ],
+  },
+  {
+    id: "erntetote",
+    kategorie: "ethik",
+    geprueft: "2026-10-19",
+    argument: "Für Getreide und Gemüse sterben auch Tiere.",
+    kurz: "Ja, beim Ackerbau sterben Mäuse, Insekten und andere Tiere. Aber Nutztiere fressen selbst riesige Mengen Ackerfrüchte. Wer pflanzlich isst, braucht deshalb sogar weniger Ackerland.",
+    zahl: { wert: "40 %", text: "der weltweiten Getreideernte wurden 2023 an Tiere verfüttert" },
+    punkte: [
+      "Würden alle vegan essen, bräuchte die Welt nicht nur weniger Weiden, sondern auch weniger Äcker – weil der Anbau von Tierfutter wegfällt.",
+      "Wie viele Tiere bei der Ernte sterben, ist schlecht erforscht. Eine Fachanalyse von 2018 nennt die Datenlage dünn und die Schätzungen sehr unsicher.",
+      "Vegan heißt: Tierleid vermeiden, soweit möglich. Dass es nicht ganz geht, spricht nicht dagegen, es zu verringern.",
+    ],
+    konter: "Was fressen eigentlich die Tiere, deren Fleisch du isst?",
+    fehlschluss: { name: "Nirwana-Fehlschluss", erklaerung: "Eine Lösung wird abgelehnt, weil sie nicht perfekt ist – obwohl sie deutlich besser ist als die Alternative." },
+    ehrlich: "Rinder, die nur auf Wiesen grasen, fressen kein Ackerfutter. Daraus folgern manche, solches Fleisch koste weniger Tierleben. Weidefleisch reicht aber nur für sehr kleine Mengen pro Person.",
+    quellen: [
+      { titel: "Our World in Data: Cereals allocated to food, animal feed and fuel (FAO)", url: "https://ourworldindata.org/grapher/cereal-distribution-to-uses", jahr: 2025 },
+      { titel: "Our World in Data: Pflanzliche Ernährung würde die Agrarfläche von 4 auf 1 Mrd. Hektar senken (nach Poore & Nemecek 2018)", url: "https://ourworldindata.org/land-use-diets", jahr: 2021 },
+      { titel: "Fischer & Lamey: Field Deaths in Plant Agriculture (J Agric Environ Ethics)", url: "https://doi.org/10.1007/s10806-018-9733-8", jahr: 2018 },
+      { titel: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", jahr: 2026 },
+      { titel: "Garnett et al.: Grazed and Confused? (Food Climate Research Network, Oxford)", url: "https://www.oxfordmartin.ox.ac.uk/downloads/reports/fcrn_gnc_report.pdf", jahr: 2017 },
+    ],
+  },
+  {
+    id: "muscheln-insekten",
+    kategorie: "ethik",
+    geprueft: "2026-10-19",
+    argument: "Muscheln oder Insekten zu essen ist doch okay.",
+    kurz: "Hier gibt es auch unter Veganern echte Debatten. Bei Insekten mehren sich Hinweise, dass sie etwas empfinden. Bei Muscheln ist die Frage kaum erforscht.",
+    punkte: [
+      "Die New Yorker Erklärung von 2024 hält bewusstes Erleben auch bei Insekten, Zehnfußkrebsen und Tintenfischen für realistisch möglich.",
+      "Hummeln putzen sich nach einem heißen Reiz gezielt die berührte Fühlerstelle. Das deutet auf mehr als einen Reflex hin – ein Beweis für Schmerz ist es nicht.",
+      "Zu Muscheln fand eine Literatursuche der Universität Wageningen 2022 keine Studie, die klar zeigt, ob sie empfinden können oder nicht.",
+    ],
+    konter: "Wenn unklar ist, ob ein Tier leidet – wem sollte der Zweifel zugutekommen?",
+    ehrlich: "Bei Muscheln ist die Frage wirklich offen – hier kann man ehrlich unterschiedlicher Meinung sein. Die New Yorker Erklärung rät nur: Eine realistische Möglichkeit von Bewusstsein nicht ignorieren.",
+    quellen: [
+      { titel: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", jahr: 2024 },
+      { titel: "Gibbons et al.: Noxious stimulation induces self-protective behavior in bumblebees (iScience)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11298632/", jahr: 2024 },
+      { titel: "Schotanus, van de Vis & Steins: Welfare of bivalves in aquaculture? (Wageningen Marine Research C057/22)", url: "https://doi.org/10.18174/577988", jahr: 2022 },
+    ],
+  },
+  {
+    id: "gott-natur",
+    kategorie: "ethik",
+    geprueft: "2026-10-19",
+    argument: "Gott hat uns die Tiere zum Essen gegeben.",
+    kurz: "In der Bibel bekommen die Menschen zuerst nur Pflanzen als Speise. Fleisch wird erst nach der Sintflut erlaubt. Und auch die katholische Kirche sagt: Tiere unnötig leiden zu lassen, ist falsch.",
+    punkte: [
+      "1. Mose 1,29: „Sehet da, ich habe euch gegeben alle Pflanzen, die Samen bringen, auf der ganzen Erde … zu eurer Speise.“",
+      "Erst nach der Sintflut heißt es in 1. Mose 9,3: „Alles, was sich regt und lebt, das sei eure Speise.“ Erlaubt heißt aber nicht geboten.",
+      "Der katholische Katechismus nennt es der Menschenwürde zuwider, Tiere unnötig leiden oder sterben zu lassen.",
+    ],
+    konter: "Wenn wir gesund ohne Fleisch leben können – wie nötig ist dann das Leid?",
+    ehrlich: "Die katholische Kirche hält es ausdrücklich für erlaubt, Tiere für Nahrung und Kleidung zu nutzen. Wer mit der Bibel argumentiert, sollte das nicht verschweigen.",
+    quellen: [
+      { titel: "Lutherbibel 2017: 1. Mose 1 (Deutsche Bibelgesellschaft)", url: "https://www.die-bibel.de/bibel/LU17/GEN.1", jahr: 2017 },
+      { titel: "Lutherbibel 2017: 1. Mose 9 (Deutsche Bibelgesellschaft)", url: "https://www.die-bibel.de/bibel/LU17/GEN.9", jahr: 2017 },
+      { titel: "Katechismus der Katholischen Kirche, Nr. 2415–2418 (engl. Fassung, vatican.va)", url: "https://www.vatican.va/archive/ENG0015/__P8B.HTM", jahr: 1997 },
+    ],
+  },
+  {
+    id: "schmeckt-mir",
+    kategorie: "ethik",
+    geprueft: "2026-10-19",
+    argument: "Fleisch schmeckt mir einfach.",
+    kurz: "Das glaube ich dir sofort. Die Frage ist nur: Reicht Genuss als Grund dafür, dass ein Tier leidet und stirbt? Bei anderen Dingen würden wir das selten sagen.",
+    punkte: [
+      "Die Auswahl wächst: 2025 wurde in Deutschland gut doppelt so viel Fleischersatz hergestellt wie 2019.",
+      "Niemand muss von heute auf morgen alles umstellen. Ein paar pflanzliche Lieblingsgerichte sind ein guter Anfang.",
+      "Geschmack ist ein echter Grund – aber ein schwacher, wenn ein anderer den Preis dafür zahlt.",
+    ],
+    konter: "Welches Gericht würdest du am meisten vermissen – und gibt es das vielleicht auch pflanzlich?",
+    ehrlich: "Pflanzliche Alternativen schmecken nicht jedem gleich gut. Und Fleischersatz ist noch eine Nische: Fleisch wurde 2025 wertmäßig über 70-mal so viel produziert.",
+    quellen: [
+      { titel: "Destatis: Fleischersatz-Produktion sinkt 2025 um 1,2 % gegenüber dem Vorjahr (Pressemitteilung Nr. N033)", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_N033_42.html", jahr: 2026 },
+    ],
+  },
+  {
+    id: "tierwohl-siegel",
+    kategorie: "ethik",
+    geprueft: "2026-10-19",
+    argument: "Ich kaufe nur Fleisch mit Tierwohl-Siegel.",
+    kurz: "Das ist ein Schritt. Aber „Tierwohl“ heißt oft nur wenig mehr als das gesetzliche Minimum. Schweinefleisch im Supermarkt stammt größtenteils aus Stufe 2: Stall mit etwas mehr Platz.",
+    zahl: { wert: "86,3 %", text: "des abgepackten Schweinefleischs im Supermarkt kamen 2024 aus Haltungsstufe 2 „Stall + Platz“" },
+    punkte: [
+      "Stufe 2 heißt bei Mastschweinen: 0,84 statt 0,75 Quadratmeter pro Tier – etwa ein Achtel mehr Platz, weiter im geschlossenen Stall.",
+      "Bio-Schweinefleisch hatte 2024 im Supermarkt nur gut 4 % Anteil. In der Landwirtschaft war 2023 nur 1 % der Schweine bio.",
+      "Auch mit Siegel endet das Leben im Schlachthof: Mastschweine werden etwa ein halbes Jahr alt, könnten aber acht bis zehn Jahre leben.",
+    ],
+    konter: "Weißt du, was das Siegel auf deinem Fleisch genau verspricht?",
+    ehrlich: "Höhere Stufen bringen echte Verbesserungen: Ab Stufe 4 gibt es Auslauf und doppelt so viel Platz wie gesetzlich vorgeschrieben. Für die Tiere ist das ein spürbarer Unterschied.",
+    quellen: [
+      { titel: "Initiative Tierwohl: Haltungsform veröffentlicht Jahreszahlen 2024 (Pressemitteilung, PDF)", url: "https://www.rind-schwein.de/services/files/brs/ITW_Haltungsformen%202025.pdf", jahr: 2026 },
+      { titel: "Haltungsform.de: Kriterien der Haltungsform-Stufen", url: "https://haltungsform.de/", jahr: 2026 },
+      { titel: "Destatis: Zahl der Ökobetriebe zwischen 2020 und 2023 um 10 % gestiegen", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/04/PD24_136_41.html", jahr: 2024 },
+      { titel: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", jahr: 2025 },
+    ],
+  },
+  {
+    id: "vegetarisch-reicht",
+    kategorie: "ethik",
+    geprueft: "2026-10-19",
+    argument: "Vegetarisch reicht doch – dafür stirbt kein Tier.",
+    kurz: "Leider doch. Für Milch und Eier werden Kühe und Hennen gehalten, die nach wenigen Jahren geschlachtet werden – ihre männlichen Nachkommen ebenso. Vegetarisch ist trotzdem ein großer Schritt.",
+    punkte: [
+      "Milchkühe werden in der Praxis im Schnitt 5,5 Jahre alt, Rinder könnten bis zu 25 werden. Legehennen werden mit etwa 16 Monaten geschlachtet.",
+      "Männliche Kälber kommen meist nach wenigen Wochen in die Mast. Männliche Küken werden im Ei aussortiert oder als Bruderhähne gemästet.",
+      "Auch fürs Klima macht es einen Unterschied: In einer britischen Studie verursachten Veganer rund 40 % weniger Treibhausgase als Vegetarier.",
+    ],
+    konter: "Was passiert mit der Kuh, wenn sie nicht mehr genug Milch gibt?",
+    ehrlich: "Vegetarier verursachen in derselben Studie schon rund 60 % weniger Treibhausgase als starke Fleischesser. Das ist viel – und verdient Anerkennung.",
+    quellen: [
+      { titel: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", jahr: 2025 },
+      { titel: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen?", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", jahr: 2024 },
+      { titel: "BZL / landwirtschaft.de: Hühnereier", url: "https://www.landwirtschaft.de/landwirtschaftliche-produkte/wie-werden-unsere-lebensmittel-erzeugt/tierische-produkte/huehnereier", jahr: 2026 },
+      { titel: "Scarborough et al.: Umweltwirkung von Veganern, Vegetariern, Fisch- und Fleischessern (Nature Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", jahr: 2023 },
+    ],
+  },
+  {
+    id: "missionieren",
+    kategorie: "alltag",
+    geprueft: "2026-10-19",
+    argument: "Veganer missionieren immer so.",
+    kurz: "Manche nerven, das stimmt. Aber oft reicht es schon, dass jemand vegan ist, damit sich andere angegriffen fühlen. Ich rede gern darüber, wenn du willst – aufzwingen will ich dir nichts.",
+    punkte: [
+      "In Studien bewerteten Fleischesser Veganer so negativ wie oder negativer als viele andere Gruppen, die mit Vorurteilen zu kämpfen haben.",
+      "Am negativsten sahen sie Veganer, die aus Tierschutz- oder Umweltgründen vegan leben – nicht aus Gesundheitsgründen.",
+      "Wer über Tierleid spricht, klingt schnell nach Vorwurf, auch wenn keiner gemeint ist. Fragen stellen hilft mehr als Fakten aufzählen.",
+    ],
+    konter: "Wann hat dir zuletzt ein Veganer etwas aufgedrängt?",
+    ehrlich: "Es gibt Veganer, die schroff und belehrend auftreten. Das schadet der Sache. Freundlich bleiben hilft dem Gespräch.",
+    quellen: [
+      { titel: "MacInnis & Hodson: It ain’t easy eating greens – Evidence of bias toward vegetarians and vegans (Group Process Intergroup Relat)", url: "https://doi.org/10.1177/1368430215618253", jahr: 2017 },
+    ],
+  },
+  {
+    id: "bauern-jobs",
+    kategorie: "alltag",
+    geprueft: "2026-10-19",
+    argument: "Und was ist mit den Bauern und ihren Jobs?",
+    kurz: "Höfe verschwinden schon heute – auch ohne Veganer. Selbst die Zukunftskommission Landwirtschaft samt Bauernverband sagt: weniger tierische Produkte, aber mit fairem Einkommen für die Betriebe.",
+    punkte: [
+      "Die Zahl der Betriebe mit Schweinen sank in zehn Jahren um 40 % auf 14.700, die der Schweine nur um 22,5 %. Es bleiben weniger, aber größere Höfe.",
+      "Von 2020 bis 2023 sank die Zahl der Arbeitskräfte in der Landwirtschaft um rund 62.000 auf 876.000.",
+      "Die Zukunftskommission, in der auch Bauernverband und Landfrauen saßen, beschloss 2021 einstimmig: Konsum und Produktion tierischer Produkte sollen zurückgehen.",
+      "Dafür braucht es laut Kommission sichere Einkommen für Tierhalter – also Politik, die den Umbau begleitet.",
+    ],
+    konter: "Sollten wir Bauern beim Umstieg nicht lieber unterstützen?",
+    ehrlich: "Für einzelne Familien ist der Wandel hart, gerade in Regionen mit viel Tierhaltung. Ohne Hilfe von der Politik geht das nicht.",
+    quellen: [
+      { titel: "Destatis: Zahl der schweinehaltenden Betriebe sinkt weiter (Mai 2026)", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/06/PD26_221_413.html", jahr: 2026 },
+      { titel: "Destatis: 7 % weniger Arbeitskräfte in der Landwirtschaft von 2020 bis 2023", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/05/PD24_176_41.html", jahr: 2024 },
+      { titel: "Zukunftskommission Landwirtschaft: Abschlussbericht „Zukunft Landwirtschaft. Eine gesamtgesellschaftliche Aufgabe“ (PDF)", url: "https://www.bmuv.de/fileadmin/Daten_BMU/Download_PDF/Bodenschutz/zkl_abschlussbericht_bf.pdf", jahr: 2021 },
+    ],
+  },
+  {
+    id: "luxus-privileg",
+    kategorie: "alltag",
+    geprueft: "2026-10-19",
+    argument: "Vegan ist ein Luxus für Privilegierte.",
+    kurz: "Eher umgekehrt: Viel Fleisch ist der Luxus. In reichen Ländern steht pro Kopf rund zehnmal so viel Fleisch zur Verfügung wie in armen.",
+    zahl: { wert: "93 kg", text: "Fleisch pro Kopf und Jahr standen 2023 in reichen Ländern zur Verfügung – in armen rund 9 kg" },
+    punkte: [
+      "Die Zahlen beruhen auf Daten der UN-Ernährungsorganisation FAO. In Deutschland waren es 2023 rund 71 kg pro Kopf, in Indien rund 8 kg.",
+      "Nicht jeder hat Zeit, Geld, eine Küche oder einen guten Laden in der Nähe. Darum heißt vegan laut Definition: Tierleid vermeiden, soweit möglich und praktikabel.",
+      "Wer die Wahl hat, kann sie nutzen – perfekt muss es nicht sein.",
+    ],
+    konter: "Ist ein Teller Linsen mit Reis wirklich Luxus?",
+    ehrlich: "Wer wenig Geld, Zeit oder Auswahl hat, tut sich mit jeder Umstellung schwerer. Das sollte man ernst nehmen, statt es wegzureden.",
+    quellen: [
+      { titel: "Our World in Data: Meat supply per person (FAO)", url: "https://ourworldindata.org/grapher/meat-supply-per-person", jahr: 2025 },
+      { titel: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", jahr: 2026 },
     ],
   },
 ];

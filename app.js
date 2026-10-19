@@ -3,6 +3,7 @@ import "@fontsource-variable/atkinson-hyperlegible-next/wght.css";
 import "@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css";
 import "./style.css";
 import * as FSRS from "./fsrs.js";
+import { KARTEN, KATEGORIEN } from "./karten.js";
 
 const $ = (sel) => document.querySelector(sel);
 const SPEICHER = "vk-anki-v1";
@@ -13,6 +14,10 @@ const TOENE = { gesundheit: 20, natur: 135, umwelt: 200, ethik: 300, tierprodukt
 const ton = (kat) => TOENE[kat] ?? [...String(kat)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
 const katName = (kat) => KATEGORIEN[kat] || kat;
 const alleKats = () => [...new Set([...Object.keys(KATEGORIEN), ...KARTEN.map((k) => k.kategorie)])];
+const REPO = "https://github.com/ben182/vegan-arguments";
+const fehlerLink = (k) => `${REPO}/issues/new?template=error.yml&title=${encodeURIComponent(`Error: ${k.id}`)}&karte=${encodeURIComponent(k.id)}`;
+const vorschlagLink = (text = "") => `${REPO}/issues/new?template=argument.yml${text ? `&argument=${encodeURIComponent(text)}` : ""}`;
+const monatJahr = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString("de-DE", { month: "long", year: "numeric" });
 const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } };
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -91,6 +96,7 @@ function rasterZeichnen() {
       </section>`)
     .join("");
   $("#leer").hidden = liste.length > 0;
+  $("#leer-vorschlag").href = vorschlagLink($("#suche").value.trim());
   const nQuellen = new Set(KARTEN.flatMap((k) => (k.quellen || []).map((q) => q.url))).size;
   $("#bestand").textContent = `${KARTEN.length} Argumente, ${nQuellen} verschiedene Quellen`;
 }
@@ -122,9 +128,9 @@ function detailHtml(k) {
   if (k.quellen?.length) {
     teile.push(`<section class="d-abschnitt"><h3>Quellen</h3><ol class="quellen">${k.quellen
       .map((q) => `<li><a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.titel)}</a><span class="q-meta">${esc(host(q.url))}${q.jahr && !q.titel.includes(q.jahr) ? `, ${q.jahr}` : ""}</span></li>`)
-      .join("")}</ol></section>`);
+      .join("")}</ol>${k.geprueft ? `<p class="geprueft">Quellen zuletzt geprüft im ${monatJahr(k.geprueft)}</p>` : ""}</section>`);
   }
-  teile.push(`<div class="detail-fuss"><button class="knopf" id="teilen">Link kopieren</button></div></div>`);
+  teile.push(`<div class="detail-fuss"><button class="knopf" id="teilen">Link kopieren</button><a class="textknopf" href="${fehlerLink(k)}" target="_blank" rel="noopener">Fehler melden</a></div></div>`);
   return teile.join("");
 }
 
