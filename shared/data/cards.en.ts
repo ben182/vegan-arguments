@@ -316,16 +316,18 @@ export const cards: Card[] = [
       "Back in 2003, researchers found nerve cells in trout that respond to heat, pressure and acid – much like in mammals.",
       "Injured fish eat less, breathe faster and take it easy. Painkillers prevent this behavior.",
       "Over 600 researchers have signed the 2024 New York Declaration: in all vertebrates, fish included, conscious experience is a realistic possibility.",
-      "When a trout suffocates in air, it suffers moderate to severe pain for about 10 minutes on average, according to a 2025 study.",
+      "When a trout suffocates in air, it suffers moderate to severe pain for about 10 minutes on average, according to a 2025 estimate.",
     ],
     counterQuestion: "Why would fish, of all animals, lack what every other vertebrate has?",
     concession: "Whether fish experience pain exactly the way we do, no one can say for sure – that goes for every animal. That’s why the New York Declaration cautiously speaks of a “realistic possibility”.",
     sources: [
-      { title: "Sneddon, Braithwaite & Gentle: Do fishes have nociceptors? (Proc R Soc B)", url: "https://pubmed.ncbi.nlm.nih.gov/12816648/", year: 2003 },
-      { title: "Sneddon: Evolution of nociception and pain – evidence from fish models (Phil Trans R Soc B)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6790376/", year: 2019 },
-      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024 },
-      { title: "Mood & Brooke: Estimating global numbers of fishes caught from the wild annually from 2000 to 2019 (Animal Welfare)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10951671/", year: 2024 },
-      { title: "Schuck-Paim et al.: Suffering of rainbow trout during asphyxia in air (Scientific Reports)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12141439/", year: 2025 },
+      { title: "Sneddon, Braithwaite & Gentle: Do fishes have nociceptors? Evidence for the evolution of a vertebrate sensory system (Proc R Soc B)", url: "https://pubmed.ncbi.nlm.nih.gov/12816648/", year: 2003, kind: "study" },
+      { title: "Sneddon: Evolution of nociception and pain: evidence from fish models (Phil Trans R Soc B)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6790376/", year: 2019, kind: "review" },
+      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024, kind: "other" },
+      { title: "Mood & Brooke: Estimating global numbers of fishes caught from the wild annually from 2000 to 2019 (Animal Welfare)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10951671/", year: 2024, kind: "study" },
+      { title: "Schuck-Paim et al.: Quantifying the welfare impact of air asphyxia in rainbow trout slaughter for policy and practice (Sci Rep)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12141439/", year: 2025, kind: "study" },
+      { title: "Sneddon: Pain in aquatic animals (J Exp Biol)", url: "https://pubmed.ncbi.nlm.nih.gov/25833131/", year: 2015, kind: "review" },
+      { title: "Brown: Fish intelligence, sentience and ethics (Anim Cogn)", url: "https://pubmed.ncbi.nlm.nih.gov/24942105/", year: 2015, kind: "review" },
     ],
   },
   {
@@ -343,9 +345,11 @@ export const cards: Card[] = [
     counterQuestion: "Do you know why a cow gives milk in the first place?",
     concession: "Some farms let calves drink from their mother or from nurse cows for longer. That doesn’t change the cycle of pregnancy and calf.",
     sources: [
-      { title: "BZL / landwirtschaft.de: Gibt die Kuh auch ohne Kalb Milch? [German Federal Agricultural Information Centre: Does a cow give milk without a calf?]", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/rinder/gibt-die-kuh-auch-ohne-kalb-milch", year: 2026 },
-      { title: "BZL / landwirtschaft.de: Wie viel Milch gibt eine Kuh? [German Federal Agricultural Information Centre: How much milk does a cow give?]", url: "https://www.landwirtschaft.de/infothek/infografiken/uebersicht-aller-infografiken/wie-viel-milch-gibt-eine-kuh", year: 2025 },
-      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen? [German Federal Agricultural Information Centre: What happens to dairy cows’ calves?]", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024 },
+      { title: "BZL / landwirtschaft.de: Gibt die Kuh auch ohne Kalb Milch? [German Federal Agricultural Information Centre: Does a cow give milk without a calf?]", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/rinder/gibt-die-kuh-auch-ohne-kalb-milch", year: 2026, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Wie viel Milch gibt eine Kuh? [German Federal Agricultural Information Centre: How much milk does a cow give?]", url: "https://www.landwirtschaft.de/infothek/infografiken/uebersicht-aller-infografiken/wie-viel-milch-gibt-eine-kuh", year: 2025, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen? [German Federal Agricultural Information Centre: What happens to dairy cows’ calves?]", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024, kind: "other" },
+      { title: "EFSA: Welfare of calves", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/", year: 2023, kind: "official" },
+      { title: "Meagher et al.: Invited review: A systematic review of the effects of prolonged cow-calf contact on behavior, welfare, and productivity (J Dairy Sci)", url: "https://pubmed.ncbi.nlm.nih.gov/31103300/", year: 2019, kind: "review" },
     ],
   },
   {
@@ -362,7 +366,7 @@ export const cards: Card[] = [
     counterQuestion: "And what do you eat when you’re not on an island?",
     fallacy: { name: "Red herring", explanation: "A made-up extreme case distracts from the real topic – our everyday lives." },
     sources: [
-      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026 },
+      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
     ],
   },
   {
@@ -378,6 +382,9 @@ export const cards: Card[] = [
     ],
     counterQuestion: "Who else besides you is affected by that choice?",
     sources: [
+      { title: "Crippa et al.: Food systems are responsible for a third of global anthropogenic GHG emissions (Nat Food)", url: "https://doi.org/10.1038/s43016-021-00225-9", year: 2021, kind: "study" },
+      { title: "Xu et al.: Global greenhouse gas emissions from animal-based foods are twice those of plant-based foods (Nat Food)", url: "https://pubmed.ncbi.nlm.nih.gov/37117472/", year: 2021, kind: "study" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/29853680/", year: 2018, kind: "study" },
     ],
   },
   {
@@ -395,9 +402,10 @@ export const cards: Card[] = [
     counterQuestion: "Is it better for an animal to be born and slaughtered than never to exist?",
     concession: "Some old livestock breeds would probably become rarer. That’s a real loss of diversity – but no reason to breed billions of animals.",
     sources: [
-      { title: "Our World in Data: Cattle livestock count (FAO)", url: "https://ourworldindata.org/grapher/cattle-livestock-count-heads", year: 2024 },
-      { title: "Greenspoon et al.: The global biomass of wild mammals (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10013851/", year: 2023 },
-      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares (based on Poore & Nemecek 2018)", url: "https://ourworldindata.org/land-use-diets", year: 2021 },
+      { title: "Our World in Data: Number of cattle", url: "https://ourworldindata.org/grapher/cattle-livestock-count-heads", year: 2024, kind: "other" },
+      { title: "Greenspoon et al.: The global biomass of wild mammals (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10013851/", year: 2023, kind: "study" },
+      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares", url: "https://ourworldindata.org/land-use-diets", year: 2021, kind: "other" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://doi.org/10.1126/science.aaq0216", year: 2018, kind: "review" },
     ],
   },
   {
@@ -707,11 +715,12 @@ export const cards: Card[] = [
     fallacy: { name: "Nirvana fallacy", explanation: "A solution is rejected because it isn’t perfect – even though it’s clearly better than the alternative." },
     concession: "Cattle that only graze on pasture don’t eat crop feed. Some conclude that such meat costs fewer animal lives. But pasture-raised meat only works out to very small amounts per person.",
     sources: [
-      { title: "Our World in Data: Cereals allocated to food, animal feed and fuel (FAO)", url: "https://ourworldindata.org/grapher/cereal-distribution-to-uses", year: 2025 },
-      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares (based on Poore & Nemecek 2018)", url: "https://ourworldindata.org/land-use-diets", year: 2021 },
-      { title: "Fischer & Lamey: Field Deaths in Plant Agriculture (J Agric Environ Ethics)", url: "https://doi.org/10.1007/s10806-018-9733-8", year: 2018 },
-      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026 },
-      { title: "Garnett et al.: Grazed and Confused? (Food Climate Research Network, Oxford)", url: "https://www.oxfordmartin.ox.ac.uk/downloads/reports/fcrn_gnc_report.pdf", year: 2017 },
+      { title: "Our World in Data: Cereals allocated to food, animal feed and fuel", url: "https://ourworldindata.org/grapher/cereal-distribution-to-uses", year: 2025, kind: "other" },
+      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares", url: "https://ourworldindata.org/land-use-diets", year: 2021, kind: "other" },
+      { title: "Fischer & Lamey: Field Deaths in Plant Agriculture (J Agric Environ Ethics)", url: "https://doi.org/10.1007/s10806-018-9733-8", year: 2018, kind: "study" },
+      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
+      { title: "Garnett et al.: Grazed and confused? Ruminating on cattle, grazing systems, methane, nitrous oxide, the soil carbon sequestration question – and what it all means for greenhouse gas emissions (Food Climate Research Network)", url: "https://www.oxfordmartin.ox.ac.uk/downloads/reports/fcrn_gnc_report.pdf", year: 2017, kind: "other" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/29853680/", year: 2018, kind: "study" },
     ],
   },
   {
@@ -728,9 +737,11 @@ export const cards: Card[] = [
     counterQuestion: "If it’s unclear whether an animal suffers – who should get the benefit of the doubt?",
     concession: "With mussels, the question really is open – you can honestly disagree here. The New York Declaration only advises: don’t ignore a realistic possibility of consciousness.",
     sources: [
-      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024 },
-      { title: "Gibbons et al.: Noxious stimulation induces self-protective behavior in bumblebees (iScience)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11298632/", year: 2024 },
-      { title: "Schotanus, van de Vis & Steins: Welfare of bivalves in aquaculture? (Wageningen Marine Research C057/22)", url: "https://doi.org/10.18174/577988", year: 2022 },
+      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024, kind: "other" },
+      { title: "Gibbons et al.: Noxious stimulation induces self-protective behavior in bumblebees (iScience)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11298632/", year: 2024, kind: "study" },
+      { title: "Schotanus, van de Vis & Steins: Welfare of bivalves in aquaculture? : A first literature scan and plan for a comprehensive search (Wageningen Marine Research C057/22)", url: "https://doi.org/10.18174/577988", year: 2022, kind: "other" },
+      { title: "Gibbons et al.: Can insects feel pain? A review of the neural and behavioural evidence (Adv Insect Physiol)", url: "https://doi.org/10.1016/bs.aiip.2022.10.001", year: 2022, kind: "review" },
+      { title: "Birch et al.: Review of the Evidence of Sentience in Cephalopod Molluscs and Decapod Crustaceans (LSE Consulting)", url: "https://www.lse.ac.uk/News/News-Assets/PDFs/2021/Sentience-in-Cephalopod-Molluscs-and-Decapod-Crustaceans-Final-Report-November-2021.pdf", year: 2021, kind: "other" },
     ],
   },
   {
@@ -747,9 +758,10 @@ export const cards: Card[] = [
     counterQuestion: "If we can live healthily without meat – how necessary is the suffering, then?",
     concession: "The Catholic Church explicitly considers it legitimate to use animals for food and clothing. If you argue from the Bible, don’t leave that out.",
     sources: [
-      { title: "Genesis 1:29, New International Version (Bible Gateway)", url: "https://www.biblegateway.com/passage/?search=Genesis%201%3A29&version=NIV", year: 2011 },
-      { title: "Genesis 9:3, New International Version (Bible Gateway)", url: "https://www.biblegateway.com/passage/?search=Genesis%209%3A3&version=NIV", year: 2011 },
-      { title: "Catechism of the Catholic Church, nos. 2415–2418 (English edition, vatican.va)", url: "https://www.vatican.va/archive/ENG0015/__P8B.HTM", year: 1997 },
+      { title: "Genesis 1:29, New International Version (Bible Gateway)", url: "https://www.biblegateway.com/passage/?search=Genesis%201%3A29&version=NIV", year: 2011, kind: "other" },
+      { title: "Genesis 9:3, New International Version (Bible Gateway)", url: "https://www.biblegateway.com/passage/?search=Genesis%209%3A3&version=NIV", year: 2011, kind: "other" },
+      { title: "Catechism of the Catholic Church, nos. 2415–2418 (vatican.va)", url: "https://www.vatican.va/archive/ENG0015/__P8B.HTM", year: 1997, kind: "other" },
+      { title: "Pope Francis: Encyclical Letter Laudato si’ on Care for Our Common Home, no. 130 (vatican.va)", url: "https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html", year: 2015, kind: "other" },
     ],
   },
   {
@@ -759,14 +771,16 @@ export const cards: Card[] = [
     argument: "I just like the taste of meat.",
     answer: "I totally believe you. The only question is: is enjoyment reason enough for an animal to suffer and die? We’d rarely say that about other things.",
     points: [
-      "The choice keeps growing: in 2025, Germany produced a good twice as much meat substitute as in 2019.",
+      "The choice has grown: in 2025, Germany produced a good twice as much meat substitute as in 2019.",
       "Nobody has to change everything overnight. A few favorite plant-based dishes are a good start.",
       "Taste is a real reason – but a weak one when someone else pays the price.",
     ],
     counterQuestion: "Which dish would you miss most – and is there maybe a plant-based version?",
     concession: "Plant-based alternatives don’t taste equally good to everyone. And meat substitutes are still a niche: in 2025, Germany produced over 70 times as much meat by value.",
     sources: [
-      { title: "Destatis: Fleischersatz-Produktion sinkt 2025 um 1,2 % gegenüber dem Vorjahr (Pressemitteilung Nr. N033) [Federal Statistical Office of Germany: meat substitute production falls 1.2% year on year in 2025]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_N033_42.html", year: 2026 },
+      { title: "Destatis: Nach jahrelangem Anstieg: Fleischersatz-Produktion sinkt 2025 um 1,2 % gegenüber dem Vorjahr [Federal Statistical Office: after years of growth, meat substitute production falls 1.2% in 2025]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_N033_42.html", year: 2026, kind: "official" },
+      { title: "BMLEH: Deutschland, wie es isst – der BMLEH-Ernährungsreport 2025 [German Federal Ministry of Agriculture: How Germany eats – the 2025 nutrition report]", url: "https://www.bmleh.de/DE/themen/ernaehrung/ernaehrungsreport2025.html", year: 2025, kind: "official" },
+      { title: "Onwezen et al.: A systematic review on consumer acceptance of alternative proteins: Pulses, algae, insects, plant-based meat alternatives, and cultured meat (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/33276014/", year: 2021, kind: "review" },
     ],
   },
   {
@@ -785,10 +799,12 @@ export const cards: Card[] = [
     counterQuestion: "Do you know exactly what the label on your meat promises?",
     concession: "Higher levels bring real improvements: from level 4, there’s outdoor access and twice the legally required space. That makes a noticeable difference for the animals.",
     sources: [
-      { title: "Initiative Tierwohl: Haltungsform veröffentlicht Jahreszahlen 2024 (Pressemitteilung, PDF) [German husbandry label publishes 2024 figures (press release)]", url: "https://www.rind-schwein.de/services/files/brs/ITW_Haltungsformen%202025.pdf", year: 2026 },
-      { title: "Haltungsform.de: Kriterien der Haltungsform-Stufen [criteria for the husbandry label levels]", url: "https://haltungsform.de/", year: 2026 },
-      { title: "Destatis: Zahl der Ökobetriebe zwischen 2020 und 2023 um 10 % gestiegen [Federal Statistical Office of Germany: number of organic farms up 10% between 2020 and 2023]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/04/PD24_136_41.html", year: 2024 },
-      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn? [German Federal Agricultural Information Centre: How long do cattle, pigs, sheep and chickens live?]", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025 },
+      { title: "Initiative Tierwohl: Haltungsform veröffentlicht Jahreszahlen 2024 (Pressemitteilung, PDF) [German husbandry label publishes 2024 figures (press release)]", url: "https://www.rind-schwein.de/services/files/brs/ITW_Haltungsformen%202025.pdf", year: 2026, kind: "other" },
+      { title: "Haltungsform.de: Kriterien der Haltungsform-Stufen [criteria for the husbandry label levels]", url: "https://haltungsform.de/", year: 2026, kind: "other" },
+      { title: "Destatis: Zahl der Ökobetriebe zwischen 2020 und 2023 um 10 % gestiegen [Federal Statistical Office of Germany: number of organic farms up 10% between 2020 and 2023]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/04/PD24_136_41.html", year: 2024, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn? [German Federal Agricultural Information Centre: How long do cattle, pigs, sheep and chickens live?]", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025, kind: "official" },
+      { title: "Tierschutz-Nutztierhaltungsverordnung (TierSchNutztV) § 29: Besondere Anforderungen an das Halten von Zuchtläufern und Mastschweinen [German Farm Animal Welfare Ordinance, section 29: requirements for keeping fattening pigs]", url: "https://www.gesetze-im-internet.de/tierschnutztv/__29.html", year: 2026, kind: "official" },
+      { title: "EFSA: Welfare of pigs on farm", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9405538/", year: 2022, kind: "official" },
     ],
   },
   {
@@ -805,10 +821,12 @@ export const cards: Card[] = [
     counterQuestion: "What happens to the cow when she no longer gives enough milk?",
     concession: "In the same study, vegetarians already caused around 60% fewer greenhouse gases than heavy meat-eaters. That’s a lot – and deserves credit.",
     sources: [
-      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn? [German Federal Agricultural Information Centre: How long do cattle, pigs, sheep and chickens live?]", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025 },
-      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen? [German Federal Agricultural Information Centre: What happens to dairy cows’ calves?]", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024 },
-      { title: "BZL / landwirtschaft.de: Hühnereier [German Federal Agricultural Information Centre: chicken eggs]", url: "https://www.landwirtschaft.de/landwirtschaftliche-produkte/wie-werden-unsere-lebensmittel-erzeugt/tierische-produkte/huehnereier", year: 2026 },
-      { title: "Scarborough et al.: Vegans, vegetarians, fish-eaters and meat-eaters in the UK show discrepant environmental impacts (Nature Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", year: 2023 },
+      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn? [German Federal Agricultural Information Centre: How long do cattle, pigs, sheep and chickens live?]", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen? [German Federal Agricultural Information Centre: What happens to dairy cows’ calves?]", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024, kind: "other" },
+      { title: "BZL / landwirtschaft.de: Hühnereier [German Federal Agricultural Information Centre: chicken eggs]", url: "https://www.landwirtschaft.de/landwirtschaftliche-produkte/wie-werden-unsere-lebensmittel-erzeugt/tierische-produkte/huehnereier", year: 2026, kind: "official" },
+      { title: "Scarborough et al.: Vegans, vegetarians, fish-eaters and meat-eaters in the UK show discrepant environmental impacts (Nat Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", year: 2023, kind: "study" },
+      { title: "Dallago et al.: Keeping Dairy Cows for Longer: A Critical Literature Review on Dairy Cow Longevity in High Milk-Producing Countries (Animals)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7999272/", year: 2021, kind: "review" },
+      { title: "Tierschutzgesetz (TierSchG) § 4c: Verbot des Kükentötens [German Animal Welfare Act, section 4c: ban on killing chicks]", url: "https://www.gesetze-im-internet.de/tierschg/__4c.html", year: 2021, kind: "official" },
     ],
   },
   {

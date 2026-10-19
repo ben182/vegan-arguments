@@ -316,16 +316,18 @@ export const cards: Card[] = [
       "Schon 2003 fand man bei Forellen Nervenzellen, die auf Hitze, Druck und Säure reagieren – ähnlich wie bei Säugetieren.",
       "Verletzte Fische fressen weniger, atmen schneller und schonen sich. Schmerzmittel verhindern dieses Verhalten.",
       "Über 600 Forschende haben die New Yorker Erklärung von 2024 unterschrieben: Bei allen Wirbeltieren, auch Fischen, ist bewusstes Erleben realistisch möglich.",
-      "Erstickt eine Forelle an der Luft, hat sie laut einer Studie von 2025 im Schnitt etwa 10 Minuten mäßige bis starke Schmerzen.",
+      "Erstickt eine Forelle an der Luft, hat sie nach einer Schätzung von 2025 im Schnitt etwa 10 Minuten mäßige bis starke Schmerzen.",
     ],
     counterQuestion: "Warum sollte ausgerechnet Fischen fehlen, was alle anderen Wirbeltiere haben?",
     concession: "Ob Fische Schmerz genau so erleben wie wir, kann niemand sicher sagen – das gilt für jedes Tier. Darum spricht die New Yorker Erklärung vorsichtig von einer „realistischen Möglichkeit“.",
     sources: [
-      { title: "Sneddon, Braithwaite & Gentle: Do fishes have nociceptors? (Proc R Soc B)", url: "https://pubmed.ncbi.nlm.nih.gov/12816648/", year: 2003 },
-      { title: "Sneddon: Evolution of nociception and pain – evidence from fish models (Phil Trans R Soc B)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6790376/", year: 2019 },
-      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024 },
-      { title: "Mood & Brooke: Zahl der jährlich wild gefangenen Fische 2000–2019 (Animal Welfare)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10951671/", year: 2024 },
-      { title: "Schuck-Paim et al.: Leiden von Regenbogenforellen beim Ersticken an der Luft (Scientific Reports)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12141439/", year: 2025 },
+      { title: "Sneddon, Braithwaite & Gentle: Do fishes have nociceptors? Evidence for the evolution of a vertebrate sensory system (Proc R Soc B)", url: "https://pubmed.ncbi.nlm.nih.gov/12816648/", year: 2003, kind: "study" },
+      { title: "Sneddon: Evolution of nociception and pain: evidence from fish models (Phil Trans R Soc B)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6790376/", year: 2019, kind: "review" },
+      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024, kind: "other" },
+      { title: "Mood & Brooke: Estimating global numbers of fishes caught from the wild annually from 2000 to 2019 (Animal Welfare)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10951671/", year: 2024, kind: "study" },
+      { title: "Schuck-Paim et al.: Quantifying the welfare impact of air asphyxia in rainbow trout slaughter for policy and practice (Sci Rep)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12141439/", year: 2025, kind: "study" },
+      { title: "Sneddon: Pain in aquatic animals (J Exp Biol)", url: "https://pubmed.ncbi.nlm.nih.gov/25833131/", year: 2015, kind: "review" },
+      { title: "Brown: Fish intelligence, sentience and ethics (Anim Cogn)", url: "https://pubmed.ncbi.nlm.nih.gov/24942105/", year: 2015, kind: "review" },
     ],
   },
   {
@@ -343,9 +345,11 @@ export const cards: Card[] = [
     counterQuestion: "Weißt du, warum eine Kuh überhaupt Milch gibt?",
     concession: "Manche Höfe lassen Kälber länger bei der Mutter oder bei Ammenkühen trinken. Am Kreislauf aus Trächtigkeit und Kalb ändert das nichts.",
     sources: [
-      { title: "BZL / landwirtschaft.de: Gibt die Kuh auch ohne Kalb Milch?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/rinder/gibt-die-kuh-auch-ohne-kalb-milch", year: 2026 },
-      { title: "BZL / landwirtschaft.de: Wie viel Milch gibt eine Kuh?", url: "https://www.landwirtschaft.de/infothek/infografiken/uebersicht-aller-infografiken/wie-viel-milch-gibt-eine-kuh", year: 2025 },
-      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen?", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024 },
+      { title: "BZL / landwirtschaft.de: Gibt die Kuh auch ohne Kalb Milch?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/rinder/gibt-die-kuh-auch-ohne-kalb-milch", year: 2026, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Wie viel Milch gibt eine Kuh?", url: "https://www.landwirtschaft.de/infothek/infografiken/uebersicht-aller-infografiken/wie-viel-milch-gibt-eine-kuh", year: 2025, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen?", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024, kind: "other" },
+      { title: "EFSA: Welfare of calves", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/", year: 2023, kind: "official" },
+      { title: "Meagher et al.: Invited review: A systematic review of the effects of prolonged cow-calf contact on behavior, welfare, and productivity (J Dairy Sci)", url: "https://pubmed.ncbi.nlm.nih.gov/31103300/", year: 2019, kind: "review" },
     ],
   },
   {
@@ -362,7 +366,7 @@ export const cards: Card[] = [
     counterQuestion: "Und was isst du, wenn du nicht auf einer Insel bist?",
     fallacy: { name: "Ablenkung (Red Herring)", explanation: "Ein konstruierter Extremfall lenkt vom eigentlichen Thema ab – unserem Alltag." },
     sources: [
-      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026 },
+      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
     ],
   },
   {
@@ -378,6 +382,9 @@ export const cards: Card[] = [
     ],
     counterQuestion: "Wer außer dir ist von dieser Entscheidung noch betroffen?",
     sources: [
+      { title: "Crippa et al.: Food systems are responsible for a third of global anthropogenic GHG emissions (Nat Food)", url: "https://doi.org/10.1038/s43016-021-00225-9", year: 2021, kind: "study" },
+      { title: "Xu et al.: Global greenhouse gas emissions from animal-based foods are twice those of plant-based foods (Nat Food)", url: "https://pubmed.ncbi.nlm.nih.gov/37117472/", year: 2021, kind: "study" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/29853680/", year: 2018, kind: "study" },
     ],
   },
   {
@@ -395,9 +402,10 @@ export const cards: Card[] = [
     counterQuestion: "Ist es für ein Tier besser, geboren und geschlachtet zu werden, als nie zu existieren?",
     concession: "Manche alte Nutztierrassen würden wohl seltener werden. Das ist ein echter Verlust an Vielfalt – aber kein Grund, Milliarden Tiere zu züchten.",
     sources: [
-      { title: "Our World in Data: Cattle livestock count (FAO)", url: "https://ourworldindata.org/grapher/cattle-livestock-count-heads", year: 2024 },
-      { title: "Greenspoon et al.: Die globale Biomasse wilder Säugetiere (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10013851/", year: 2023 },
-      { title: "Our World in Data: Pflanzliche Ernährung würde die Agrarfläche von 4 auf 1 Mrd. Hektar senken (nach Poore & Nemecek 2018)", url: "https://ourworldindata.org/land-use-diets", year: 2021 },
+      { title: "Our World in Data: Number of cattle", url: "https://ourworldindata.org/grapher/cattle-livestock-count-heads", year: 2024, kind: "other" },
+      { title: "Greenspoon et al.: The global biomass of wild mammals (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10013851/", year: 2023, kind: "study" },
+      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares", url: "https://ourworldindata.org/land-use-diets", year: 2021, kind: "other" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://doi.org/10.1126/science.aaq0216", year: 2018, kind: "review" },
     ],
   },
   {
@@ -707,11 +715,12 @@ export const cards: Card[] = [
     fallacy: { name: "Nirwana-Fehlschluss", explanation: "Eine Lösung wird abgelehnt, weil sie nicht perfekt ist – obwohl sie deutlich besser ist als die Alternative." },
     concession: "Rinder, die nur auf Wiesen grasen, fressen kein Ackerfutter. Daraus folgern manche, solches Fleisch koste weniger Tierleben. Weidefleisch reicht aber nur für sehr kleine Mengen pro Person.",
     sources: [
-      { title: "Our World in Data: Cereals allocated to food, animal feed and fuel (FAO)", url: "https://ourworldindata.org/grapher/cereal-distribution-to-uses", year: 2025 },
-      { title: "Our World in Data: Pflanzliche Ernährung würde die Agrarfläche von 4 auf 1 Mrd. Hektar senken (nach Poore & Nemecek 2018)", url: "https://ourworldindata.org/land-use-diets", year: 2021 },
-      { title: "Fischer & Lamey: Field Deaths in Plant Agriculture (J Agric Environ Ethics)", url: "https://doi.org/10.1007/s10806-018-9733-8", year: 2018 },
-      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026 },
-      { title: "Garnett et al.: Grazed and Confused? (Food Climate Research Network, Oxford)", url: "https://www.oxfordmartin.ox.ac.uk/downloads/reports/fcrn_gnc_report.pdf", year: 2017 },
+      { title: "Our World in Data: Cereals allocated to food, animal feed and fuel", url: "https://ourworldindata.org/grapher/cereal-distribution-to-uses", year: 2025, kind: "other" },
+      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares", url: "https://ourworldindata.org/land-use-diets", year: 2021, kind: "other" },
+      { title: "Fischer & Lamey: Field Deaths in Plant Agriculture (J Agric Environ Ethics)", url: "https://doi.org/10.1007/s10806-018-9733-8", year: 2018, kind: "study" },
+      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
+      { title: "Garnett et al.: Grazed and confused? Ruminating on cattle, grazing systems, methane, nitrous oxide, the soil carbon sequestration question – and what it all means for greenhouse gas emissions (Food Climate Research Network)", url: "https://www.oxfordmartin.ox.ac.uk/downloads/reports/fcrn_gnc_report.pdf", year: 2017, kind: "other" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/29853680/", year: 2018, kind: "study" },
     ],
   },
   {
@@ -728,9 +737,11 @@ export const cards: Card[] = [
     counterQuestion: "Wenn unklar ist, ob ein Tier leidet – wem sollte der Zweifel zugutekommen?",
     concession: "Bei Muscheln ist die Frage wirklich offen – hier kann man ehrlich unterschiedlicher Meinung sein. Die New Yorker Erklärung rät nur: Eine realistische Möglichkeit von Bewusstsein nicht ignorieren.",
     sources: [
-      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024 },
-      { title: "Gibbons et al.: Noxious stimulation induces self-protective behavior in bumblebees (iScience)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11298632/", year: 2024 },
-      { title: "Schotanus, van de Vis & Steins: Welfare of bivalves in aquaculture? (Wageningen Marine Research C057/22)", url: "https://doi.org/10.18174/577988", year: 2022 },
+      { title: "The New York Declaration on Animal Consciousness", url: "https://sites.google.com/nyu.edu/nydeclaration/declaration", year: 2024, kind: "other" },
+      { title: "Gibbons et al.: Noxious stimulation induces self-protective behavior in bumblebees (iScience)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11298632/", year: 2024, kind: "study" },
+      { title: "Schotanus, van de Vis & Steins: Welfare of bivalves in aquaculture? : A first literature scan and plan for a comprehensive search (Wageningen Marine Research C057/22)", url: "https://doi.org/10.18174/577988", year: 2022, kind: "other" },
+      { title: "Gibbons et al.: Can insects feel pain? A review of the neural and behavioural evidence (Adv Insect Physiol)", url: "https://doi.org/10.1016/bs.aiip.2022.10.001", year: 2022, kind: "review" },
+      { title: "Birch et al.: Review of the Evidence of Sentience in Cephalopod Molluscs and Decapod Crustaceans (LSE Consulting)", url: "https://www.lse.ac.uk/News/News-Assets/PDFs/2021/Sentience-in-Cephalopod-Molluscs-and-Decapod-Crustaceans-Final-Report-November-2021.pdf", year: 2021, kind: "other" },
     ],
   },
   {
@@ -747,9 +758,10 @@ export const cards: Card[] = [
     counterQuestion: "Wenn wir gesund ohne Fleisch leben können – wie nötig ist dann das Leid?",
     concession: "Die katholische Kirche hält es ausdrücklich für erlaubt, Tiere für Nahrung und Kleidung zu nutzen. Wer mit der Bibel argumentiert, sollte das nicht verschweigen.",
     sources: [
-      { title: "Lutherbibel 2017: 1. Mose 1 (Deutsche Bibelgesellschaft)", url: "https://www.die-bibel.de/bibel/LU17/GEN.1", year: 2017 },
-      { title: "Lutherbibel 2017: 1. Mose 9 (Deutsche Bibelgesellschaft)", url: "https://www.die-bibel.de/bibel/LU17/GEN.9", year: 2017 },
-      { title: "Katechismus der Katholischen Kirche, Nr. 2415–2418 (engl. Fassung, vatican.va)", url: "https://www.vatican.va/archive/ENG0015/__P8B.HTM", year: 1997 },
+      { title: "Lutherbibel 2017: 1. Mose 1 (Deutsche Bibelgesellschaft)", url: "https://www.die-bibel.de/bibel/LU17/GEN.1", year: 2017, kind: "other" },
+      { title: "Lutherbibel 2017: 1. Mose 9 (Deutsche Bibelgesellschaft)", url: "https://www.die-bibel.de/bibel/LU17/GEN.9", year: 2017, kind: "other" },
+      { title: "Catechism of the Catholic Church, nos. 2415–2418 (vatican.va)", url: "https://www.vatican.va/archive/ENG0015/__P8B.HTM", year: 1997, kind: "other" },
+      { title: "Pope Francis: Encyclical Letter Laudato si’ on Care for Our Common Home, no. 130 (vatican.va)", url: "https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html", year: 2015, kind: "other" },
     ],
   },
   {
@@ -759,14 +771,16 @@ export const cards: Card[] = [
     argument: "Fleisch schmeckt mir einfach.",
     answer: "Das glaube ich dir sofort. Die Frage ist nur: Reicht Genuss als Grund dafür, dass ein Tier leidet und stirbt? Bei anderen Dingen würden wir das selten sagen.",
     points: [
-      "Die Auswahl wächst: 2025 wurde in Deutschland gut doppelt so viel Fleischersatz hergestellt wie 2019.",
+      "Die Auswahl ist gewachsen: 2025 wurde in Deutschland gut doppelt so viel Fleischersatz hergestellt wie 2019.",
       "Niemand muss von heute auf morgen alles umstellen. Ein paar pflanzliche Lieblingsgerichte sind ein guter Anfang.",
       "Geschmack ist ein echter Grund – aber ein schwacher, wenn ein anderer den Preis dafür zahlt.",
     ],
     counterQuestion: "Welches Gericht würdest du am meisten vermissen – und gibt es das vielleicht auch pflanzlich?",
     concession: "Pflanzliche Alternativen schmecken nicht jedem gleich gut. Und Fleischersatz ist noch eine Nische: Fleisch wurde 2025 wertmäßig über 70-mal so viel produziert.",
     sources: [
-      { title: "Destatis: Fleischersatz-Produktion sinkt 2025 um 1,2 % gegenüber dem Vorjahr (Pressemitteilung Nr. N033)", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_N033_42.html", year: 2026 },
+      { title: "Destatis: Nach jahrelangem Anstieg: Fleischersatz-Produktion sinkt 2025 um 1,2 % gegenüber dem Vorjahr", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_N033_42.html", year: 2026, kind: "official" },
+      { title: "BMLEH: Deutschland, wie es isst – der BMLEH-Ernährungsreport 2025", url: "https://www.bmleh.de/DE/themen/ernaehrung/ernaehrungsreport2025.html", year: 2025, kind: "official" },
+      { title: "Onwezen et al.: A systematic review on consumer acceptance of alternative proteins: Pulses, algae, insects, plant-based meat alternatives, and cultured meat (Appetite)", url: "https://pubmed.ncbi.nlm.nih.gov/33276014/", year: 2021, kind: "review" },
     ],
   },
   {
@@ -784,10 +798,12 @@ export const cards: Card[] = [
     counterQuestion: "Weißt du, was das Siegel auf deinem Fleisch genau verspricht?",
     concession: "Höhere Stufen bringen echte Verbesserungen: Ab Stufe 4 gibt es Auslauf und doppelt so viel Platz wie gesetzlich vorgeschrieben. Für die Tiere ist das ein spürbarer Unterschied.",
     sources: [
-      { title: "Initiative Tierwohl: Haltungsform veröffentlicht Jahreszahlen 2024 (Pressemitteilung, PDF)", url: "https://www.rind-schwein.de/services/files/brs/ITW_Haltungsformen%202025.pdf", year: 2026 },
-      { title: "Haltungsform.de: Kriterien der Haltungsform-Stufen", url: "https://haltungsform.de/", year: 2026 },
-      { title: "Destatis: Zahl der Ökobetriebe zwischen 2020 und 2023 um 10 % gestiegen", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/04/PD24_136_41.html", year: 2024 },
-      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025 },
+      { title: "Initiative Tierwohl: Haltungsform veröffentlicht Jahreszahlen 2024 (Pressemitteilung, PDF)", url: "https://www.rind-schwein.de/services/files/brs/ITW_Haltungsformen%202025.pdf", year: 2026, kind: "other" },
+      { title: "Haltungsform.de: Kriterien der Haltungsform-Stufen", url: "https://haltungsform.de/", year: 2026, kind: "other" },
+      { title: "Destatis: Zahl der Ökobetriebe zwischen 2020 und 2023 um 10 % gestiegen", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/04/PD24_136_41.html", year: 2024, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025, kind: "official" },
+      { title: "Tierschutz-Nutztierhaltungsverordnung (TierSchNutztV) § 29: Besondere Anforderungen an das Halten von Zuchtläufern und Mastschweinen", url: "https://www.gesetze-im-internet.de/tierschnutztv/__29.html", year: 2026, kind: "official" },
+      { title: "EFSA: Welfare of pigs on farm", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9405538/", year: 2022, kind: "official" },
     ],
   },
   {
@@ -804,10 +820,12 @@ export const cards: Card[] = [
     counterQuestion: "Was passiert mit der Kuh, wenn sie nicht mehr genug Milch gibt?",
     concession: "Vegetarier verursachen in derselben Studie schon rund 60 % weniger Treibhausgase als starke Fleischesser. Das ist viel – und verdient Anerkennung.",
     sources: [
-      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025 },
-      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen?", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024 },
-      { title: "BZL / landwirtschaft.de: Hühnereier", url: "https://www.landwirtschaft.de/landwirtschaftliche-produkte/wie-werden-unsere-lebensmittel-erzeugt/tierische-produkte/huehnereier", year: 2026 },
-      { title: "Scarborough et al.: Umweltwirkung von Veganern, Vegetariern, Fisch- und Fleischessern (Nature Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", year: 2023 },
+      { title: "BZL / landwirtschaft.de: Wie lange leben Rind, Schwein, Schaf und Huhn?", url: "https://www.landwirtschaft.de/tier-und-pflanze/tier/nutztiere-allgemein/wie-lange-leben-rind-schwein-schaf-und-huhn", year: 2025, kind: "official" },
+      { title: "BZL / landwirtschaft.de: Was geschieht mit den Kälbern von Milchkühen?", url: "https://www.landwirtschaft.de/infothek/fragen-sie-einen-landwirt/bereits-beantwortete-fragen/was-geschieht-mit-den-kaelbern-von-milchkuehen", year: 2024, kind: "other" },
+      { title: "BZL / landwirtschaft.de: Hühnereier", url: "https://www.landwirtschaft.de/landwirtschaftliche-produkte/wie-werden-unsere-lebensmittel-erzeugt/tierische-produkte/huehnereier", year: 2026, kind: "official" },
+      { title: "Scarborough et al.: Vegans, vegetarians, fish-eaters and meat-eaters in the UK show discrepant environmental impacts (Nat Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", year: 2023, kind: "study" },
+      { title: "Dallago et al.: Keeping Dairy Cows for Longer: A Critical Literature Review on Dairy Cow Longevity in High Milk-Producing Countries (Animals)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7999272/", year: 2021, kind: "review" },
+      { title: "Tierschutzgesetz (TierSchG) § 4c: Verbot des Kükentötens", url: "https://www.gesetze-im-internet.de/tierschg/__4c.html", year: 2021, kind: "official" },
     ],
   },
   {
