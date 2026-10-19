@@ -98,17 +98,24 @@ function vorschau(k, jetzt) {
   return [NOCHMAL, SCHWER, GUT, EINFACH].map((g) => planen(k, g, jetzt).faellig - jetzt);
 }
 
-function abstandText(ms) {
+const EINHEITEN = {
+  de: { min: "Min.", std: "Std.", tag: "Tag", tage: "Tage", mon: "Mon.", j: "J.", komma: "," },
+  en: { min: "min", std: "h", tag: "day", tage: "days", mon: "mo", j: "yr", komma: "." },
+};
+
+function abstandText(ms, sprache = "de") {
+  const e = EINHEITEN[sprache] || EINHEITEN.de;
+  const zahl = (x) => x.toFixed(1).replace(".", e.komma).replace(`${e.komma}0`, "");
   const min = Math.round(ms / MIN);
-  if (min < 1) return "< 1 Min.";
-  if (min < 60) return `${min} Min.`;
+  if (min < 1) return `< 1 ${e.min}`;
+  if (min < 60) return `${min} ${e.min}`;
   const std = Math.round(min / 60);
-  if (std < 24) return `${std} Std.`;
+  if (std < 24) return `${std} ${e.std}`;
   const tage = Math.round(ms / TAG);
-  if (tage < 30) return tage === 1 ? "1 Tag" : `${tage} Tage`;
+  if (tage < 30) return `${tage} ${tage === 1 ? e.tag : e.tage}`;
   const monate = tage / 30.4;
-  if (monate < 12) return `${monate.toFixed(1).replace(".", ",").replace(",0", "")} Mon.`;
-  return `${(tage / 365).toFixed(1).replace(".", ",").replace(",0", "")} J.`;
+  if (monate < 12) return `${zahl(monate)} ${e.mon}`;
+  return `${zahl(tage / 365)} ${e.j}`;
 }
 
 export { planen, vorschau, abstandText, tag, intervall, NEU, MIN, TAG, NOCHMAL, SCHWER, GUT, EINFACH };

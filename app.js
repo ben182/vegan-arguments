@@ -3,8 +3,12 @@ import "@fontsource-variable/atkinson-hyperlegible-next/wght.css";
 import "@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css";
 import "./style.css";
 import * as FSRS from "./fsrs.js";
-import { KARTEN, KATEGORIEN } from "./karten.js";
-import { ton, katName, vorschlagLink, esc, ohneZeichen, zahlHtml, karteHtml } from "./karte-html.js";
+import { TEXTE } from "./texte.js";
+import { ton, vorschlagLink, esc, ohneZeichen, darstellung } from "./karte-html.js";
+
+const t = document.documentElement.lang === "en" ? TEXTE.en : TEXTE.de;
+const { KARTEN, KATEGORIEN } = t.lang === "en" ? await import("./karten.en.js") : await import("./karten.js");
+const { katName, zahlHtml, karteHtml } = darstellung(t, KATEGORIEN);
 
 const $ = (sel) => document.querySelector(sel);
 const SPEICHER = "vk-anki-v1";
@@ -24,19 +28,12 @@ function neuHeute(jetzt) {
   return stand.neuHeute;
 }
 
-function inTagen(t) {
-  if (t === 1) return "morgen";
-  if (t < 30) return `in ${t} Tagen`;
-  if (t < 365) { const m = Math.round(t / 30.4); return m === 1 ? "in einem Monat" : `in ${m} Monaten`; }
-  const j = Math.round(t / 365); return j === 1 ? "in einem Jahr" : `in ${j} Jahren`;
-}
-
 function statusText(id, jetzt = Date.now()) {
   const p = plan(id);
   if (p.status === "neu") return "";
-  if (p.status !== "wiederholen") return "lernst du gerade";
+  if (p.status !== "wiederholen") return t.statusLernen;
   const tage = FSRS.tag(p.faellig) - FSRS.tag(jetzt);
-  return tage <= 0 ? "heute dran" : `${inTagen(tage)} dran`;
+  return tage <= 0 ? t.statusHeute : t.statusDran(t.inTagen(tage));
 }
 
 // ---------- Nachschlagen ----------
@@ -47,7 +44,7 @@ function reiter(container, istAn, onClick, mitAlle) {
   const kats = alleKats().filter((key) => anzahl(key) > 0);
   const eintraege = mitAlle ? ["", ...kats] : kats;
   container.innerHTML = eintraege
-    .map((key) => `<button class="reiter-knopf" data-kat="${key}" aria-pressed="${istAn(key)}"${key ? ` style="--h:${ton(key)}"` : ""}>${key ? '<span class="punkt" aria-hidden="true"></span>' : ""}${esc(key ? katName(key) : "Alle")}<span class="anzahl">${anzahl(key)}</span></button>`)
+    .map((key) => `<button class="reiter-knopf" data-kat="${key}" aria-pressed="${istAn(key)}"${key ? ` style="--h:${ton(key)}"` : ""}>${key ? '<span class="punkt" aria-hidden="true"></span>' : ""}${esc(key ? katName(key) : t.alle)}<span class="anzahl">${anzahl(key)}</span></button>`)
     .join("");
   container.onclick = (e) => {
     const b = e.target.closest(".reiter-knopf");
@@ -70,8 +67,8 @@ function rasterZeichnen() {
   $("#raster").innerHTML = gruppen
     .map(([kat, karten], gi) => `
       <section class="gruppe" style="--h:${ton(kat)}" aria-labelledby="g-${esc(kat)}">
-        <h2 class="gruppe-titel" id="g-${esc(kat)}"><span class="punkt" aria-hidden="true"></span>${esc(katName(kat))}<span class="anzahl">${karten.length} ${karten.length === 1 ? "Argument" : "Argumente"}</span></h2>
-        ${gi === 0 ? '<div class="spaltenkopf" aria-hidden="true"><span>Sie sagen</span><span>Du antwortest</span></div>' : ""}
+        <h2 class="gruppe-titel" id="g-${esc(kat)}"><span class="punkt" aria-hidden="true"></span>${esc(katName(kat))}<span class="anzahl">${t.argumente(karten.length)}</span></h2>
+        ${gi === 0 ? `<div class="spaltenkopf" aria-hidden="true"><span>${t.spalteSie}</span><span>${t.spalteDu}</span></div>` : ""}
         <ul class="zeilen">${karten.map((k) => {
           const st = statusText(k.id);
           const n = k.quellen?.length || 0;
@@ -79,7 +76,7 @@ function rasterZeichnen() {
           <li><a class="zeile" href="#karte/${esc(k.id)}" data-id="${esc(k.id)}">
             <span class="z-argument">${esc(ohneZeichen(k.argument))}</span>
             <span class="z-antwort">${esc(k.kurz)}</span>
-            <span class="z-meta">${n ? `<span class="belege">${n} ${n === 1 ? "Quelle" : "Quellen"}</span>` : ""}${st ? `<span class="status">${esc(st)}</span>` : ""}</span>
+            <span class="z-meta">${n ? `<span class="belege">${t.quellenAnzahl(n)}</span>` : ""}${st ? `<span class="status">${esc(st)}</span>` : ""}</span>
           </a></li>`;
         }).join("")}</ul>
       </section>`)
@@ -87,14 +84,14 @@ function rasterZeichnen() {
   $("#leer").hidden = liste.length > 0;
   $("#leer-vorschlag").href = vorschlagLink($("#suche").value.trim());
   const nQuellen = new Set(KARTEN.flatMap((k) => (k.quellen || []).map((q) => q.url))).size;
-  $("#bestand").textContent = `${KARTEN.length} Argumente, ${nQuellen} verschiedene Quellen`;
+  $("#bestand").textContent = t.bestand(KARTEN.length, nQuellen);
 }
 
 $("#suche").addEventListener("input", rasterZeichnen);
 
 // ---------- Detail ----------
 function detailHtml(k) {
-  return karteHtml(k, { status: statusText(k.id), fuss: `<button class="knopf" id="teilen">Link kopieren</button>` });
+  return karteHtml(k, { status: statusText(k.id), fuss: `<button class="knopf" id="teilen">${esc(t.linkKopieren)}</button>` });
 }
 
 const dialog = $("#detail");
@@ -103,10 +100,10 @@ function detailOeffnen(id) {
   if (!k) return;
   $("#detail-inhalt").innerHTML = detailHtml(k);
   $("#teilen").onclick = async (e) => {
-    const url = `${location.origin}/karte/${k.id}/`;
+    const url = `${location.origin}${t.kartePfad(k.id)}`;
     try {
       if (navigator.share && matchMedia("(pointer: coarse)").matches) await navigator.share({ title: k.argument, text: k.kurz, url });
-      else { await navigator.clipboard.writeText(url); e.target.textContent = "Link kopiert"; }
+      else { await navigator.clipboard.writeText(url); e.target.textContent = t.linkKopiert; }
     } catch { /* abgebrochen */ }
   };
   if (!dialog.open) dialog.showModal();
@@ -153,7 +150,7 @@ function naechsteKarte(jetzt) {
 function zaehlerHtml(s, hervorheben) {
   const feld = (cls, zahl, name) =>
     `<div class="${cls}${hervorheben === cls ? " aktuell" : ""}"><dt>${name}</dt><dd>${zahl}</dd></div>`;
-  return feld("z-neu", s.neu.length, "neu") + feld("z-lernen", s.lernenBald.length, "in Arbeit") + feld("z-faellig", s.faellig.length, "zum Wiederholen");
+  return feld("z-neu", s.neu.length, t.zNeu) + feld("z-lernen", s.lernenBald.length, t.zLernen) + feld("z-faellig", s.faellig.length, t.zFaellig);
 }
 
 function faelligAnzeigen() {
@@ -172,7 +169,7 @@ function uebenStartZeichnen() {
   const s = stapel(Date.now());
   $("#zaehler-start").innerHTML = zaehlerHtml(s);
   $("#start").disabled = !naechsteKarte(Date.now());
-  $("#start").textContent = naechsteKarte(Date.now()) ? "Üben starten" : "Gerade nichts zu üben";
+  $("#start").textContent = naechsteKarte(Date.now()) ? t.uebenStarten : t.nichtsZuUeben;
 }
 
 function karteZeigen() {
@@ -190,7 +187,7 @@ function karteZeigen() {
   $("#lern-argument").textContent = ohneZeichen(k.argument);
   // Rückseite erst tauschen, wenn sie weggedreht ist, sonst blitzt die neue Antwort auf
   setTimeout(() => {
-    $("#lern-bezug").textContent = `„${ohneZeichen(k.argument).replace(/[.?!]$/, "")}“`;
+    $("#lern-bezug").textContent = t.zitat(ohneZeichen(k.argument).replace(/[.?!]$/, ""));
     $("#lern-kurz").textContent = k.kurz;
     $("#lern-zahl").innerHTML = zahlHtml(k);
   }, warOffen ? 280 : 0);
@@ -198,7 +195,7 @@ function karteZeigen() {
   const art = p.status === "neu" ? "z-neu" : p.status === "wiederholen" ? "z-faellig" : "z-lernen";
   $("#zaehler-lauf").innerHTML = zaehlerHtml(stapel(jetzt), art);
   const abstaende = FSRS.vorschau(p, jetzt);
-  document.querySelectorAll(".bewertung small").forEach((el, i) => (el.textContent = FSRS.abstandText(abstaende[i])));
+  document.querySelectorAll(".bewertung small").forEach((el, i) => (el.textContent = FSRS.abstandText(abstaende[i], t.lang)));
   $("#aufdecken-reihe").hidden = false;
   $("#bewerten-reihe").hidden = true;
 }
@@ -229,14 +226,14 @@ function fertig() {
   let text;
   if (s.lernenSpaeter.length) {
     const bis = plan(s.lernenSpaeter[0]).faellig - jetzt;
-    text = `Eine Karte in Arbeit kommt in ${FSRS.abstandText(bis)} wieder. Lass die Seite offen, dann geht es automatisch weiter.`;
+    text = t.endeLernen(FSRS.abstandText(bis, t.lang));
     clearTimeout(weckerId);
     weckerId = setTimeout(() => { if (!$("#ueben-ende").hidden) starten(); }, bis + 500);
   } else {
     const naechste = KARTEN.map((k) => plan(k.id)).filter((p) => p.status === "wiederholen").map((p) => p.faellig).sort((a, b) => a - b)[0];
-    text = naechste ? `Die nächste Wiederholung ist ${inTagen(Math.max(1, FSRS.tag(naechste) - FSRS.tag(jetzt)))} dran.` : "";
+    text = naechste ? t.endeNaechste(t.inTagen(Math.max(1, FSRS.tag(naechste) - FSRS.tag(jetzt)))) : "";
   }
-  if (offenNeu) text += ` ${offenNeu} ${offenNeu === 1 ? "Karte hast" : "Karten hast"} du noch nicht gesehen.`;
+  if (offenNeu) text += ` ${t.endeUngesehen(offenNeu)}`;
   $("#ende-text").textContent = text.trim();
   $("#mehr-neue").hidden = offenNeu === 0;
 }
@@ -258,7 +255,7 @@ $("#bewerten-reihe").onclick = (e) => {
 };
 $("#lern-mehr").onclick = (e) => { e.stopPropagation(); detailOeffnen(aktuell); };
 $("#zuruecksetzen").onclick = () => {
-  if (!confirm("Deinen ganzen Lernfortschritt löschen? Das lässt sich nicht rückgängig machen.")) return;
+  if (!confirm(t.zuruecksetzenFrage)) return;
   stand = { karten: {}, neuHeute: { tag: 0, anzahl: 0, extra: 0 } };
   speichern();
   faelligAnzeigen();
@@ -296,6 +293,8 @@ function zeige(ansicht) {
     uebenStartZeichnen();
   }
 }
+
+$(".sprachwahl")?.addEventListener("click", (e) => { e.currentTarget.href = t.spracheLink + location.hash; });
 
 localStorage.removeItem("vk-fortschritt"); // alter Leitner-Stand
 window.addEventListener("hashchange", route);

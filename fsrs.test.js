@@ -60,3 +60,10 @@ test("Abstandstexte", () => {
   assert.strictEqual(F.abstandText(16 * F.TAG), "16 Tage");
   assert.strictEqual(F.abstandText(61 * F.TAG), "2 Mon.");
 });
+
+test("Abstandstexte auf Englisch", () => {
+  assert.strictEqual(F.abstandText(10 * F.MIN, "en"), "10 min");
+  assert.strictEqual(F.abstandText(F.TAG, "en"), "1 day");
+  assert.strictEqual(F.abstandText(16 * F.TAG, "en"), "16 days");
+  assert.strictEqual(F.abstandText(76 * F.TAG, "en"), "2.5 mo");
+});

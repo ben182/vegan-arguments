@@ -195,8 +195,8 @@ kbd {
   color: var(--tinte);
   text-wrap: pretty;
 }
-.z-argument::before { content: "„"; }
-.z-argument::after { content: "“"; }
+.z-argument::before { content: var(--auf); }
+.z-argument::after { content: var(--zu); }
 .z-antwort {
   color: var(--leise);
   font-size: .98rem; line-height: 1.5;
@@ -311,11 +311,11 @@ kbd {
   text-wrap: balance;
 }
 .lk-argument::before {
-  content: "„";
+  content: var(--auf);
   position: absolute; right: 100%; margin-right: .06em;
   color: var(--safran);
 }
-.lk-argument::after { content: "“"; color: var(--safran); }
+.lk-argument::after { content: var(--zu); color: var(--safran); }
 
 .lk-antwort {
   display: none;
@@ -409,8 +409,8 @@ kbd {
   letter-spacing: -.012em;
   text-wrap: balance;
 }
-.d-argument::before { content: "„"; position: absolute; right: 100%; margin-right: .06em; color: var(--safran); }
-.d-argument::after { content: "“"; color: var(--safran); }
+.d-argument::before { content: var(--auf); position: absolute; right: 100%; margin-right: .06em; color: var(--safran); }
+.d-argument::after { content: var(--zu); color: var(--safran); }
 
 .detail-koerper > section, .notizen, .detail-fuss { padding-left: clamp(1.25rem, 5vw, 2.75rem); padding-right: clamp(1.25rem, 5vw, 2.75rem); }
 .detail-koerper h3 { font: 700 1.05rem/1.3 var(--text-schrift); color: var(--tinte); margin-bottom: .55rem; }
@@ -432,8 +432,8 @@ kbd {
 .notiz p { max-width: 38em; }
 .konter { background: #f3eef3; }
 .konter p { font-size: 1.12rem; font-weight: 500; color: var(--tinte); }
-.konter p::before { content: "„"; }
-.konter p::after { content: "“"; }
+.konter p::before { content: var(--auf); }
+.konter p::after { content: var(--zu); }
 .fehlschluss { background: var(--flaeche); border: 1.5px solid var(--linie); }
 .ehrlich { background: #fbf3e3; border-left: 4px solid var(--safran); }
 .ehrlich h3 { color: #6b4400; }
@@ -523,3 +523,16 @@ a.textknopf { font-size: inherit; }
 .einzel-weiter li { border-bottom: 1px solid var(--linie); }
 .einzel-weiter li a { display: block; padding: .8rem 0; color: var(--tinte); text-decoration: none; font-weight: 500; }
 .einzel-weiter li a:hover { text-decoration: underline; }
+
+.umschalter { margin-left: auto; }
+.sprachwahl {
+  padding: .35rem .6rem; border-radius: 6px;
+  font-weight: 600; font-size: .85rem; letter-spacing: .04em;
+  color: var(--auf-dunkel-leise); text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .22);
+}
+.sprachwahl:hover { color: var(--auf-dunkel); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .5); }
+
+/* Anführungszeichen je Sprache */
+:root { --auf: "„"; --zu: "“"; }
+:root:lang(en) { --auf: "“"; --zu: "”"; }

@@ -1,6 +1,6 @@
 # vegan-arguments
 
-Flashcards with short, evidence-based answers to the most common arguments against veganism. The site is in German (an English version is planned).
+Flashcards with short, evidence-based answers to the most common arguments against veganism. The site is in German, with an English version at `/en/`.
 
 - **Look up** every argument, with a one-line answer for the conversation, follow-up points, a counter-question, the fallacy behind it, what to honestly concede, and sources.
 - **Practise** like in Anki: cards are scheduled with [FSRS](https://github.com/open-spaced-repetition/fsrs4anki), the algorithm Anki uses by default, including learning steps and a daily limit. Progress is stored in the browser only.
@@ -18,13 +18,15 @@ npm run build      # static site in dist/
 npm run preview    # serve dist/ locally
 ```
 
-The build also generates a static page per card at `/karte/<id>/` (for search engines and sharing), `sitemap.xml`, `robots.txt`, and a service worker so the site can be installed and used offline. Set `SITE_URL` to the production address for canonical links and the sitemap, e.g. `SITE_URL=https://example.org npm run build`.
+The build also generates the English start page at `/en/`, a static page per card at `/karte/<id>/` and `/en/card/<id>/` (for search engines and sharing), `sitemap.xml`, `robots.txt`, and a service worker so the site can be installed and used offline. Set `SITE_URL` to the production address for canonical links and the sitemap, e.g. `SITE_URL=https://example.org npm run build`.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `karten.js` | All cards and categories (content) |
+| `karten.js` | All cards and categories (German content) |
+| `karten.en.js` | English translation, same IDs and sources |
+| `texte.js` | UI texts in German and English |
 | `fsrs.js` | Spaced-repetition scheduling (FSRS-5, Anki defaults) |
 | `app.js` | UI: browsing, card detail, practice queue |
 | `karte-html.js` | Renders a card as HTML (shared by the app and the static card pages) |

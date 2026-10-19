@@ -1,9 +1,12 @@
-// Checks every source link in karten.js. Usage: node scripts/check-sources.mjs
+// Checks every source link in karten.js and karten.en.js. Usage: node scripts/check-sources.mjs
 // Exits with code 1 if a link is definitely broken (404, 410, DNS error, ...).
-import { KARTEN } from "../karten.js";
+import { KARTEN as DE } from "../karten.js";
+import { KARTEN as EN } from "../karten.en.js";
 
 const links = new Map(); // url -> [card ids]
-for (const card of KARTEN) for (const s of card.quellen || []) links.set(s.url, [...(links.get(s.url) || []), card.id]);
+for (const [lang, cards] of [["de", DE], ["en", EN]]) {
+  for (const card of cards) for (const s of card.quellen || []) links.set(s.url, [...new Set([...(links.get(s.url) || []), lang === "de" ? card.id : `${card.id} (en)`])]);
+}
 
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
 // These status codes usually mean "bot blocked", not "page gone"
