@@ -422,7 +422,10 @@ export const cards: Card[] = [
     ],
     counterQuestion: "Do you skip voting too, because your one vote won’t change anything?",
     sources: [
-      { title: "Scarborough et al.: Vegans, vegetarians, fish-eaters and meat-eaters in the UK show discrepant environmental impacts (Nature Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", year: 2023 },
+      { title: "Scarborough et al.: Vegans, vegetarians, fish-eaters and meat-eaters in the UK show discrepant environmental impacts (Nat Food)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10365988/", year: 2023, kind: "study" },
+      { title: "Ivanova et al.: Quantifying the potential for climate change mitigation of consumption options (Environ Res Lett)", url: "https://doi.org/10.1088/1748-9326/ab8589", year: 2020, kind: "review" },
+      { title: "IPCC: Climate Change and Land – Summary for Policymakers", url: "https://www.ipcc.ch/srccl/chapter/summary-for-policymakers/", year: 2019, kind: "official" },
+      { title: "Sparkman & Walton: Dynamic Norms Promote Sustainable Behavior, Even if It Is Counternormative (Psychol Sci)", url: "https://doi.org/10.1177/0956797617719950", year: 2017, kind: "study" },
     ],
   },
   {
@@ -440,8 +443,10 @@ export const cards: Card[] = [
     counterQuestion: "What does a kilo of lentils cost you compared with a kilo of meat?",
     concession: "The figures come from model calculations using 2017 prices. If you buy lots of ready-made substitutes, you won’t automatically see these savings.",
     sources: [
-      { title: "Springmann for the German Environment Agency (Umweltbundesamt): Towards healthy and sustainable diets in Germany (TEXTE 67/2023)", url: "https://www.umweltbundesamt.de/publikationen/towards-healthy-sustainable-diets-in-germany", year: 2023 },
-      { title: "Springmann et al.: The global and regional costs of healthy and sustainable dietary patterns (Lancet Planetary Health)", url: "https://doi.org/10.1016/S2542-5196(21)00251-5", year: 2021 },
+      { title: "Umweltbundesamt (Springmann): Towards healthy and sustainable diets in Germany (TEXTE 67/2023)", url: "https://www.umweltbundesamt.de/publikationen/towards-healthy-sustainable-diets-in-germany", year: 2023, kind: "official" },
+      { title: "Springmann et al.: The global and regional costs of healthy and sustainable dietary patterns: a modelling study (Lancet Planet Health)", url: "https://doi.org/10.1016/S2542-5196(21)00251-5", year: 2021, kind: "study" },
+      { title: "Kahleova et al.: Vegan Diet and Food Costs Among Adults With Overweight: A Secondary Analysis of a Randomized Clinical Trial (JAMA Netw Open)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10481244/", year: 2023, kind: "study" },
+      { title: "Hohoff et al.: Food Costs of Children and Adolescents Consuming Vegetarian, Vegan or Omnivore Diets: Results of the Cross-Sectional VeChi Youth Study (Nutrients)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9573339/", year: 2022, kind: "study" },
     ],
   },
   {
@@ -854,14 +859,17 @@ export const cards: Card[] = [
     argument: "Vegans are always so preachy.",
     answer: "Some are annoying, that’s true. But often just being vegan is enough for others to feel attacked. I’m happy to talk about it if you want – I’m not trying to force anything on you.",
     points: [
-      "In studies, meat-eaters rated vegans as negatively as, or more negatively than, many other groups that face prejudice.",
+      "In studies, meat-eaters rated vegans as negatively as, or more negatively than, several other groups that face prejudice.",
       "They viewed most negatively the vegans who are vegan for animal or environmental reasons – not for health reasons.",
       "Talking about animal suffering can easily sound like an accusation, even when none is meant. Asking questions helps more than listing facts.",
     ],
     counterQuestion: "When did a vegan last push something on you?",
     concession: "There are vegans who come across as harsh and preachy. That hurts the cause. Staying friendly helps the conversation.",
     sources: [
-      { title: "MacInnis & Hodson: It ain’t easy eating greens – Evidence of bias toward vegetarians and vegans (Group Process Intergroup Relat)", url: "https://doi.org/10.1177/1368430215618253", year: 2017 },
+      { title: "MacInnis & Hodson: It ain’t easy eating greens: Evidence of bias toward vegetarians and vegans from both source and target (Group Process Intergroup Relat)", url: "https://doi.org/10.1177/1368430215618253", year: 2017, kind: "study" },
+      { title: "Minson & Monin: Do-Gooder Derogation: Disparaging Morally Motivated Minorities to Defuse Anticipated Reproach (Soc Psychol Personal Sci)", url: "https://doi.org/10.1177/1948550611415695", year: 2012, kind: "study" },
+      { title: "Shulman, Shnitzer-Akuka & Reifen-Tagar: The cost of attributing moral blame: Defensiveness and resistance to change when raising awareness to animal suffering in factory farming (PLoS One)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8389417/", year: 2021, kind: "study" },
+      { title: "De Groeve et al.: Moralistic stereotyping of vegans: The role of dietary motivation and advocacy status (Appetite)", url: "https://doi.org/10.1016/j.appet.2022.106006", year: 2022, kind: "study" },
     ],
   },
   {
@@ -879,9 +887,11 @@ export const cards: Card[] = [
     counterQuestion: "Shouldn’t we be helping farmers make the switch instead?",
     concession: "For individual families the change is hard, especially in regions with a lot of livestock farming. It can’t work without help from policymakers.",
     sources: [
-      { title: "Destatis: Zahl der schweinehaltenden Betriebe sinkt weiter (Mai 2026) [Federal Statistical Office of Germany: number of pig farms keeps falling (May 2026)]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/06/PD26_221_413.html", year: 2026 },
-      { title: "Destatis: 7 % weniger Arbeitskräfte in der Landwirtschaft von 2020 bis 2023 [Federal Statistical Office of Germany: 7% fewer agricultural workers from 2020 to 2023]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/05/PD24_176_41.html", year: 2024 },
-      { title: "Zukunftskommission Landwirtschaft: Abschlussbericht „Zukunft Landwirtschaft. Eine gesamtgesellschaftliche Aufgabe“ (PDF) [Future Commission on Agriculture: final report “The future of agriculture – a task for society as a whole”]", url: "https://www.bmuv.de/fileadmin/Daten_BMU/Download_PDF/Bodenschutz/zkl_abschlussbericht_bf.pdf", year: 2021 },
+      { title: "Destatis: Zahl der schweinehaltenden Betriebe sinkt weiter (Mai 2026) [Federal Statistical Office of Germany: number of pig farms keeps falling (May 2026)]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/06/PD26_221_413.html", year: 2026, kind: "official" },
+      { title: "Destatis: 7 % weniger Arbeitskräfte in der Landwirtschaft von 2020 bis 2023 [Federal Statistical Office of Germany: 7% fewer agricultural workers from 2020 to 2023]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/05/PD24_176_41.html", year: 2024, kind: "official" },
+      { title: "Zukunftskommission Landwirtschaft: Abschlussbericht „Zukunft Landwirtschaft. Eine gesamtgesellschaftliche Aufgabe“ (PDF) [Future Commission on Agriculture: final report “The future of agriculture – a task for society as a whole”]", url: "https://www.bmuv.de/fileadmin/Daten_BMU/Download_PDF/Bodenschutz/zkl_abschlussbericht_bf.pdf", year: 2021, kind: "official" },
+      { title: "Destatis: Rund 7 800 landwirtschaftliche Betriebe weniger seit dem Jahr 2020 [Federal Statistical Office of Germany: around 7,800 fewer farms since 2020]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/01/PD24_021_41.html", year: 2024, kind: "official" },
+      { title: "Destatis: Agrarstrukturerhebung 2023: Zahl viehhaltender Betriebe zwischen 2020 und 2023 um 4 % gesunken [Federal Statistical Office of Germany: farm structure survey 2023 – number of livestock farms fell by 4% between 2020 and 2023]", url: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/03/PD24_123_41.html", year: 2024, kind: "official" },
     ],
   },
   {
@@ -899,8 +909,10 @@ export const cards: Card[] = [
     counterQuestion: "Is a plate of lentils and rice really a luxury?",
     concession: "People with little money, time or choice find any change harder. Take that seriously instead of explaining it away.",
     sources: [
-      { title: "Our World in Data: Meat supply per person (FAO)", url: "https://ourworldindata.org/grapher/meat-supply-per-person", year: 2025 },
-      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026 },
+      { title: "Our World in Data: Meat supply per person", url: "https://ourworldindata.org/grapher/meat-supply-per-person", year: 2025, kind: "other" },
+      { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
+      { title: "FAO: Food balance sheets 2010–2023 (FAOSTAT Analytical Brief 112)", url: "https://doi.org/10.4060/cd7162en", year: 2025, kind: "official" },
+      { title: "Springmann et al.: The global and regional costs of healthy and sustainable dietary patterns: a modelling study (Lancet Planet Health)", url: "https://doi.org/10.1016/S2542-5196(21)00251-5", year: 2021, kind: "study" },
     ],
   },
   {
