@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gut vorbereitet – Antworten auf Argumente gegen Veganismus</title>
+  <meta name="description" content="Karteikarten mit kurzen, belegten Antworten auf die häufigsten Argumente gegen Veganismus. Zum Stöbern und Üben.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <header class="kopf">
+    <a class="marke" href="#">
+      <span class="marke-icon" aria-hidden="true">🌱</span>
+      <span>Gut vorbereitet</span>
+    </a>
+    <nav class="tabs" aria-label="Modus">
+      <a href="#" data-tab="stoebern">Stöbern</a>
+      <a href="#ueben" data-tab="ueben">Üben</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Stöbern -->
+    <section id="ansicht-stoebern" class="ansicht">
+      <div class="intro">
+        <h1>Antworten für die nächste Diskussion</h1>
+        <p>Die häufigsten Argumente gegen Veganismus – mit einer Antwort, die man im Gespräch sagen kann, und Quellen, die halten.</p>
+      </div>
+      <div class="werkzeuge">
+        <input id="suche" type="search" placeholder="Argument suchen, z. B. „Protein“" autocomplete="off">
+        <div id="filter" class="chips" role="group" aria-label="Kategorie"></div>
+      </div>
+      <div id="raster" class="raster"></div>
+      <p id="leer" class="leer" hidden>Kein Argument gefunden.</p>
+    </section>
+
+    <!-- Üben -->
+    <section id="ansicht-ueben" class="ansicht" hidden>
+      <div id="ueben-start" class="ueben-start">
+        <h1>Üben</h1>
+        <p>Du siehst ein Argument. Überleg dir deine Antwort – laut oder im Kopf –, dann deck die Karte auf. Karten, die du noch nicht sicher kannst, kommen öfter dran.</p>
+        <div id="ueben-filter" class="chips" role="group" aria-label="Kategorien zum Üben"></div>
+        <div id="fortschritt-uebersicht" class="uebersicht"></div>
+        <div class="knopfreihe">
+          <button id="start" class="knopf haupt">Los geht’s</button>
+          <button id="zuruecksetzen" class="knopf leise">Fortschritt zurücksetzen</button>
+        </div>
+      </div>
+
+      <div id="ueben-karte" class="ueben-karte" hidden>
+        <div class="leiste"><div id="leiste-fuellung"></div></div>
+        <p id="zaehler" class="zaehler"></p>
+        <div class="szene">
+          <div id="lernkarte" class="lernkarte">
+            <div class="seite vorne">
+              <span id="lern-kategorie" class="kategorie"></span>
+              <p class="sagt">Jemand sagt:</p>
+              <h2 id="lern-argument"></h2>
+              <p class="hinweis">Was antwortest du?</p>
+            </div>
+            <div class="seite hinten">
+              <span id="lern-bezug" class="kategorie bezug"></span>
+              <p id="lern-kurz" class="kurz"></p>
+              <div id="lern-zahl"></div>
+              <button id="lern-mehr" class="link">Mehr dazu ↓</button>
+            </div>
+          </div>
+        </div>
+        <div id="aufdecken-reihe" class="knopfreihe mitte">
+          <button id="aufdecken" class="knopf haupt">Aufdecken <kbd>Leertaste</kbd></button>
+        </div>
+        <div id="bewerten-reihe" class="knopfreihe mitte" hidden>
+          <button id="nochmal" class="knopf">Nochmal üben <kbd>1</kbd></button>
+          <button id="gewusst" class="knopf haupt">Wusste ich <kbd>2</kbd></button>
+        </div>
+      </div>
+
+      <div id="ueben-ende" class="ueben-start" hidden>
+        <h1>Runde geschafft</h1>
+        <p id="ende-text"></p>
+        <div class="knopfreihe">
+          <button id="nochmal-runde" class="knopf haupt">Neue Runde</button>
+          <a href="#" class="knopf leise">Zum Stöbern</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detailansicht -->
+  <dialog id="detail" class="detail" aria-labelledby="detail-argument">
+    <button class="schliessen" id="detail-zu" aria-label="Schließen">×</button>
+    <div id="detail-inhalt"></div>
+  </dialog>
+
+  <footer class="fuss">
+    <p>Alle Zahlen mit Quelle. Fehler gefunden? Sag Bescheid – Glaubwürdigkeit geht vor.</p>
+  </footer>
+
+  <script src="karten.js"></script>
+  <script src="app.js?v=3"></script>
+</body>
+</html>
