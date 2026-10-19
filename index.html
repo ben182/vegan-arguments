@@ -4,86 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gut vorbereitet – Antworten auf Argumente gegen Veganismus</title>
-  <meta name="description" content="Karteikarten mit kurzen, belegten Antworten auf die häufigsten Argumente gegen Veganismus. Zum Stöbern und Üben.">
+  <meta name="description" content="Lernkarten mit kurzen, belegten Antworten auf die häufigsten Argumente gegen Veganismus. Zum Nachschlagen und Üben.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <header class="kopf">
-    <a class="marke" href="#">
-      <span class="marke-icon" aria-hidden="true">🌱</span>
-      <span>Gut vorbereitet</span>
-    </a>
-    <nav class="tabs" aria-label="Modus">
-      <a href="#" data-tab="stoebern">Stöbern</a>
-      <a href="#ueben" data-tab="ueben">Üben</a>
+    <a class="marke" href="#">Gut vorbereitet</a>
+    <nav class="umschalter" aria-label="Modus">
+      <a href="#" data-tab="stoebern">Nachschlagen</a>
+      <a href="#ueben" data-tab="ueben">Üben <span id="faellig-zahl" class="faellig-zahl" hidden></span></a>
     </nav>
   </header>
 
   <main>
-    <!-- Stöbern -->
+    <!-- Nachschlagen -->
     <section id="ansicht-stoebern" class="ansicht">
       <div class="intro">
-        <h1>Antworten für die nächste Diskussion</h1>
-        <p>Die häufigsten Argumente gegen Veganismus – mit einer Antwort, die man im Gespräch sagen kann, und Quellen, die halten.</p>
+        <h1>Was du antwortest, wenn am Tisch wieder jemand sagt …</h1>
+        <p>Die häufigsten Argumente gegen Veganismus, jeweils mit einer Antwort für das Gespräch und Quellen, die einer Nachfrage standhalten.</p>
       </div>
       <div class="werkzeuge">
-        <input id="suche" type="search" placeholder="Argument suchen, z. B. „Protein“" autocomplete="off">
-        <div id="filter" class="chips" role="group" aria-label="Kategorie"></div>
+        <input id="suche" type="search" placeholder="Suchen, z. B. Protein oder Soja" autocomplete="off" aria-label="Argumente durchsuchen">
+        <div id="filter" class="reiter" role="group" aria-label="Thema"></div>
       </div>
       <div id="raster" class="raster"></div>
-      <p id="leer" class="leer" hidden>Kein Argument gefunden.</p>
+      <p id="leer" class="leer" hidden>Dazu gibt es noch keine Karte. Versuch ein anderes Stichwort.</p>
     </section>
 
     <!-- Üben -->
     <section id="ansicht-ueben" class="ansicht" hidden>
-      <div id="ueben-start" class="ueben-start">
-        <h1>Üben</h1>
-        <p>Du siehst ein Argument. Überleg dir deine Antwort – laut oder im Kopf –, dann deck die Karte auf. Karten, die du noch nicht sicher kannst, kommen öfter dran.</p>
-        <div id="ueben-filter" class="chips" role="group" aria-label="Kategorien zum Üben"></div>
-        <div id="fortschritt-uebersicht" class="uebersicht"></div>
+      <div id="ueben-start" class="ueben-text">
+        <h1>Üben wie mit Anki</h1>
+        <p>Du siehst ein Argument und überlegst dir deine Antwort. Dann drehst du die Karte um und sagst ehrlich, wie gut es ging. Danach plant die Seite, wann die Karte wiederkommt: kurz bevor du sie vergessen würdest.</p>
+        <div id="ueben-filter" class="reiter" role="group" aria-label="Themen zum Üben"></div>
+        <dl id="zaehler-start" class="zaehler"></dl>
         <div class="knopfreihe">
-          <button id="start" class="knopf haupt">Los geht’s</button>
-          <button id="zuruecksetzen" class="knopf leise">Fortschritt zurücksetzen</button>
+          <button id="start" class="knopf haupt">Üben starten</button>
         </div>
+        <details class="erklaerung">
+          <summary>Wie funktioniert das?</summary>
+          <p>Die Planung nutzt FSRS, den Algorithmus, mit dem auch Anki arbeitet. Neue Karten kommen nach 1 und 10 Minuten noch einmal, danach in wachsenden Abständen: erst nach Tagen, später nach Wochen und Monaten. Was du vergisst, kommt sofort wieder dran. Pro Tag kommen höchstens 10 neue Karten dazu. Dein Fortschritt bleibt nur in diesem Browser gespeichert.</p>
+          <button id="zuruecksetzen" class="textknopf">Fortschritt löschen</button>
+        </details>
       </div>
 
       <div id="ueben-karte" class="ueben-karte" hidden>
-        <div class="leiste"><div id="leiste-fuellung"></div></div>
-        <p id="zaehler" class="zaehler"></p>
+        <dl id="zaehler-lauf" class="zaehler klein"></dl>
         <div class="szene">
           <div id="lernkarte" class="lernkarte">
             <div class="seite vorne">
-              <span id="lern-kategorie" class="kategorie"></span>
-              <p class="sagt">Jemand sagt:</p>
-              <h2 id="lern-argument"></h2>
-              <p class="hinweis">Was antwortest du?</p>
+              <div class="kartenkopf"><span id="lern-kategorie"></span></div>
+              <div class="liniert">
+                <p class="sagt">Jemand sagt:</p>
+                <p id="lern-argument" class="handschrift gross"></p>
+              </div>
             </div>
             <div class="seite hinten">
-              <span id="lern-bezug" class="kategorie bezug"></span>
-              <p id="lern-kurz" class="kurz"></p>
-              <div id="lern-zahl"></div>
-              <button id="lern-mehr" class="link">Mehr dazu ↓</button>
+              <div class="kartenkopf"><span id="lern-bezug" class="handschrift"></span></div>
+              <div class="antwortflaeche">
+                <p id="lern-kurz" class="kurz"></p>
+                <div id="lern-zahl"></div>
+                <button id="lern-mehr" class="textknopf">Ganze Karte mit Quellen lesen</button>
+              </div>
             </div>
           </div>
         </div>
         <div id="aufdecken-reihe" class="knopfreihe mitte">
-          <button id="aufdecken" class="knopf haupt">Aufdecken <kbd>Leertaste</kbd></button>
+          <button id="aufdecken" class="knopf haupt">Antwort zeigen <kbd>Leertaste</kbd></button>
         </div>
-        <div id="bewerten-reihe" class="knopfreihe mitte" hidden>
-          <button id="nochmal" class="knopf">Nochmal üben <kbd>1</kbd></button>
-          <button id="gewusst" class="knopf haupt">Wusste ich <kbd>2</kbd></button>
+        <div id="bewerten-reihe" class="bewerten" hidden>
+          <button class="bewertung nochmal" data-note="1"><small></small><span>Nochmal</span><kbd>1</kbd></button>
+          <button class="bewertung schwer" data-note="2"><small></small><span>Schwer</span><kbd>2</kbd></button>
+          <button class="bewertung gut" data-note="3"><small></small><span>Gut</span><kbd>3</kbd></button>
+          <button class="bewertung einfach" data-note="4"><small></small><span>Einfach</span><kbd>4</kbd></button>
         </div>
       </div>
 
-      <div id="ueben-ende" class="ueben-start" hidden>
-        <h1>Runde geschafft</h1>
+      <div id="ueben-ende" class="ueben-text" hidden>
+        <h1>Für heute bist du durch</h1>
         <p id="ende-text"></p>
         <div class="knopfreihe">
-          <button id="nochmal-runde" class="knopf haupt">Neue Runde</button>
-          <a href="#" class="knopf leise">Zum Stöbern</a>
+          <button id="mehr-neue" class="knopf haupt">10 weitere neue Karten</button>
+          <a href="#" class="knopf">Zum Nachschlagen</a>
         </div>
       </div>
     </section>
@@ -96,10 +101,11 @@
   </dialog>
 
   <footer class="fuss">
-    <p>Alle Zahlen mit Quelle. Fehler gefunden? Sag Bescheid – Glaubwürdigkeit geht vor.</p>
+    <p>Jede Zahl hat eine Quelle. Wenn dir ein Fehler auffällt, melde ihn – Glaubwürdigkeit geht vor.</p>
   </footer>
 
-  <script src="karten.js"></script>
-  <script src="app.js?v=3"></script>
+  <script src="karten.js?v=7"></script>
+  <script src="fsrs.js?v=7"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
