@@ -2,7 +2,7 @@
 
 Flashcards with short, evidence-based answers to the most common arguments against veganism. The site is in German, with an English version at `/en/`.
 
-- **Look up** every argument, with a one-line answer for the conversation, follow-up points, a counter-question, the fallacy behind it, what to honestly concede, and sources.
+- **Look up** every argument, with a one-line answer for the conversation and its estimated speaking time, what to honestly concede, follow-up points, a counter-question, the fallacy behind it, and sources. Each card shows its sources as a timeline by year of publication, the mark telling the kind of source (`kind` in the card data).
 - **Practise** like in Anki: cards are scheduled with [FSRS](https://github.com/open-spaced-repetition/fsrs4anki), the algorithm Anki uses by default, including learning steps and a daily limit. Progress is stored in the browser only.
 
 Every number has a source. Accuracy comes first: if you find an error or an outdated source, please [report it](../../issues/new?template=error.yml).
@@ -30,17 +30,18 @@ Set `SITE_URL` to the production address for canonical links, hreflang alternate
 | `shared/data/cards.en.ts` | English translation, same IDs |
 | `shared/types/cards.ts` | Types of the card data |
 | `shared/texts.ts` | UI texts and localized paths in German and English |
+| `shared/evidence.ts` | Evidence figures for the source timelines: distinct sources, kinds, year axis, speaking time |
 | `shared/fsrs.ts` | Spaced-repetition scheduling (FSRS-5, Anki defaults) |
 | `shared/progress-storage.ts` | Stored progress format (`localStorage` key `vk-anki-v1`) |
 | `app/pages/` | Look up (`index.vue`), practise (`practise.vue`), card page (`card/[id].vue`) |
-| `app/components/` | Header, footer, card body, card panel, category tabs, counters |
+| `app/components/` | Header, footer, card body, card panel, evidence timeline and sticker, category tabs, counters |
 | `app/composables/` | State: cards (`useDeck`), progress (`useProgress`), queue (`useReviewQueue`), practice session, SEO |
 | `app/plugins/card-panel.ts` | Opens cards from the list in a side panel while the URL changes to the card |
 | `server/routes/` | `robots.txt` and the English web app manifest |
 | `nuxt.config.ts` | Modules: i18n routes, sitemap, PWA; prerendered routes |
 | `scripts/check-sources.mjs` | Checks every source link; runs monthly via GitHub Actions |
 
-Modules: [`@nuxtjs/i18n`](https://i18n.nuxtjs.org) for the localized routes, [`@nuxtjs/sitemap`](https://nuxtseo.com/docs/sitemap) for the bilingual sitemap, [`@vite-pwa/nuxt`](https://vite-pwa-org.netlify.app/frameworks/nuxt) for the service worker and [`@nuxt/eslint`](https://eslint.nuxt.com). Fonts are self-hosted via Fontsource.
+Modules: [`@nuxtjs/i18n`](https://i18n.nuxtjs.org) for the localized routes, [`@nuxtjs/sitemap`](https://nuxtseo.com/docs/sitemap) for the bilingual sitemap, [`@vite-pwa/nuxt`](https://vite-pwa-org.netlify.app/frameworks/nuxt) for the service worker and [`@nuxt/eslint`](https://eslint.nuxt.com). The only typeface, Schibsted Grotesk, is self-hosted via Fontsource.
 
 ## Tests
 

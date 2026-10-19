@@ -1,65 +1,77 @@
 <script setup lang="ts">
 import type { Card } from "#shared/types/cards";
 
-// The full card. Used by the card page (/karte/<id>/) and by the card panel.
+// The full card: the answer first, then what you should concede, then the follow-ups; the evidence
+// sits in its own column. Used by the card page (/karte/<id>/) and by the card panel.
 const props = withDefaults(defineProps<{
   card: Card;
   /** h1 on the card page, h2 in the panel. */
   headingTag?: "h1" | "h2";
   /** Learning status (only shown in the app). */
   status?: string;
-}>(), { headingTag: "h2", status: "" });
+  /** Category line above the argument (the card page shows it in the breadcrumb instead). */
+  showTopic?: boolean;
+}>(), { headingTag: "h2", status: "", showTopic: true });
 
 const t = useTexts();
 const deck = useDeck();
 
-const checkedMonth = computed(() =>
-  new Date(`${props.card.checked}T12:00:00`).toLocaleDateString(t.value.locale, { month: "long", year: "numeric" }),
-);
-const hasNotes = computed(() => !!(props.card.counterQuestion || props.card.fallacy || props.card.concession));
+const sub = computed(() => (props.headingTag === "h1" ? "h2" : "h3"));
 </script>
 
 <template>
-  <div class="card-body" :style="{ '--hue': categoryHue(card.category) }">
+  <div class="card-body">
     <header class="cb-header">
-      <p class="cb-topic"><span class="dot" aria-hidden="true" />{{ deck.categoryName(card.category) }}<span v-if="status" class="status">{{ status }}</span></p>
-      <p class="cb-says">{{ t.someoneSays }}</p>
-      <component :is="headingTag" id="card-argument" class="cb-argument">{{ stripQuotes(card.argument) }}</component>
+      <p v-if="showTopic || status" class="cb-topic">
+        <span v-if="showTopic">{{ deck.categoryName(card.category) }}</span><span v-if="status" class="status">{{ status }}</span>
+      </p>
+      <p class="says">{{ t.someoneSays }}</p>
+      <component :is="headingTag" id="card-argument" class="argument">{{ stripQuotes(card.argument) }}</component>
     </header>
-    <section class="cb-answer">
-      <h3>{{ t.answerTitle }}</h3>
-      <p class="answer">{{ card.answer }}</p>
-      <CardFigure :card="card" />
-    </section>
-    <section v-if="card.points?.length" class="cb-section">
-      <h3>{{ t.pushBack }}</h3>
-      <ul class="points">
-        <li v-for="(point, i) in card.points" :key="i">{{ point }}</li>
-      </ul>
-    </section>
-    <div v-if="hasNotes" class="notes">
-      <div v-if="card.counterQuestion" class="note counter">
-        <h3>{{ t.counterQuestion }}</h3>
-        <p>{{ card.counterQuestion }}</p>
+
+    <div class="cb-columns">
+      <div class="cb-text">
+        <section class="cb-block">
+          <component :is="sub">{{ t.answerTitle }}</component>
+          <p class="answer-text">{{ card.answer }}</p>
+          <SpeakingTime :text="card.answer" />
+        </section>
+
+        <CardFigure :card="card" />
+
+        <section v-if="card.concession" class="cb-block concession">
+          <component :is="sub">{{ t.concede }}</component>
+          <p>{{ card.concession }}</p>
+        </section>
+
+        <section v-if="card.points?.length" class="cb-block">
+          <component :is="sub">{{ t.pushBack }}</component>
+          <ul class="points">
+            <li v-for="(point, i) in card.points" :key="i">{{ point }}</li>
+          </ul>
+        </section>
+
+        <section v-if="card.counterQuestion" class="cb-block counter-question">
+          <component :is="sub">{{ t.counterQuestion }}</component>
+          <p>{{ card.counterQuestion }}</p>
+        </section>
+
+        <section v-if="card.fallacy" class="cb-block fallacy">
+          <component :is="sub">{{ t.fallacy }}: {{ card.fallacy.name }}</component>
+          <p>{{ card.fallacy.explanation }}</p>
+        </section>
       </div>
-      <div v-if="card.fallacy" class="note fallacy">
-        <h3>{{ t.fallacy }}: {{ card.fallacy.name }}</h3>
-        <p>{{ card.fallacy.explanation }}</p>
-      </div>
-      <div v-if="card.concession" class="note concession">
-        <h3>{{ t.concede }}</h3>
-        <p>{{ card.concession }}</p>
-      </div>
+
+      <aside v-if="card.sources?.length" class="evidence" :aria-labelledby="`evidence-${card.id}`">
+        <div class="evidence-head">
+          <component :is="sub" :id="`evidence-${card.id}`">{{ t.evidenceTitle }}</component>
+          <CheckedSticker v-if="card.checked" :date="card.checked" />
+        </div>
+        <EvidenceBar :sources="card.sources" :width="380" :r="5" />
+        <SourceList :sources="card.sources" />
+      </aside>
     </div>
-    <section v-if="card.sources?.length" class="cb-section">
-      <h3>{{ t.sources }}</h3>
-      <ol class="sources">
-        <li v-for="source in card.sources" :key="source.url">
-          <a :href="source.url" target="_blank" rel="noopener">{{ source.title }}</a><span class="source-meta">{{ sourceHost(source.url) }}{{ source.year && !source.title.includes(String(source.year)) ? `, ${source.year}` : "" }}</span>
-        </li>
-      </ol>
-      <p v-if="card.checked" class="checked">{{ t.checked(checkedMonth) }}</p>
-    </section>
+
     <div class="cb-footer">
       <slot name="footer" />
       <a class="text-button" :href="reportErrorLink(card)" target="_blank" rel="noopener">{{ t.reportError }}</a>

@@ -6,8 +6,8 @@ export const DEFAULT_SITE_URL = "https://vegan-arguments.pages.dev";
 /** Production address for canonical links and the sitemap, from SITE_URL, without trailing slash. */
 export const resolveSiteUrl = (env: string | undefined) => (env || DEFAULT_SITE_URL).replace(/\/$/, "");
 
-export const THEME_COLOR = "#2b1a2c";
-export const BACKGROUND_COLOR = "#f5f3f4";
+export const THEME_COLOR = "#eef2f0";
+export const BACKGROUND_COLOR = "#eef2f0";
 
 export const REPO_URL = "https://github.com/ben182/vegan-arguments";
 

@@ -3,6 +3,7 @@ import { webManifestPath } from "#shared/site";
 import { isCardRoute } from "~/plugins/card-panel";
 
 const locale = useLocaleCode();
+const t = useTexts();
 // The router's current route: useRoute() outside of pages only updates once a new page has rendered,
 // which does not happen when only the card panel opens
 const route = useRouter().currentRoute;
@@ -27,6 +28,7 @@ const activeSection = computed(() => {
 </script>
 
 <template>
+  <a class="skip-link" href="#main">{{ t.skipToContent }}</a>
   <AppHeader :active="activeSection" :show-due-count="!isCardPage" />
   <NuxtPage :route="background ?? undefined" />
   <AppFooter v-if="!isCardPage" />

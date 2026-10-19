@@ -15,7 +15,7 @@ useHead({
 
 <template>
   <AppHeader hide-language-switch />
-  <main class="card-page">
+  <main id="main" class="card-page" tabindex="-1">
     <div class="practice-text">
       <h1>Diese Seite gibt es nicht</h1>
       <p>Vielleicht ist der Link veraltet oder hat einen Tippfehler. Alle Argumente findest du auf der Startseite.</p>

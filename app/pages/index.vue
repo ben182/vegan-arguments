@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { Card, CategoryId } from "#shared/types/cards";
+import { uniqueSources } from "#shared/evidence";
 
-// Look up: all arguments, grouped by category, with search and a category filter.
+// Look up: opens with every source of the deck as a chart, then the searchable, filterable list.
 const t = useTexts();
 const deck = useDeck();
+const evidence = useEvidence();
 const cardStatus = useCardStatus();
 
 usePageSeo(() => ({
@@ -20,55 +22,70 @@ const query = useState("browse-query", () => "");
 
 const results = computed(() => {
   const q = normalizeForSearch(query.value.trim());
-  return deck.value.cards.filter((c) =>
-    (!filter.value || c.category === filter.value)
-    && (!q || normalizeForSearch([c.argument, c.answer, ...(c.points || [])].join(" ")).includes(q)),
-  );
+  const order = deck.value.categoryIds;
+  return deck.value.cards
+    .filter((c) =>
+      (!filter.value || c.category === filter.value)
+      && (!q || normalizeForSearch([c.argument, c.answer, c.figure?.text ?? "", ...(c.points || [])].join(" ")).includes(q)),
+    )
+    .sort((a, b) => order.indexOf(a.category) - order.indexOf(b.category));
 });
 
-const groups = computed(() =>
-  deck.value.categoryIds
-    .map((category) => ({ category, cards: results.value.filter((c) => c.category === category) }))
-    .filter((g) => g.cards.length),
-);
+const chartLabel = computed(() => {
+  const e = evidence.value;
+  return `${t.value.chartLabel(e.sources.length, e.axis.from, e.axis.to)}. ${e.summary(e.sources)}`;
+});
 
-const inventory = computed(() =>
-  t.value.inventory(deck.value.cards.length, new Set(deck.value.cards.flatMap((c) => (c.sources || []).map((s) => s.url))).size),
-);
-
-const sourceCount = (c: Card) => c.sources?.length || 0;
+const sourceCount = (c: Card) => uniqueSources(c.sources || []).length;
 </script>
 
 <template>
-  <main>
-    <section class="view">
-      <div class="intro">
-        <h1>{{ t.introTitle }}</h1>
-        <p>{{ t.introText }}</p>
-        <p class="inventory">{{ inventory }}</p>
+  <main id="main" tabindex="-1">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>{{ t.heroTitle(deck.cards.length, evidence.sources.length) }}</h1>
+        <p class="hero-sub">{{ t.heroText(evidence.recent) }} {{ evidence.checkedText }}</p>
       </div>
-      <div class="toolbar">
-        <label class="search-field">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-          <input v-model="query" type="search" :placeholder="t.searchPlaceholder" autocomplete="off" :aria-label="t.searchLabel">
-        </label>
-        <CategoryTabs :label="t.filterLabel" with-all :is-pressed="(c) => (filter || '') === c" @select="(c) => (filter = c || null)" />
+      <figure class="hero-chart">
+        <EvidenceBar class="chart-wide" :sources="evidence.sources" :width="760" :r="4.2" large :label="chartLabel" />
+        <EvidenceBar class="chart-narrow" :sources="evidence.sources" :width="358" :r="4.2" large :label="chartLabel" />
+        <figcaption>
+          <span>{{ t.chartCaption }}</span>
+          <EvidenceLegend />
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="finder" :aria-label="t.searchLabel">
+      <label class="search-field">
+        <svg aria-hidden="true" viewBox="0 0 20 20" width="20" height="20"><circle cx="8.5" cy="8.5" r="5.5" /><path d="m13 13 4.5 4.5" /></svg>
+        <input v-model="query" type="search" :placeholder="t.searchPlaceholder" autocomplete="off" :aria-label="t.searchLabel">
+      </label>
+      <CategoryTabs :label="t.filterLabel" with-all :is-pressed="(c) => (filter || '') === c" @select="(c) => (filter = c || null)" />
+    </section>
+
+    <section :aria-label="t.navLookUp">
+      <div class="table-head" aria-hidden="true">
+        <span>{{ t.columnArgument }}</span><span>{{ t.columnFigure }}</span><span>{{ t.columnEvidence }}</span>
       </div>
-      <div class="list">
-        <section v-for="(group, gi) in groups" :key="group.category" class="group" :style="{ '--hue': categoryHue(group.category) }" :aria-labelledby="`g-${group.category}`">
-          <h2 :id="`g-${group.category}`" class="group-title"><span class="dot" aria-hidden="true" />{{ deck.categoryName(group.category) }}<span class="count">{{ t.argumentCount(group.cards.length) }}</span></h2>
-          <div v-if="gi === 0" class="column-header" aria-hidden="true"><span>{{ t.columnTheySay }}</span><span>{{ t.columnYouAnswer }}</span></div>
-          <ul class="rows">
-            <li v-for="card in group.cards" :key="card.id">
-              <NuxtLink class="row" :to="t.cardPath(card.id)">
-                <span class="row-argument">{{ stripQuotes(card.argument) }}</span>
-                <span class="row-answer">{{ card.answer }}</span>
-                <span class="row-meta"><span v-if="sourceCount(card)" class="source-count">{{ t.sourceCount(sourceCount(card)) }}</span><span v-if="cardStatus(card.id)" class="status">{{ cardStatus(card.id) }}</span></span>
-              </NuxtLink>
-            </li>
-          </ul>
-        </section>
-      </div>
+      <ol class="rows">
+        <li v-for="card in results" :key="card.id" class="row">
+          <NuxtLink class="row-link" :to="t.cardPath(card.id)">
+            <span class="row-main">
+              <span class="row-topic">{{ deck.categoryName(card.category) }}<span v-if="cardStatus(card.id)" class="status">{{ cardStatus(card.id) }}</span></span>
+              <span class="row-argument">{{ stripQuotes(card.argument) }}</span>
+            </span>
+            <span class="row-figure">
+              <template v-if="card.figure"><b>{{ card.figure.value }}</b><small>{{ card.figure.text }}</small></template>
+              <span v-else class="no-figure">{{ t.noFigure }}</span>
+            </span>
+            <span class="row-evidence">
+              <EvidenceBar v-if="card.sources?.length" :sources="card.sources" :width="300" :r="3.8" decorative />
+              <small>{{ t.rowEvidence(sourceCount(card), !!card.concession) }}</small>
+            </span>
+          </NuxtLink>
+        </li>
+      </ol>
       <p class="empty" :hidden="results.length > 0"><span>{{ t.emptyText }}</span> <a class="text-button" :href="suggestArgumentLink(query.trim())" target="_blank" rel="noopener">{{ t.emptyLink }}</a>.</p>
     </section>
   </main>

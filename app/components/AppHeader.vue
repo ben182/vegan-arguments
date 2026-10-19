@@ -35,10 +35,13 @@ const dueCount = computed(() => {
 <template>
   <header class="site-header">
     <div class="site-header-inner">
-      <NuxtLink class="brand" :to="t.homePath"><span class="brand-mark" aria-hidden="true">„</span><span>{{ t.brand }}</span></NuxtLink>
+      <NuxtLink class="brand" :to="t.homePath">
+        <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true"><path d="M3 21h22M7 21v-4M12 21v-8M17 21v-12M22 21v-6" /><circle cx="17" cy="6" r="2.4" /></svg>
+        <span>{{ t.brand }}</span>
+      </NuxtLink>
       <nav class="view-switch" :aria-label="t.navLabel">
-        <NuxtLink :to="t.homePath" :class="{ active: active === 'browse' }">{{ t.navLookUp }}</NuxtLink>
-        <NuxtLink :to="t.practicePath" :class="{ active: active === 'practise' }">
+        <NuxtLink :to="t.homePath" :class="{ active: active === 'browse' }" :aria-current="active === 'browse' ? 'page' : undefined">{{ t.navLookUp }}</NuxtLink>
+        <NuxtLink :to="t.practicePath" :class="{ active: active === 'practise' }" :aria-current="active === 'practise' ? 'page' : undefined">
           <span>{{ t.navPractise }}</span>
           <span v-if="showDueCount" class="due-count" :hidden="dueCount === 0">{{ dueCount || "" }}</span>
         </NuxtLink>

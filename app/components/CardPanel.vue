@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { isCardRoute } from "~/plugins/card-panel";
 
-// Side panel with the full card, over the page it was opened from (see plugins/card-panel.ts).
+// Wide sheet with the full card, over the page it was opened from (see plugins/card-panel.ts).
 const t = useTexts();
 const deck = useDeck();
 const router = useRouter();
@@ -62,10 +62,13 @@ async function share() {
 
 <template>
   <dialog ref="dialog" class="card-panel" aria-labelledby="card-argument" @click="onBackdropClick" @cancel.prevent="close">
-    <button class="close-button" :aria-label="t.close" @click="close">
-      <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
-    </button>
-    <div>
+    <!-- Zero-height sticky bar: the close button stays in view without taking room from the card -->
+    <div class="card-panel-bar">
+      <button class="close-button" :aria-label="t.close" @click="close">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+    <div class="card-panel-inner">
       <CardBody v-if="card" :card="card" :status="cardStatus(card.id)">
         <template #footer>
           <button class="button" @click="share">{{ copied ? t.linkCopied : t.copyLink }}</button>

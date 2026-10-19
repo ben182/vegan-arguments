@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import * as fsrs from "#shared/fsrs";
+import { uniqueSources } from "#shared/evidence";
 import { countsOf } from "~/composables/usePracticeSession";
 
 // Practise like in Anki: start screen, flashcard with ratings, "done for today".
+// The card reads as a conversation: what they say, then your answer and your counter-question.
 definePageMeta({
   i18n: { paths: { de: "/ueben", en: "/practise" } },
 });
@@ -29,7 +31,13 @@ const startCounts = computed(() => (progress.ready.value ? countsOf(queue(Date.n
 const nothingToDo = computed(() => progress.ready.value && !nextCard(Date.now()));
 
 const current = computed(() => (state.value.currentId ? deck.value.byId[state.value.currentId] : undefined));
-const answer = computed(() => (state.value.answerId ? deck.value.byId[state.value.answerId] : undefined));
+const evidence = useEvidence();
+const cardStatus = useCardStatus();
+
+const preview = computed(() => {
+  const c = current.value;
+  return c ? t.value.backPreview({ figure: !!c.figure, sources: uniqueSources(c.sources || []).length, concession: !!c.concession }) : "";
+});
 
 const ratings = computed(() => [
   { value: fsrs.AGAIN, name: t.value.again, cls: "again" },
@@ -65,8 +73,8 @@ onBeforeUnmount(() => document.removeEventListener("keydown", onKeydown));
 </script>
 
 <template>
-  <main>
-    <section class="view">
+  <main id="main" tabindex="-1">
+    <section class="practice">
       <div class="practice-text" :hidden="state.phase !== 'start'">
         <h1>{{ t.practiseTitle }}</h1>
         <p>{{ t.practiseText }}</p>
@@ -83,30 +91,67 @@ onBeforeUnmount(() => document.removeEventListener("keydown", onKeydown));
         </details>
       </div>
 
-      <div class="practice-card" :hidden="state.phase !== 'card'">
-        <dl class="counters compact"><QueueCounters :counts="state.counts" :current="state.currentKind" /></dl>
-        <article class="flashcard" :class="{ revealed: state.revealed }" :style="current ? { '--hue': categoryHue(current.category) } : undefined" @click="onCardClick">
-          <div class="fc-front">
-            <p class="fc-topic"><span class="dot" aria-hidden="true" /><span>{{ current ? deck.categoryName(current.category) : "" }}</span></p>
-            <p class="fc-says">{{ t.someoneSays }}</p>
-            <p class="fc-argument">{{ current ? stripQuotes(current.argument) : "" }}</p>
+      <div class="practice-session" :hidden="state.phase !== 'card'">
+        <header class="practice-head">
+          <h1>{{ t.navPractise }}</h1>
+          <dl class="counters compact"><QueueCounters :counts="state.counts" :current="state.currentKind" /></dl>
+        </header>
+
+        <article v-if="current" class="practice-card" :class="{ revealed: state.revealed }" @click="onCardClick">
+          <div class="turn them">
+            <p class="speaker">{{ t.speakerThem }}</p>
+            <div>
+              <p class="turn-topic">{{ deck.categoryName(current.category) }}<span v-if="cardStatus(current.id)" class="status">{{ cardStatus(current.id) }}</span></p>
+              <p class="argument">{{ stripQuotes(current.argument) }}</p>
+            </div>
           </div>
-          <div class="fc-back">
-            <p class="fc-you">{{ t.youAnswer }}</p>
-            <p class="fc-answer">{{ answer?.answer }}</p>
-            <div><CardFigure v-if="answer" :card="answer" /></div>
-            <button class="text-button" @click.stop="manualCardId = state.currentId">{{ t.readFullCard }}</button>
+
+          <div v-if="!state.revealed" class="turn you pending">
+            <p class="speaker">{{ t.speakerYou }}</p>
+            <div>
+              <p class="hint">{{ t.frontHint }}</p>
+              <p v-if="preview" class="preview">{{ preview }}</p>
+            </div>
+          </div>
+
+          <div v-else class="practice-back">
+            <div class="back-dialog">
+              <div class="turn you">
+                <p class="speaker">{{ t.speakerYou }}</p>
+                <div>
+                  <p class="answer-text">{{ current.answer }}</p>
+                  <SpeakingTime :text="current.answer" />
+                </div>
+              </div>
+              <div v-if="current.counterQuestion" class="turn ask">
+                <p class="speaker">{{ t.speakerAskBack }}</p>
+                <p class="counter-text">{{ current.counterQuestion }}</p>
+              </div>
+              <div v-if="current.concession" class="concession small">
+                <h2>{{ t.concedeShort }}</h2>
+                <p>{{ current.concession }}</p>
+              </div>
+            </div>
+            <div class="back-evidence">
+              <CardFigure :card="current" />
+              <template v-if="current.sources?.length">
+                <EvidenceBar :sources="current.sources" :width="300" :r="5" />
+                <p class="back-sources">{{ t.backSources(uniqueSources(current.sources).length, evidence.longDate(current.checked)) }}</p>
+              </template>
+              <button class="text-button" @click.stop="manualCardId = state.currentId">{{ t.readFullCard }}</button>
+            </div>
           </div>
         </article>
-        <div id="reveal-row" class="button-row centered" :hidden="state.revealed">
-          <button id="reveal-button" class="button primary" @click="reveal"><span>{{ t.showAnswer }}</span> <kbd>{{ t.spaceKey }}</kbd></button>
-        </div>
-        <div class="rating" :hidden="!state.revealed">
-          <p class="rating-question">{{ t.rateQuestion }}</p>
-          <div class="rating-buttons">
-            <button v-for="(r, i) in ratings" :key="r.value" class="rate" :class="r.cls" @click="rate(r.value)">
-              <span class="rate-name">{{ r.name }}</span><small>{{ state.intervals[i] }}</small><kbd>{{ r.value }}</kbd>
-            </button>
+
+        <div class="practice-actions">
+          <button v-if="!state.revealed" class="reveal-button" @click="reveal"><span>{{ t.showAnswer }}</span> <kbd>{{ t.spaceKey }}</kbd></button>
+          <div v-else class="rating">
+            <p id="rating-question" class="rating-question">{{ t.rateQuestion }}</p>
+            <div class="rating-buttons" role="group" aria-labelledby="rating-question">
+              <button v-for="(r, i) in ratings" :key="r.value" class="rate" :class="r.cls" @click="rate(r.value)">
+                <span class="rate-name">{{ r.name }}</span><span class="rate-interval">{{ state.intervals[i] }}</span><kbd>{{ r.value }}</kbd>
+              </button>
+            </div>
           </div>
         </div>
       </div>

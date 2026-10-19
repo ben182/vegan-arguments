@@ -28,10 +28,9 @@ const entries = computed<(CategoryId | "")[]>(() => {
       class="tab"
       :data-category="category"
       :aria-pressed="isPressed(category)"
-      :style="category ? { '--hue': categoryHue(category) } : undefined"
       @click="emit('select', category)"
     >
-      <span v-if="category" class="dot" aria-hidden="true" />{{ category ? deck.categoryName(category) : t.all }}<span class="count">{{ countFor(category) }}</span>
+      {{ category ? deck.categoryName(category) : t.all }}<span class="count">{{ countFor(category) }}</span>
     </button>
   </div>
 </template>

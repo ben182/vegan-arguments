@@ -12,6 +12,14 @@ const route = useRoute();
 const card = computed(() => deck.value.byId[String(route.params.id)]);
 if (!card.value) throw createError({ statusCode: 404, statusMessage: "Card not found", fatal: true });
 
+// The breadcrumb's category link opens the list filtered to that category
+const filter = useState("browse-filter");
+const query = useState("browse-query");
+function showCategory() {
+  filter.value = card.value?.category ?? null;
+  query.value = "";
+}
+
 const related = computed(() => deck.value.cards.filter((c) => c.category === card.value?.category && c.id !== card.value?.id));
 
 usePageSeo(() => {
@@ -28,15 +36,20 @@ usePageSeo(() => {
 </script>
 
 <template>
-  <main v-if="card" class="card-page">
-    <article class="card-page-card">
-      <CardBody :card="card" heading-tag="h1">
+  <main v-if="card" id="main" class="card-page" tabindex="-1">
+    <nav class="breadcrumb" :aria-label="t.breadcrumbLabel">
+      <NuxtLink :to="t.homePath">{{ t.allCards }}</NuxtLink>
+      <span aria-hidden="true">/</span>
+      <NuxtLink :to="t.homePath" @click="showCategory">{{ deck.categoryName(card.category) }}</NuxtLink>
+    </nav>
+    <article>
+      <CardBody :card="card" heading-tag="h1" :show-topic="false">
         <template #footer>
           <NuxtLink class="button primary" :to="t.practicePath">{{ t.practiseAnswers }}</NuxtLink>
         </template>
       </CardBody>
     </article>
-    <nav v-if="related.length" class="card-page-related" aria-labelledby="related-title" :style="{ '--hue': categoryHue(card.category) }">
+    <nav v-if="related.length" class="related" aria-labelledby="related-title">
       <h2 id="related-title">{{ t.moreOn(deck.categoryName(card.category)) }}</h2>
       <ul>
         <li v-for="c in related" :key="c.id">
