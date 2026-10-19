@@ -7,6 +7,7 @@ const de = {
   locale: "de-DE",
   start: "/",
   kartePfad: (id) => `/karte/${id}/`,
+  uebenPfad: "/ueben/",
   zitat: (s) => `„${s}“`,
 
   // Seite
@@ -105,6 +106,7 @@ const en = {
   locale: "en-GB",
   start: "/en/",
   kartePfad: (id) => `/en/card/${id}/`,
+  uebenPfad: "/en/practise/",
   zitat: (s) => `“${s}”`,
 
   titel: "Well prepared – answers to arguments against veganism",

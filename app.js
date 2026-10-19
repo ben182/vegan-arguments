@@ -73,7 +73,7 @@ function rasterZeichnen() {
           const st = statusText(k.id);
           const n = k.quellen?.length || 0;
           return `
-          <li><a class="zeile" href="#karte/${esc(k.id)}" data-id="${esc(k.id)}">
+          <li><a class="zeile" href="${t.kartePfad(k.id)}" data-id="${esc(k.id)}">
             <span class="z-argument">${esc(ohneZeichen(k.argument))}</span>
             <span class="z-antwort">${esc(k.kurz)}</span>
             <span class="z-meta">${n ? `<span class="belege">${t.quellenAnzahl(n)}</span>` : ""}${st ? `<span class="status">${esc(st)}</span>` : ""}</span>
@@ -109,7 +109,12 @@ function detailOeffnen(id) {
   if (!dialog.open) dialog.showModal();
   dialog.scrollTop = 0;
 }
-const detailZu = () => { if (location.hash.startsWith("#karte/")) history.back(); else dialog.close(); };
+// Schließen: zurück zur Seite, von der aus die Karte geöffnet wurde (sonst zum Nachschlagen)
+const detailZu = () => {
+  if (!karteAusPfad()) return dialog.close();
+  if (history.state?.app) history.back();
+  else gehe(t.start, { ersetzen: true });
+};
 $("#detail-zu").onclick = detailZu;
 dialog.addEventListener("click", (e) => { if (e.target === dialog) detailZu(); });
 dialog.addEventListener("cancel", (e) => { e.preventDefault(); detailZu(); });
@@ -269,18 +274,34 @@ document.addEventListener("keydown", (e) => {
   else if (e.key === " " && !$("#bewerten-reihe").hidden) { e.preventDefault(); bewerten(FSRS.GUT); } // wie Anki
 });
 
-// ---------- Routing ----------
+// ---------- Routing (echte Adressen, History API) ----------
+// /           Nachschlagen     /ueben/        Üben        /karte/<id>/      Karte
+// /en/        Look up          /en/practise/  Practise    /en/card/<id>/    Card
+const kartenMuster = new RegExp(`^${t.kartePfad("__ID__").replace("__ID__", "([\\w-]+)")}?$`);
+const karteAusPfad = (pfad = location.pathname) => (pfad.match(kartenMuster) || [])[1];
+
+function ansichtAusPfad(pfad = location.pathname) {
+  if (pfad === t.uebenPfad || pfad === t.uebenPfad.slice(0, -1)) return "ueben";
+  return "stoebern";
+}
+
+function gehe(pfad, { ersetzen = false } = {}) {
+  if (pfad === location.pathname) return route();
+  history[ersetzen ? "replaceState" : "pushState"]({ app: true }, "", pfad);
+  route();
+}
+
 function route() {
-  const h = location.hash.slice(1);
-  const ueben = h === "ueben";
-  document.querySelectorAll(".umschalter a").forEach((a) => a.classList.toggle("aktiv", a.dataset.tab === (ueben ? "ueben" : "stoebern")));
-  if (h.startsWith("karte/")) {
+  const id = karteAusPfad();
+  const ansicht = ansichtAusPfad();
+  document.querySelectorAll(".umschalter a").forEach((a) => a.classList.toggle("aktiv", a.dataset.tab === ansicht));
+  if (id) {
     if ($("#ansicht-stoebern").hidden && $("#ueben-karte").hidden) zeige("stoebern");
-    detailOeffnen(h.slice(6));
+    detailOeffnen(id);
     return;
   }
   if (dialog.open) dialog.close();
-  zeige(ueben ? "ueben" : "stoebern");
+  zeige(ansicht);
 }
 
 function zeige(ansicht) {
@@ -294,9 +315,36 @@ function zeige(ansicht) {
   }
 }
 
-$(".sprachwahl")?.addEventListener("click", (e) => { e.currentTarget.href = t.spracheLink + location.hash; });
+// Interne Links ohne Neuladen öffnen; Strg/Cmd-Klick, neue Tabs und andere Sprache normal
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a[href]");
+  if (!a || a.target || a.hasAttribute("download") || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const url = new URL(a.href, location.href);
+  if (url.origin !== location.origin || a.classList.contains("sprachwahl")) return;
+  const pfad = url.pathname;
+  if (pfad !== t.start && !karteAusPfad(pfad) && ansichtAusPfad(pfad) !== "ueben") return;
+  e.preventDefault();
+  gehe(pfad);
+});
+window.addEventListener("popstate", route);
+
+// Sprachwechsel: dieselbe Ansicht in der anderen Sprache
+$(".sprachwahl")?.addEventListener("click", (e) => {
+  const andere = TEXTE[t.spracheCode];
+  const id = karteAusPfad();
+  e.currentTarget.href = id ? andere.kartePfad(id) : ansichtAusPfad() === "ueben" ? andere.uebenPfad : andere.start;
+});
+
+// Alte Links mit #karte/<id> oder #ueben auf die echten Adressen umleiten
+function alteLinks() {
+  if (location.hash.startsWith("#karte/")) history.replaceState(null, "", t.kartePfad(location.hash.slice(7)));
+  else if (location.hash === "#ueben") history.replaceState(null, "", t.uebenPfad);
+  else return false;
+  return true;
+}
+window.addEventListener("hashchange", () => { if (alteLinks()) route(); });
+alteLinks();
 
 localStorage.removeItem("vk-fortschritt"); // alter Leitner-Stand
-window.addEventListener("hashchange", route);
 route();
 faelligAnzeigen();

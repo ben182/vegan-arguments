@@ -72,8 +72,8 @@ export const KARTEN = [
     quellen: [
       { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
       { titel: "ESPGHAN: Vegane Ernährung bei Säuglingen, Kindern und Jugendlichen (Verduci et al., J Pediatr Gastroenterol Nutr)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12580465/", jahr: 2025 },
-      { titel: "Lotti et al.: Vegetarische und vegane Ernährung bei Kindern – Meta-Analyse (Crit Rev Food Sci Nutr)", url: "https://pubmed.ncbi.nlm.nih.gov/41382333/", jahr: 2025 },
-      { titel: "Academy of Nutrition and Dietetics: Positionspapier vegetarische und vegane Ernährung für Erwachsene (Raj et al., J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/39923894/", jahr: 2025 },
+      { titel: "Lotti et al.: Lacto-ovo-vegetarian and vegan diets in children and adolescents: a systematic review and meta-analysis of nutritional and health outcomes (Crit Rev Food Sci Nutr)", url: "https://pubmed.ncbi.nlm.nih.gov/41382333/", jahr: 2025 },
+      { titel: "Raj et al.: Vegetarian Dietary Patterns for Adults: A Position Paper of the Academy of Nutrition and Dietetics (J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/39923894/", jahr: 2025 },
     ],
   },
   {
@@ -92,7 +92,7 @@ export const KARTEN = [
     quellen: [
       { titel: "DGE: Neubewertung der Position zu veganer Ernährung (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", jahr: 2024 },
       { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
-      { titel: "Academy of Nutrition and Dietetics: Positionspapier vegetarische und vegane Ernährung für Erwachsene (Raj et al., J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/39923894/", jahr: 2025 },
+      { titel: "Raj et al.: Vegetarian Dietary Patterns for Adults: A Position Paper of the Academy of Nutrition and Dietetics (J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/39923894/", jahr: 2025 },
       { titel: "Doughman et al.: Mikroalgenöl als vegetarische Quelle für EPA und DHA (Curr Diabetes Rev)", url: "https://pubmed.ncbi.nlm.nih.gov/18220672/", jahr: 2007 },
     ],
   },
@@ -487,7 +487,7 @@ export const KARTEN = [
     quellen: [
       { titel: "Lunesu et al.: Attributing Farm-to-Slaughter Emissions to Hides (Animals)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12729734/", jahr: 2025 },
       { titel: "Roncevich, Hayek & Hinestroza: The Carbon Footprint of Leather – A Comprehensive Reassessment (ACS Sustainable Chem Eng)", url: "https://doi.org/10.1021/acssuschemeng.5c12631", jahr: 2026 },
-      { titel: "Codreanu Manea et al.: Chromextraktion aus gegerbten Lederabfällen (Polymers)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11175144/", jahr: 2024 },
+      { titel: "Codreanu Manea et al.: Depollution of Polymeric Leather Waste by Applying the Most Current Methods of Chromium Extraction (Polymers)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11175144/", jahr: 2024 },
     ],
   },
   {
@@ -566,7 +566,7 @@ export const KARTEN = [
     quellen: [
       { titel: "DGE: Referenzwerte für Calcium", url: "https://www.dge.de/wissenschaft/referenzwerte/calcium/", jahr: 2013 },
       { titel: "Bischoff-Ferrari et al.: Milch und Hüftfrakturen – Meta-Analyse (J Bone Miner Res)", url: "https://pubmed.ncbi.nlm.nih.gov/20949604/", jahr: 2011 },
-      { titel: "Mishra et al.: Milchprodukte und Hüftfrakturen bei 486.950 Erwachsenen (J Nutr Sci)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10495826/", jahr: 2023 },
+      { titel: "Mishra et al.: Dairy intake and risk of hip fracture in prospective cohort studies: non-linear algorithmic dose-response analysis in 486 950 adults (J Nutr Sci)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10495826/", jahr: 2023 },
       { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
       { titel: "Tong et al.: Vegetarische und vegane Ernährung und Frakturrisiko – EPIC-Oxford (BMC Medicine)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7682057/", jahr: 2020 },
     ],
@@ -606,8 +606,8 @@ export const KARTEN = [
     quellen: [
       { titel: "IARC (WHO): Q&A zur Krebsgefahr von rotem und verarbeitetem Fleisch (PDF)", url: "https://www.iarc.who.int/wp-content/uploads/2018/07/Monographs-QA_Vol114.pdf", jahr: 2015 },
       { titel: "Crimarco et al.: SWAP-MEAT – pflanzlicher Fleischersatz vs. Fleisch, randomisierte Studie (Am J Clin Nutr)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7657338/", jahr: 2020 },
-      { titel: "Prioux et al.: Herz-Kreislauf-Risiko, pflanzliche Ernährung und Verarbeitungsgrad – NutriNet-Santé (Lancet Reg Health Eur)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12744729/", jahr: 2025 },
-      { titel: "de Fragas Hinnig et al.: Herkunft und Verarbeitungsgrad von Lebensmitteln und Gewichtszunahme – UK Biobank (eClinicalMedicine)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13351747/", jahr: 2026 },
+      { titel: "Prioux et al.: Cardiovascular disease risk and the balance between animal-based and plant-based foods, nutritional quality, and food processing level in the French NutriNet-Santé cohort (Lancet Reg Health Eur)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12744729/", jahr: 2025 },
+      { titel: "de Fragas Hinnig et al.: The association of plant or animal food origin and processing level with BMI and waist circumference: a prospective cohort study of the UK Biobank (eClinicalMedicine)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13351747/", jahr: 2026 },
       { titel: "DGE-Positionspapier vegane Ernährung, Langfassung (PDF)", url: "https://publications.pik-potsdam.de/pubman/item/item_29966_1/component/file_29967/DGE_Position_Vegan_2024_Langversion.pdf", jahr: 2024 },
     ],
   },
