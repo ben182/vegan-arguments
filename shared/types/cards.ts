@@ -6,10 +6,20 @@ export type CategoryId = "gesundheit" | "natur" | "umwelt" | "ethik" | "tierprod
 /** Display name per category, in the language of the data module. */
 export type Categories = Record<CategoryId, string>;
 
+/**
+ * What kind of evidence a source is (drives the evidence timeline):
+ * - review: systematic review, meta-analysis, umbrella review, or position paper of a scientific society
+ * - study: single primary study (trial, cohort, experiment, modelling study)
+ * - official: government agency, statistics office, official body or law
+ * - other: report, NGO, industry or press material, book, website
+ */
+export type SourceKind = "review" | "study" | "official" | "other";
+
 export interface Source {
   title: string;
   url: string;
   year: number;
+  kind?: SourceKind;
 }
 
 export interface Card {
