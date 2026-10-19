@@ -1,0 +1,49 @@
+// Checks every source link in karten.js. Usage: node scripts/check-sources.mjs
+// Exits with code 1 if a link is definitely broken (404, 410, DNS error, ...).
+import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
+
+const file = new URL("../karten.js", import.meta.url);
+const ctx = {};
+runInNewContext(readFileSync(file, "utf8") + ";this.KARTEN = KARTEN;", ctx);
+
+const links = new Map(); // url -> [card ids]
+for (const card of ctx.KARTEN) for (const s of card.quellen || []) links.set(s.url, [...(links.get(s.url) || []), card.id]);
+
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
+// These status codes usually mean "bot blocked", not "page gone"
+const BLOCKED = new Set([401, 403, 429, 503]);
+
+async function check(url) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const res = await fetch(url, {
+        redirect: "follow",
+        headers: { "user-agent": UA, accept: "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8" },
+        signal: AbortSignal.timeout(25000),
+      });
+      res.body?.cancel();
+      if (res.ok) return { result: "ok", code: res.status };
+      if (BLOCKED.has(res.status)) return { result: "blocked", code: res.status };
+      if (attempt === 2 || res.status < 500) return { result: "broken", code: res.status };
+    } catch (e) {
+      if (attempt === 2) return { result: "broken", code: e.cause?.code || e.name };
+    }
+  }
+}
+
+const entries = [...links.entries()];
+const results = [];
+let i = 0;
+await Promise.all(Array.from({ length: 6 }, async () => {
+  while (i < entries.length) {
+    const [url, ids] = entries[i++];
+    results.push({ url, ids, ...(await check(url)) });
+  }
+}));
+
+const by = (r) => results.filter((e) => e.result === r);
+for (const e of by("broken")) console.log(`✗ ${e.code}  ${e.url}\n    used in: ${e.ids.join(", ")}`);
+for (const e of by("blocked")) console.log(`? ${e.code}  ${e.url}  (probably blocks bots, check in a browser)\n    used in: ${e.ids.join(", ")}`);
+console.log(`\n${links.size} links: ${by("ok").length} ok, ${by("blocked").length} blocked, ${by("broken").length} broken`);
+process.exit(by("broken").length ? 1 : 0);

@@ -1,21 +1,21 @@
-name: Neues Argument vorschlagen
-description: Ein Argument gegen Veganismus, das dir oft begegnet und das hier noch fehlt.
+name: Suggest a new argument
+description: An argument against veganism you hear a lot that is still missing here.
 title: "Argument: "
-labels: ["vorschlag"]
+labels: ["suggestion"]
 body:
   - type: input
     id: argument
     attributes:
-      label: Wie lautet das Argument?
-      description: So, wie man es am Tisch hört
-      placeholder: z. B. „Veganer brauchen doch auch Plastik“
+      label: What is the argument?
+      description: The way people actually say it at the dinner table
+      placeholder: e.g. "Vegans use plastic too"
     validations:
       required: true
   - type: textarea
     id: antwort
     attributes:
-      label: Deine Antwort darauf (optional)
+      label: Your answer to it (optional)
   - type: input
     id: quelle
     attributes:
-      label: Quellen (optional)
+      label: Sources (optional)

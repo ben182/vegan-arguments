@@ -1,0 +1,24 @@
+name: Report an error on a card
+description: A number is wrong, a source is outdated, or an answer is misleading.
+title: "Error: "
+labels: ["error"]
+body:
+  - type: input
+    id: karte
+    attributes:
+      label: Which card?
+      description: The ID from the link, e.g. soja-regenwald
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      placeholder: e.g. "The 77 % figure is outdated, newer data shows …"
+    validations:
+      required: true
+  - type: input
+    id: quelle
+    attributes:
+      label: Source (if available)
+      description: Link to a study or official body that supports your correction

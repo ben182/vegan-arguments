@@ -1,0 +1,41 @@
+name: Check sources
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # 1st of every month, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check links
+        id: check
+        run: |
+          set +e
+          node scripts/check-sources.mjs > report.txt
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat report.txt
+      - name: Open an issue if links are broken
+        if: steps.check.outputs.code != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Broken source links ($(date +%Y-%m))"
+          {
+            echo "The monthly link check found broken sources:"
+            echo
+            echo '```'
+            cat report.txt
+            echo '```'
+          } > body.md
+          gh label create sources --color FBCA04 --description "Sources and evidence" 2>/dev/null || true
+          gh issue create --title "$title" --body-file body.md --label sources
