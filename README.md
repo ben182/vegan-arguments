@@ -9,13 +9,16 @@ Every number has a source. Accuracy comes first: if you find an error or an outd
 
 ## Run locally
 
-Plain HTML, CSS and JavaScript, no build step:
+Built with [Vite](https://vite.dev), no framework:
 
 ```sh
-python3 -m http.server 8765
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # static site in dist/
+npm run preview    # serve dist/ locally
 ```
 
-Then open http://localhost:8765.
+The build also generates a static page per card at `/karte/<id>/` (for search engines and sharing), `sitemap.xml`, `robots.txt`, and a service worker so the site can be installed and used offline. Set `SITE_URL` to the production address for canonical links and the sitemap, e.g. `SITE_URL=https://example.org npm run build`.
 
 ## Files
 
@@ -24,13 +27,15 @@ Then open http://localhost:8765.
 | `karten.js` | All cards and categories (content) |
 | `fsrs.js` | Spaced-repetition scheduling (FSRS-5, Anki defaults) |
 | `app.js` | UI: browsing, card detail, practice queue |
+| `karte-html.js` | Renders a card as HTML (shared by the app and the static card pages) |
+| `vite.config.js` | Static card pages, sitemap, PWA manifest and service worker |
 | `scripts/check-sources.mjs` | Checks every source link; runs monthly via GitHub Actions |
 
 ## Tests
 
 ```sh
-node --test fsrs.test.js
-node scripts/check-sources.mjs
+npm test
+npm run check-sources
 ```
 
 ## Contributing

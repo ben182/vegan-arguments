@@ -4,24 +4,13 @@ import "@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css";
 import "./style.css";
 import * as FSRS from "./fsrs.js";
 import { KARTEN, KATEGORIEN } from "./karten.js";
+import { ton, katName, vorschlagLink, esc, ohneZeichen, zahlHtml, karteHtml } from "./karte-html.js";
 
 const $ = (sel) => document.querySelector(sel);
 const SPEICHER = "vk-anki-v1";
 const NEU_PRO_TAG = 10;
 const VORLERNEN = 20 * FSRS.MIN; // wie Anki: Lernkarten bis 20 Min. vorziehen
-// Farbton je Kategorie (OKLCH). Unbekannte Kategorien bekommen einen festen Ton aus ihrem Namen.
-const TOENE = { gesundheit: 20, natur: 135, umwelt: 200, ethik: 300, tierprodukte: 75, alltag: 250 };
-const ton = (kat) => TOENE[kat] ?? [...String(kat)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
-const katName = (kat) => KATEGORIEN[kat] || kat;
 const alleKats = () => [...new Set([...Object.keys(KATEGORIEN), ...KARTEN.map((k) => k.kategorie)])];
-const REPO = "https://github.com/ben182/vegan-arguments";
-const fehlerLink = (k) => `${REPO}/issues/new?template=error.yml&title=${encodeURIComponent(`Error: ${k.id}`)}&karte=${encodeURIComponent(k.id)}`;
-const vorschlagLink = (text = "") => `${REPO}/issues/new?template=argument.yml${text ? `&argument=${encodeURIComponent(text)}` : ""}`;
-const monatJahr = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString("de-DE", { month: "long", year: "numeric" });
-const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } };
-
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-const ohneZeichen = (s) => s.replace(/^[„"]|[“"]$/g, "");
 const nachId = Object.fromEntries(KARTEN.map((k) => [k.id, k]));
 
 // ---------- Speicher ----------
@@ -104,34 +93,8 @@ function rasterZeichnen() {
 $("#suche").addEventListener("input", rasterZeichnen);
 
 // ---------- Detail ----------
-function zahlHtml(k) {
-  return k.zahl ? `<p class="zahl"><strong>${esc(k.zahl.wert)}</strong><span>${esc(k.zahl.text)}</span></p>` : "";
-}
-
 function detailHtml(k) {
-  const st = statusText(k.id);
-  const teile = [
-    `<div class="detail-koerper" style="--h:${ton(k.kategorie)}">`,
-    `<header class="d-kopf">`,
-    `<p class="d-thema"><span class="punkt" aria-hidden="true"></span>${esc(katName(k.kategorie))}${st ? `<span class="status">${esc(st)}</span>` : ""}</p>`,
-    `<p class="d-sagt">Jemand sagt:</p>`,
-    `<h2 id="detail-argument" class="d-argument">${esc(ohneZeichen(k.argument))}</h2>`,
-    `</header>`,
-    `<section class="d-antwort"><h3>Deine Antwort fürs Gespräch</h3><p class="kurz">${esc(k.kurz)}</p>${zahlHtml(k)}</section>`,
-  ];
-  if (k.punkte?.length) teile.push(`<section class="d-abschnitt"><h3>Wenn jemand nachhakt</h3><ul class="punkte">${k.punkte.map((p) => `<li>${esc(p)}</li>`).join("")}</ul></section>`);
-  const notizen = [];
-  if (k.konter) notizen.push(`<div class="notiz konter"><h3>Gegenfrage</h3><p>${esc(k.konter)}</p></div>`);
-  if (k.fehlschluss) notizen.push(`<div class="notiz fehlschluss"><h3>Denkfehler: ${esc(k.fehlschluss.name)}</h3><p>${esc(k.fehlschluss.erklaerung)}</p></div>`);
-  if (k.ehrlich) notizen.push(`<div class="notiz ehrlich"><h3>Was du fairerweise zugeben solltest</h3><p>${esc(k.ehrlich)}</p></div>`);
-  if (notizen.length) teile.push(`<div class="notizen">${notizen.join("")}</div>`);
-  if (k.quellen?.length) {
-    teile.push(`<section class="d-abschnitt"><h3>Quellen</h3><ol class="quellen">${k.quellen
-      .map((q) => `<li><a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.titel)}</a><span class="q-meta">${esc(host(q.url))}${q.jahr && !q.titel.includes(q.jahr) ? `, ${q.jahr}` : ""}</span></li>`)
-      .join("")}</ol>${k.geprueft ? `<p class="geprueft">Quellen zuletzt geprüft im ${monatJahr(k.geprueft)}</p>` : ""}</section>`);
-  }
-  teile.push(`<div class="detail-fuss"><button class="knopf" id="teilen">Link kopieren</button><a class="textknopf" href="${fehlerLink(k)}" target="_blank" rel="noopener">Fehler melden</a></div></div>`);
-  return teile.join("");
+  return karteHtml(k, { status: statusText(k.id), fuss: `<button class="knopf" id="teilen">Link kopieren</button>` });
 }
 
 const dialog = $("#detail");
@@ -140,7 +103,7 @@ function detailOeffnen(id) {
   if (!k) return;
   $("#detail-inhalt").innerHTML = detailHtml(k);
   $("#teilen").onclick = async (e) => {
-    const url = `${location.origin}${location.pathname}#karte/${k.id}`;
+    const url = `${location.origin}/karte/${k.id}/`;
     try {
       if (navigator.share && matchMedia("(pointer: coarse)").matches) await navigator.share({ title: k.argument, text: k.kurz, url });
       else { await navigator.clipboard.writeText(url); e.target.textContent = "Link kopiert"; }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="0" fill="#2b1a2c"/>
+  <!-- deutsches öffnendes Anführungszeichen „ -->
+  <g fill="#f2b33d" transform="translate(116 236)">
+    <path d="M44 0h76v78L76 196H20l34-118H44z"/>
+    <path d="M200 0h76v78L232 196h-56l34-118h-10z"/>
+  </g>
+</svg>
