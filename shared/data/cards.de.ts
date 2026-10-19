@@ -142,7 +142,10 @@ export const cards: Card[] = [
     fallacy: { name: "Appell an die Tradition", explanation: "Etwas wird nicht richtig, nur weil man es schon lange so macht." },
     concession: "Fleisch zu essen ist tief in fast allen Kulturen verankert. Wer das kleinredet, verliert das Gespräch.",
     sources: [
-      { title: "DGE: Neubewertung der Position zu veganer Ernährung (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024 },
+      { title: "DGE: Update of the DGE position on vegan diet (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024, kind: "review" },
+      { title: "Melina, Craig & Levin: Position of the Academy of Nutrition and Dietetics: Vegetarian Diets (J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/27886704/", year: 2016, kind: "review" },
+      { title: "Agnoli et al.: Position paper on vegetarian diets from the working group of the Italian Society of Human Nutrition (Nutr Metab Cardiovasc Dis)", url: "https://pubmed.ncbi.nlm.nih.gov/29174030/", year: 2017, kind: "review" },
+      { title: "Barr et al.: No sustained increase in zooarchaeological evidence for carnivory after the appearance of Homo erectus (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8812535/", year: 2022, kind: "study" },
     ],
   },
   {
@@ -159,8 +162,10 @@ export const cards: Card[] = [
     counterQuestion: "Nimmst du dir sonst auch Löwen zum Vorbild?",
     fallacy: { name: "Appell an die Natur", explanation: "Was Tiere in der Natur tun, sagt nichts darüber, was wir tun sollten." },
     sources: [
-      { title: "Smithsonian’s National Zoo: Lion – Fact Sheet", url: "https://nationalzoo.si.edu/animals/lion", year: 2026 },
-      { title: "DGE: Neubewertung der Position zu veganer Ernährung (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024 },
+      { title: "Smithsonian’s National Zoo: Lion", url: "https://nationalzoo.si.edu/animals/lion", year: 2026, kind: "other" },
+      { title: "DGE: Update of the DGE position on vegan diet (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024, kind: "review" },
+      { title: "Packer & Pusey: Adaptations of Female Lions to Infanticide by Incoming Males (Am Nat)", url: "https://doi.org/10.1086/284097", year: 1983, kind: "study" },
+      { title: "Melina, Craig & Levin: Position of the Academy of Nutrition and Dietetics: Vegetarian Diets (J Acad Nutr Diet)", url: "https://pubmed.ncbi.nlm.nih.gov/27886704/", year: 2016, kind: "review" },
     ],
   },
   {
@@ -178,10 +183,13 @@ export const cards: Card[] = [
     fallacy: { name: "Appell an die Natur", explanation: "Dass unser Körper etwas kann, heißt nicht, dass wir es tun sollten." },
     concession: "Viele Forscher sehen Fleisch als wichtigen Faktor in unserer Evolution. Das sollte man nicht abstreiten – nur bestreiten, dass daraus etwas für heute folgt.",
     sources: [
-      { title: "Smithsonian Human Origins: Sahelanthropus tchadensis (kleine Eckzähne)", url: "https://humanorigins.si.edu/evidence/human-fossils/species/sahelanthropus-tchadensis", year: 2026 },
-      { title: "Smithsonian’s National Zoo: Western Lowland Gorilla – Fact Sheet", url: "https://nationalzoo.si.edu/animals/western-lowland-gorilla", year: 2026 },
-      { title: "Barr et al.: Kein dauerhafter Anstieg von Fleischkonsum nach dem Auftreten von Homo erectus (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8812535/", year: 2022 },
-      { title: "DGE: Neubewertung der Position zu veganer Ernährung (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024 },
+      { title: "Smithsonian Human Origins: Sahelanthropus tchadensis", url: "https://humanorigins.si.edu/evidence/human-fossils/species/sahelanthropus-tchadensis", year: 2026, kind: "other" },
+      { title: "Smithsonian’s National Zoo: Western lowland gorilla", url: "https://nationalzoo.si.edu/animals/western-lowland-gorilla", year: 2026, kind: "other" },
+      { title: "Barr et al.: No sustained increase in zooarchaeological evidence for carnivory after the appearance of Homo erectus (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8812535/", year: 2022, kind: "study" },
+      { title: "DGE: Update of the DGE position on vegan diet (Klug et al., Ernährungs Umschau 7/2024)", url: "https://www.dge.de/wissenschaft/stellungnahmen-und-positionspapiere/positionen/update-of-the-dge-position-on-vegan-diet/", year: 2024, kind: "review" },
+      { title: "Lüdecke et al.: Australopithecus at Sterkfontein did not consume substantial mammalian meat (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/39818884/", year: 2025, kind: "study" },
+      { title: "Suwa et al.: Canine sexual dimorphism in Ardipithecus ramidus was nearly human-like (PNAS)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8670482/", year: 2021, kind: "study" },
+      { title: "Aiello & Wheeler: The Expensive-Tissue Hypothesis: The Brain and the Digestive System in Human and Primate Evolution (Curr Anthropol)", url: "https://doi.org/10.1086/204350", year: 1995, kind: "study" },
     ],
   },
   {
@@ -198,9 +206,11 @@ export const cards: Card[] = [
     ],
     counterQuestion: "Wenn das stimmt – müsstest du dann nicht erst recht vegan essen?",
     sources: [
-      { title: "Mallatt et al.: Debunking a myth – plant consciousness (Protoplasma)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8052213/", year: 2021 },
-      { title: "Khait et al.: Gestresste Pflanzen geben Geräusche ab (Cell)", url: "https://doi.org/10.1016/j.cell.2023.03.009", year: 2023 },
-      { title: "Our World in Data: Pflanzliche Ernährung würde die Agrarfläche von 4 auf 1 Mrd. Hektar senken (nach Poore & Nemecek 2018)", url: "https://ourworldindata.org/land-use-diets", year: 2021 },
+      { title: "Mallatt et al.: Debunking a myth: plant consciousness (Protoplasma)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8052213/", year: 2021, kind: "review" },
+      { title: "Khait et al.: Sounds emitted by plants under stress are airborne and informative (Cell)", url: "https://doi.org/10.1016/j.cell.2023.03.009", year: 2023, kind: "study" },
+      { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares", url: "https://ourworldindata.org/land-use-diets", year: 2021, kind: "other" },
+      { title: "Taiz et al.: Plants Neither Possess nor Require Consciousness (Trends Plant Sci)", url: "https://pubmed.ncbi.nlm.nih.gov/31279732/", year: 2019, kind: "review" },
+      { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/29853680/", year: 2018, kind: "study" },
     ],
   },
   {
