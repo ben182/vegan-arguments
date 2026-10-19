@@ -8,7 +8,7 @@ export type Categories = Record<CategoryId, string>;
 
 /**
  * What kind of evidence a source is (drives the evidence timeline):
- * - review: systematic review, meta-analysis, umbrella review, or position paper of a scientific society
+ * - review: review article (systematic or narrative), meta-analysis, umbrella review, or position paper of a scientific society
  * - study: single primary study (trial, cohort, experiment, modelling study)
  * - official: government agency, statistics office, official body or law
  * - other: report, NGO, industry or press material, book, website
@@ -19,7 +19,7 @@ export interface Source {
   title: string;
   url: string;
   year: number;
-  kind?: SourceKind;
+  kind: SourceKind;
 }
 
 export interface Card {
