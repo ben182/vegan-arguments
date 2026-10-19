@@ -19,8 +19,8 @@
   --lernen: oklch(0.53 0.17 28);
   --faellig: oklch(0.5 0.12 150);
 
-  --text-schrift: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
-  --display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --text-schrift: "Atkinson Hyperlegible Next Variable", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --display: "Bricolage Grotesque Variable", "Arial Narrow", system-ui, sans-serif;
 
   --r-klein: 6px;
   --r: 14px;

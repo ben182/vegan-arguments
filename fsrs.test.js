@@ -1,6 +1,6 @@
-const test = require("node:test");
-const assert = require("node:assert");
-const F = require("./fsrs.js");
+import test from "node:test";
+import assert from "node:assert";
+import * as F from "./fsrs.js";
 
 const START = new Date(2026, 9, 19, 12, 0).getTime();
 const tage = (k, jetzt) => Math.round((k.faellig - jetzt) / F.TAG);
