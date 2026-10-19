@@ -12,6 +12,9 @@ for (const [lang, cards] of [["de", DE], ["en", EN]]) {
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
 // These status codes usually mean "bot blocked", not "page gone"
 const BLOCKED = new Set([401, 403, 429, 503]);
+// Network errors that usually mean "this server refuses the CI runner" (e.g. German government
+// sites from GitHub's US data centres), not "the page is gone"
+const UNREACHABLE = new Set(["UND_ERR_CONNECT_TIMEOUT", "UND_ERR_HEADERS_TIMEOUT", "UND_ERR_SOCKET", "ECONNRESET", "ECONNREFUSED", "ETIMEDOUT", "TimeoutError"]);
 
 async function check(url) {
   for (let attempt = 1; attempt <= 2; attempt++) {
@@ -26,7 +29,8 @@ async function check(url) {
       if (BLOCKED.has(res.status)) return { result: "blocked", code: res.status };
       if (attempt === 2 || res.status < 500) return { result: "broken", code: res.status };
     } catch (e) {
-      if (attempt === 2) return { result: "broken", code: e.cause?.code || e.name };
+      const code = e.cause?.code || e.name;
+      if (attempt === 2) return { result: UNREACHABLE.has(code) ? "blocked" : "broken", code };
     }
   }
 }
@@ -43,6 +47,6 @@ await Promise.all(Array.from({ length: 6 }, async () => {
 
 const by = (r) => results.filter((e) => e.result === r);
 for (const e of by("broken")) console.log(`✗ ${e.code}  ${e.url}\n    used in: ${e.ids.join(", ")}`);
-for (const e of by("blocked")) console.log(`? ${e.code}  ${e.url}  (probably blocks bots, check in a browser)\n    used in: ${e.ids.join(", ")}`);
+for (const e of by("blocked")) console.log(`? ${e.code}  ${e.url}  (blocks bots or this network, check in a browser)\n    used in: ${e.ids.join(", ")}`);
 console.log(`\n${links.size} links: ${by("ok").length} ok, ${by("blocked").length} blocked, ${by("broken").length} broken`);
 process.exit(by("broken").length ? 1 : 0);
