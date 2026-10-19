@@ -735,7 +735,7 @@ export const cards: Card[] = [
     ],
     counterQuestion: "What do the animals you eat actually eat?",
     fallacy: { name: "Nirvana fallacy", explanation: "A solution is rejected because it isn’t perfect – even though it’s clearly better than the alternative." },
-    concession: "Cattle that only graze on pasture don’t eat crop feed. Some conclude that such meat costs fewer animal lives. But pasture-raised meat only works out to very small amounts per person.",
+    concession: "Cattle that only graze on pasture don’t eat crop feed. According to an FAO analysis, 86% of global livestock feed isn’t edible for humans, such as grass and crop residues. Still, 1 kg of meat takes 2.8 to 3.2 kg of feed that people could eat on average – and pasture-raised meat only works out to very small amounts per person.",
     sources: [
       { title: "Our World in Data: Cereals allocated to food, animal feed and fuel", url: "https://ourworldindata.org/grapher/cereal-distribution-to-uses", year: 2025, kind: "other" },
       { title: "Our World in Data: If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares", url: "https://ourworldindata.org/land-use-diets", year: 2021, kind: "other" },
@@ -743,6 +743,7 @@ export const cards: Card[] = [
       { title: "The Vegan Society: Definition of veganism", url: "https://www.vegansociety.com/go-vegan/definition-veganism", year: 2026, kind: "other" },
       { title: "Garnett et al.: Grazed and confused? Ruminating on cattle, grazing systems, methane, nitrous oxide, the soil carbon sequestration question – and what it all means for greenhouse gas emissions (Food Climate Research Network)", url: "https://www.oxfordmartin.ox.ac.uk/downloads/reports/fcrn_gnc_report.pdf", year: 2017, kind: "other" },
       { title: "Poore & Nemecek: Reducing food’s environmental impacts through producers and consumers (Science)", url: "https://pubmed.ncbi.nlm.nih.gov/29853680/", year: 2018, kind: "study" },
+      { title: "Mottet et al.: Livestock: On our plates or eating at our table? A new analysis of the feed/food debate (Global Food Security)", url: "https://doi.org/10.1016/j.gfs.2017.01.001", year: 2017, kind: "study" },
     ],
   },
   {
