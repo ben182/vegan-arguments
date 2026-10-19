@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="0" fill="#2b1a2c"/>
-  <!-- deutsches öffnendes Anführungszeichen „ -->
-  <g fill="#f2b33d" transform="translate(116 236)">
-    <path d="M44 0h76v78L76 196H20l34-118H44z"/>
-    <path d="M200 0h76v78L232 196h-56l34-118h-10z"/>
+  <rect width="512" height="512" fill="#16222a"/>
+  <!-- Brand mark: evidence bars with the yellow "checked" dot, as in the header -->
+  <g transform="translate(76 76) scale(12.857)" fill="none" stroke="#eef2f0" stroke-width="2.2" stroke-linecap="round">
+    <path d="M3 21h22M7 21v-4M12 21v-8M17 21v-12M22 21v-6"/>
+    <circle cx="17" cy="6" r="2.4" fill="#f3cf3f" stroke="none"/>
   </g>
 </svg>
