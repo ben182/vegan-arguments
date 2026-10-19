@@ -41,11 +41,10 @@ export default defineNuxtConfig({
     },
   },
 
-  // Self-hosted fonts. Bricolage Grotesque "standard" includes the wdth axis used via font-stretch.
+  // Self-hosted font: Schibsted Grotesk (variable weight 400–900, upright and italic) is the only typeface
   css: [
-    "@fontsource-variable/bricolage-grotesque/standard.css",
-    "@fontsource-variable/atkinson-hyperlegible-next/wght.css",
-    "@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css",
+    "@fontsource-variable/schibsted-grotesk/wght.css",
+    "@fontsource-variable/schibsted-grotesk/wght-italic.css",
     "~/assets/css/main.css",
   ],
 
